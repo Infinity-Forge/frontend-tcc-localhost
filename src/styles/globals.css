@@ -1,0 +1,13 @@
+/* variaveis */
+:root {
+    --vermelho-escuro: #B05252;
+    --preto-navbar: #181818;
+    --cinza: #D9D9D9;
+    --cinza-da-navbar: #8D8D8D;
+    --cinza-dos-gatoides-e-mapas: #A6A6A6;
+}
+
+* {
+    box-sizing: border-box; 
+    font-family: Arial, Helvetica, sans-serif;
+}
