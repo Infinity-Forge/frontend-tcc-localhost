@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
 
@@ -21,14 +22,14 @@ function Header() {
                 <div className={styles.dropdown}>
                     <button className={styles.navbarButton}>Informações do Jogo</button>
                     <div className={styles["dropdown-content"]}>
-                        <a className={styles.navLink} href="pages/paginaPersonagens.html">Personagens</a>
-                        <a className={styles.navLink} href="pages/paginaMapasPrincipal.html">Mapas</a>
-                        <a className={styles.navLink} href="pages/paginaArsenal.html">Arsenal</a>
+                        <Link className={styles.navLink} href="/personagens">Personagens</Link>
+                        <Link className={styles.navLink} href="/mapas">Mapas</Link>
+                        <Link className={styles.navLink} href="/arsenal">Arsenal</Link>
                     </div>
                 </div>
-                <a href="pages/paginaNoticias.html">
+                <Link href="/noticias">
                     <button className={styles.navbarButton}>Notícias</button>
-                </a>
+                </Link>
                 <a href="#">
                     <button className={styles.navbarButton} onClick={abrirSuporte}>Suporte</button>
                 </a>

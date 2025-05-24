@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import Header from "../components/header/index";
 import Banner from "../components/banner/index";
 
-export default function Home() {
+function Home() {
   return (
     <>
       <Header/>
@@ -12,3 +12,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home

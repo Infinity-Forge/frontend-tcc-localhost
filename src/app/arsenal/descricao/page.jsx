@@ -1,4 +1,4 @@
-function Noticias() {
+function DescricaoArma() {
   return (
     <div> 
     <h1> Hello World </h1>
@@ -6,4 +6,4 @@ function Noticias() {
   )
 }
 
-export default Noticias
+export default DescricaoArma
