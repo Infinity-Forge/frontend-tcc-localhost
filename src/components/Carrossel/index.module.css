@@ -1,3 +1,9 @@
+.carrosselDiv {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
 .icon {
     background-color: black; /* Cor de fundo dos ícones */
     border-radius: 10px; /* Arredondar os ícones */

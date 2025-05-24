@@ -1,0 +1,12 @@
+.personagensContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .personagensContainer {
+        flex: 1 1 40%; 
+    }
+}

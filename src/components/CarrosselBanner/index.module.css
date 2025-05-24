@@ -45,4 +45,14 @@ div.carouselExampleFade {
     .carouselItemImgWrapper {
         height: 35vh;
     }
+
+    .carouselItemImg {
+        height: 300px;
+    }
+
+    /* em relação ao botao de baixo do carrocel na section */
+    button.jogarBanner {
+        height: 42px;
+        width: 130px;
+    }
 }

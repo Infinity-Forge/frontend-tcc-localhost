@@ -13,7 +13,9 @@ function CarrosselBanner() {
                         src="/cat.jpg"
                         alt="..."
                         className={`d-block ${styles.carouselItemImg}`}
-                        fill
+                        width={1920}  // define a largura original da imagem
+                        height={1080} // define a altura original da imagem
+                        style={{ width: '100%', height: '500px', objectFit: 'cover' }}
                       />
                     </div>
                     <div className="carousel-caption d-flex justify-content-center align-items-center" style={{ height: "100%" }}>

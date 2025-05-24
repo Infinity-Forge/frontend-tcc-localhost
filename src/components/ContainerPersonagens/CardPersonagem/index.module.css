@@ -1,0 +1,63 @@
+.cardPersonagem {
+    flex: 1 1 20%;
+    max-width: 250px; 
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de hover para expandir a imagem */
+.cardPersonagem:hover {
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
+/* Estilo da imagem */
+.personagemImg {
+    width: 240px;;
+    height: 330px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    object-fit: cover;
+}
+
+/* Nome do guardião */
+.nomeDoGuardiao {
+    background-color: var(--preto-navbar);
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 255, 255); 
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 240px; 
+    text-align: center;
+    padding: 10px 0; 
+}
+
+/* Estilo da borda ao passar o mouse */
+.cardPersonagem:hover .nomeDoGuardiao {
+    color: white; 
+    background-image: linear-gradient(var(--vermelho-escuro), var(--vermelho-escuro));
+    background-size: 100% 40px; /*4 px tbm é legal*/ 
+    background-position: bottom; 
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .personagemImg {
+        width: 200px; 
+        height: 280px; 
+    }
+
+    .nomeDoGuardiao {
+        font-size: 16px; 
+        width: 200px; 
+    }
+}
