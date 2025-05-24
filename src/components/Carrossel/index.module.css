@@ -1,48 +1,5 @@
-.carouselItemImgWrapper {
-  width: 100%;
-  height: 50vh;
-  position: relative;
-}
-
-/* para o carrocel do banner do inicio ficar em baixo do menu do botao informações do jogo */
-div.carouselExampleFade {
-    z-index: 1;
-}
-
-/* div para o botao de baixo do carrocel */
-.carousel-caption {
-    top: 25%;    
-    text-align: center;
-}
-
-/* botao jogar que fica em baixo do carrocel na section */
-.jogarBanner {
-    border: none;
-    border-radius: 20px;
-    background-color: var(--vermelho-escuro);
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: auto; 
-    transition: background-color 0.3s; 
-    width: 125px;
-}
-
-.jogarBanner:hover {
-    background-color: #A05252; 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap; 
-}
-
-.prevNextBtn {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-@media (max-width: 768px) {
-    .carouselItemImgWrapper {
-        height: 35vh;
-    }
+.icon {
+    background-color: black; /* Cor de fundo dos ícones */
+    border-radius: 10px; /* Arredondar os ícones */
+    padding: 20px;
 }

@@ -1,0 +1,8 @@
+.containersComNovidades {
+    display: flex;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
+    width: 100%;
+}
