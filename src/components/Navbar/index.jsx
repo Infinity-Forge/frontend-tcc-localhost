@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
 
-function Header() {
+function Navbar() {
 
     function toggleMenu() {
         console.log("a");
@@ -39,4 +39,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default Navbar;
