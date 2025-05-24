@@ -21,7 +21,7 @@ function Home() {
         <article className={styles.novidades}>
         {/* Artigo com o carrocel das novidades */}
         <Carrossel target="Novidades">
-        <Title text="Novidades" marginValue="8px"/>
+        <Title text="Novidades" marginBottomValue="8px"/>
           <CarrosselItem extraClass={"active"}>
             <CarrosselCard
             imageUrl="/clash.jpg"
@@ -96,8 +96,8 @@ function Home() {
       </section>
 
       {/* Seção dos mapas */}
-      <section className="mapas" style={{ marginTop: "120px" }}>
-        <Title text="Mapas" marginValue={0}/>
+      <section className={styles.mapas} style={{ marginTop: "120px" }}>
+        <Title text="Mapas" marginBottomValue={0}/>
           <InformacaoEsquerda marginValue={"70px"} 
           text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
           btnText="Ver mais"

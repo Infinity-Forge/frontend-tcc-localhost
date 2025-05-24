@@ -1,9 +1,9 @@
 import styles from "./index.module.css";
 
-function ContainerPersonagens({ children }) {
+function ContainerPersonagens({ children, className }) {
 
     return(
-        <div className={styles.personagensContainer}>
+        <div className={`${styles.personagensContainer} ${className}`}>
             {children}
         </div>
     )

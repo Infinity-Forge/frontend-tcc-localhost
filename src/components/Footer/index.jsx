@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 function Footer() {
     return (
         <footer className={styles.rodape}>
-            <Title text="Baixe o Jogo"/>
+            <Title text="Baixe o Jogo" className={styles.title}/>
 
             <div className={styles.imagensETexto}>
                 <div className={styles.redesSociais}>

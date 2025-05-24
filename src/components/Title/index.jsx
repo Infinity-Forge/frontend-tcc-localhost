@@ -1,9 +1,9 @@
 import styles from "./index.module.css";
 
-function Title({ text, marginValue }) {
+function Title({ text, marginBottomValue, marginTopValue, className }) {
 
     return(
-        <h1 className={styles.title} style={{ marginBottom: marginValue}}>{text}</h1>
+        <h1 className={`${styles.title} ${className}`} style={{ marginBottom: marginBottomValue, marginTop: marginTopValue}}>{text}</h1>
     )
 }
 

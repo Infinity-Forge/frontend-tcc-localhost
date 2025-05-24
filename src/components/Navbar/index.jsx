@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
 
-function Navbar() {
+function Navbar({ children }) {
 
     function toggleMenu() {
         console.log("a");
@@ -33,6 +33,7 @@ function Navbar() {
                 <a href="#">
                     <button className={styles.navbarButton} onClick={abrirSuporte}>Suporte</button>
                 </a>
+                {children}
                 <button id={styles.jogar}>Jogar Agora</button>
             </nav>
         </header>
