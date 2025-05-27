@@ -11,6 +11,7 @@ import CardPersonagem from "@/components/ContainerPersonagens/CardPersonagem";
 import InformacaoEsquerda from "@/components/InformacaoEsquerda";
 import InformacaoDireita from "@/components/InformacaoDireita";
 import Footer from "@/components/Footer";
+import Suporte from "@/components/Suporte";
 
 function Home() {
   return (
@@ -86,13 +87,14 @@ function Home() {
          <article className={styles.cavaleiros}>
             <Title text="Cavaleiros"/>
             <ContainerPersonagens>
+              <CardPersonagem imageSrc={"/peste.jpg"} nome={"Peste"}/>
               <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
-              <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
+              <CardPersonagem imageSrc={"/anjoMiguel.jpg"} nome={"Anjo Miguel"}/>
               <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
               <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
             </ContainerPersonagens>
          </article>
-        <Banner imageSrc="/gd.png" alt="Banner dos Cavaleiros"/>
+        <Banner imageSrc="/bannerCavaleiro.jpg" alt="Banner dos Cavaleiros"/>
       </section>
 
       {/* Seção dos mapas */}

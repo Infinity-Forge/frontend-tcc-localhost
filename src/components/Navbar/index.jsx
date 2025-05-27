@@ -2,23 +2,27 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import styles from "./index.module.css";
 
 function Navbar({ children }) {
 
-    function toggleMenu() {
-        console.log("a");
+    const [toggleMenu, setToggleMenu] = useState(false);
+    const [toggleSuporte, setToggleSuporte] = useState(false);
+
+    function handleToggleMenu() {
+        setToggleMenu(prevToggleMenu => !prevToggleMenu);
     }
 
-    function abrirSuporte() {
-        console.log("a");
+    function handleToggleSuporte() {
+        setToggleSuporte(prevToggleSuporte => !prevToggleSuporte);
     }
 
     return(
         <header>
             <nav className={styles.nav}>
                 <Image height={40} width={65} src="/gd.png" alt="Logo do jogo" id="logoNavbar"/>
-                <button className={styles.hamburger} onClick={toggleMenu}>&#9776;</button>
+                <button className={styles.hamburger} onClick={handleToggleMenu}>&#9776;</button>
                 <div className={styles.dropdown}>
                     <button className={styles.navbarButton}>Informações do Jogo</button>
                     <div className={styles["dropdown-content"]}>
@@ -31,7 +35,7 @@ function Navbar({ children }) {
                     <button className={styles.navbarButton}>Notícias</button>
                 </Link>
                 <a href="#">
-                    <button className={styles.navbarButton} onClick={abrirSuporte}>Suporte</button>
+                    <button className={styles.navbarButton} onClick={handleToggleSuporte}>Suporte</button>
                 </a>
                 {children}
                 <button id={styles.jogar}>Jogar Agora</button>

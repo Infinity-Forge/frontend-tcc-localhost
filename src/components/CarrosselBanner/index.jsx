@@ -10,42 +10,31 @@ function CarrosselBanner() {
                   <div className="carousel-item active">
                     <div className={`${styles.carouselItemImgWrapper} position-relative`} style={{ width: '100%', height: '429px' }}>
                       <Image
-                        src="/cat.jpg"
+                        src="/bannerCavaleiro.jpg"
                         alt="..."
                         className={`d-block ${styles.carouselItemImg}`}
-                        width={1920}  // define a largura original da imagem
-                        height={1080} // define a altura original da imagem
-                        style={{ width: '100%', height: '500px', objectFit: 'cover' }}
+                        fill
                       />
-                    </div>
-                    <div className="carousel-caption d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                        <button className={styles.jogarBanner}>Jogar</button>
                     </div>
                   </div>
                   <div className="carousel-item">
                     <div className={`${styles.carouselItemImgWrapper} position-relative`} style={{ width: '100%', height: '429px' }}>
                       <Image
-                        src="/gd.png"
+                        src="/bannerCavaleiro.jpg"
                         alt="..."
                         className="d-block"
                         fill
                       />
-                    </div>
-                    <div className="carousel-caption d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                        <button className={styles.jogarBanner}>Jogar</button>
                     </div>
                   </div>
                   <div className="carousel-item">
                     <div className={`${styles.carouselItemImgWrapper} position-relative`} style={{ width: '100%', height: '429px' }}>
                       <Image
-                        src="/clash.jpg"
+                        src="/bannerCavaleiro.jpg"
                         alt="..."
                         className="d-block"
                         fill
                       />
-                    </div>
-                    <div className="carousel-caption d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                        <button className={styles.jogarBanner}>Jogar</button>
                     </div>
                   </div>
                 </div>
