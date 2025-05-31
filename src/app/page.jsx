@@ -114,6 +114,8 @@ function Home() {
       <Banner imageSrc="/gd.png" alt="Banner"/>
 
       <Footer/>
+
+      <Suporte/>
       </main>
     </>
   );
