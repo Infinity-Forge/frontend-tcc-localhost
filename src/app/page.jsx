@@ -110,11 +110,8 @@ function Home() {
           btnText="Ver mais"
           imageSrc="/cat.jpg"/>
       </section>
-
       <Banner imageSrc="/gd.png" alt="Banner"/>
-
       <Footer/>
-
       <Suporte/>
       </main>
     </>

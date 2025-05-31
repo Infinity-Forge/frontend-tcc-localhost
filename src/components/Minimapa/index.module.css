@@ -1,0 +1,12 @@
+.miniMapa {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.miniMapa:hover {
+  transform: scale(1.12);
+}

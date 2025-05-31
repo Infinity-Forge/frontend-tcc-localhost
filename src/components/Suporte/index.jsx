@@ -1,13 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useRef } from 'react';
 import styles from './index.module.css';
 
 const apiKey = 'sua_api_key'; // Coloque sua chave real aqui
 const systemPrompt = `Aqui vamos dar as especificações para a ia saber responder as perguntas do jogo.`
 
-export default function Suporte() {
-  const [ativa, setAtiva] = useState(true);
+function Suporte() {
+  const [ativa, setAtiva] = useState(false);
   const [chatExpandido, setChatExpandido] = useState(false);
   const [status, setStatus] = useState('');
   const [inputPreview, setInputPreview] = useState('');
@@ -89,111 +90,104 @@ export default function Suporte() {
   }
 
   return (
-    <>
-      {/* Botão para abrir suporte - opcional, você pode chamar abrirSuporte de outro local */}
-      {!ativa && (
-        <button className={styles.abrirSuporteBtn} onClick={abrirSuporte}>
-          Suporte
-        </button>
-      )}
+    <div className={`${styles.suporteAba} ${ativa ? styles.ativa : ''}`} id="abaSuporte">
+      <div className={styles.suporteHeader}>
+        <button className={styles.fecharAba} onClick={fecharSuporte}>X</button>
+      </div>
 
-      <div className={`${styles.suporteAba} ${ativa ? styles.ativa : ''}`} id="abaSuporte">
-        <div className={styles.suporteHeader}>
-          <button className={styles.fecharAba} onClick={fecharSuporte}>X</button>
-        </div>
-
-        {!chatExpandido && (
-          <>
-            <p className={styles.paragraph} style={{ lineHeight: "1.5" }}>Bem-vindo, no que podemos ajudar?</p>
-            <div id="suporte">
-              <div className={styles.chatbotPreview} onClick={expandirChatBot} role="button" tabIndex={0} onKeyDown={e => { if(e.key==='Enter') expandirChatBot(); }}>
-                <div className={styles.headerPreview}>
-                  <p className={styles.paragraph2}>CHAT DE DUVIDAS</p>
-                </div>
-                <div className={styles.footerPreview}>
-                  <input 
-                    type="text"
-                    placeholder="Pergunte aqui..."
-                    className={styles.input}
-                    value={inputPreview}
-                    onChange={e => setInputPreview(e.target.value)}
-                  />
-                  <button
-                    className={styles["btn-submit-preview"]}
-                    onClick={sendPreviewMessage}
-                    disabled={loading}
-                  >
-                    Enviar
-                  </button>
-                </div>
+      {!chatExpandido && (
+        <>
+          <p className={styles.paragraph} style={{ lineHeight: "1.5" }}>Bem-vindo, no que podemos ajudar?</p>
+          <div id="suporte">
+            <div className={styles.chatbotPreview} onClick={expandirChatBot} role="button" tabIndex={0} onKeyDown={e => { if(e.key==='Enter') expandirChatBot(); }}>
+              <div className={styles.headerPreview}>
+                <p className={styles.paragraph2}>CHAT DE DUVIDAS</p>
+              </div>
+              <div className={styles.footerPreview}>
+                <input 
+                  type="text"
+                  placeholder="Pergunte aqui..."
+                  className={styles.input}
+                  value={inputPreview}
+                  onChange={e => setInputPreview(e.target.value)}
+                />
+                <button
+                  className={styles["btn-submit-preview"]}
+                  onClick={sendPreviewMessage}
+                  disabled={loading}
+                >
+                  Enviar
+                </button>
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </>
+      )}
 
-        {/* Chatbot expandido */}
-        <div
-          id="chatbot-expanded"
-          className={`${styles.chatbotExpanded} ${chatExpandido ? styles.active : ''}`}
-          aria-hidden={!chatExpandido}
-        >
-          <button className={styles.backButton} onClick={recolherChatBot}>&#8592; Voltar</button>
+      {/* Chatbot expandido */}
+      <div
+        id="chatbot-expanded"
+        className={`${styles.chatbotExpanded} ${chatExpandido ? styles.active : ''}`}
+        aria-hidden={!chatExpandido}
+      >
+        <button className={styles.backButton} onClick={recolherChatBot}>&#8592; Voltar</button>
 
-          <div className={styles.boxQuestions}>
-            <div className={styles.header}>
-              <p className={styles.paragraph}>CHAT DE DÚVIDAS</p>
-            </div>
+        <div className={styles.boxQuestions}>
+          <div className={styles.header}>
+            <p className={styles.paragraph}>CHAT DE DÚVIDAS</p>
+          </div>
 
-            <p className={styles.status} style={{ display: status ? 'block' : 'none', color: 'white', fontWeight: 'bold' }}>{status}</p>
+          <p className={styles.status} style={{ display: status ? 'block' : 'none', color: 'white', fontWeight: 'bold' }}>{status}</p>
 
-            <div className={styles.history} ref={historyRef}>
-              {history.map(({ user, bot }, i) => (
-                <div key={i}>
-                  <div className={styles.boxMyMessage}>
-                    <p className={`${styles.myMessage} ${styles.paragraph}`}>{user}</p>
-                  </div>
-                  <div className={styles.boxResponseMessage}>
-                    <p className={`${styles.responseMessage} ${styles.paragraph}`}>{bot}</p>
-                  </div>
+          <div className={styles.history} ref={historyRef}>
+            {history.map(({ user, bot }, i) => (
+              <div key={i}>
+                <div className={styles.boxMyMessage}>
+                  <p className={`${styles.myMessage} ${styles.paragraph}`}>{user}</p>
                 </div>
-              ))}
-            </div>
+                <div className={styles.boxResponseMessage}>
+                  <p className={`${styles.responseMessage} ${styles.paragraph}`}>{bot}</p>
+                </div>
+              </div>
+            ))}
+          </div>
 
-            <div className={styles.footer}>
-              <input
-                type="text"
-                id="message-input"
-                placeholder="Pergunte aqui..."
-                value={inputMessage}
-                onChange={e => setInputMessage(e.target.value)}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' && !loading) {
-                    sendMessage();
-                  }
-                }}
-                disabled={loading}
-              />
-              <button
-                className={styles.btnSubmit}
-                id="btn-submit"
-                onClick={sendMessage}
-                disabled={loading}
-              >
-                Enviar
-              </button>
-            </div>
+          <div className={styles.footer}>
+            <input
+              type="text"
+              id="message-input"
+              placeholder="Pergunte aqui..."
+              value={inputMessage}
+              onChange={e => setInputMessage(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' && !loading) {
+                  sendMessage();
+                }
+              }}
+              disabled={loading}
+            />
+            <button
+              className={styles.btnSubmit}
+              id="btn-submit"
+              onClick={sendMessage}
+              disabled={loading}
+            >
+              Enviar
+            </button>
           </div>
         </div>
-
-        <div className={styles.botoesInfo}>
-          <a href="pages/paginaPoliticaDePrivacidade.html" target="_blank" rel="noopener noreferrer">
-            <button>Políticas de Privacidade</button>
-          </a>
-          <a href="pages/paginaTermos.html" target="_blank" rel="noopener noreferrer">
-            <button>Termos e Condições</button>
-          </a>
-        </div>
       </div>
-    </>
+
+      <div className={styles.botoesInfo}>
+        <Link href="/politica-de-privacidade">
+          <button>Políticas de Privacidade</button>
+        </Link>
+        <Link href="/termos">
+          <button>Termos e Condições</button>
+        </Link>
+      </div>
+    </div>
   );
 }
+
+export default Suporte;

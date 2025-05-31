@@ -1,0 +1,86 @@
+/* codigo para os botoes da navbar */
+button.navbarButton {
+    background-color: var(--preto-navbar);
+    color: #fff;
+    font-size: 1.4em;
+    padding: 6px 20px; 
+    border: none;   
+    cursor: pointer;
+    margin-left: 20px; 
+    transition: border-bottom 0.3s; 
+}
+
+button.navbarButton:hover {
+    border-bottom: 4px solid var(--vermelho-escuro); 
+    margin-bottom: -2px; 
+}
+
+.sectionMapas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0; 
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.nomeDescricao {
+  margin-top: 40px;
+}
+
+.nomeMapa {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.descricaoMapa {
+  margin: 0;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.mapaContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.mapaPrincipal {
+  width: 100%;
+  height: 400px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+}
+
+.miniMapas {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  display: flex;
+  gap: 25px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .nomeDescricao {
+    margin-top: 30px;
+    max-width: 100%;
+    padding-right: 20px;
+  }
+
+  .descricaoMapa {
+    text-align: left;
+  }
+
+  .mapaPrincipal {
+    width: 90%;
+    height: 200px;
+  }
+
+  .miniMapa {
+    width: 20%;
+    height: auto;
+  }
+}
