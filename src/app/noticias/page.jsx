@@ -1,9 +1,42 @@
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import CarrosselBanner from "@/components/CarrosselBanner";
+import Title from "@/components/Title";
+import Noticia from "@/components/Noticia";
+import Footer from "@/components/Footer";
+import Suporte from "@/components/Suporte";
+import styles from "./page.module.css";
+
 function Noticias() {
   return (
-    <div> 
-    <h1> Hello World </h1>
-    </div> 
+    <>
+      <Navbar>
+          <Link href="/">
+              <button className={styles.navbarButton}>Home</button>
+          </Link>
+        </Navbar>
+        <CarrosselBanner/>
+        <main className={styles.noticiasMain}>
+          <Title text="Notícias" marginBottomValue="16px"/>
+          <section className={styles.noticiasSection}>
+            <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título" 
+                    texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+            <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título" 
+                    texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+            <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título" 
+                    texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+            <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título" 
+                    texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+            <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título" 
+                    texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+            <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título" 
+                    texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+          </section>
+        </main>
+      <Footer/>
+      <Suporte/>
+    </>
   )
 }
 
-export default Noticias
+export default Noticias;

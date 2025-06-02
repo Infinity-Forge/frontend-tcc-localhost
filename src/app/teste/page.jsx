@@ -8,7 +8,6 @@ function Teste() {
             <Link href="/">Home</Link>
             <Link href="/arsenal">Arsenal</Link>
             <Link href="/arsenal/descricao">Descrição de Arma</Link>
-            <Link href="/chatbot">Chatbot</Link>
             <Link href="/mapas">Mapas</Link>
             <Link href="/noticias">Noticias</Link>
             <Link href="/personagens">Personagens</Link>

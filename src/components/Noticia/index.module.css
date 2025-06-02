@@ -1,0 +1,32 @@
+.noticiaContainer {
+    flex: 1 1 30%;
+    background-color: var(--cinza);
+    max-width: 31%;
+    height: auto;
+    margin: 50px 20px 20px 20px;
+    padding: 10px;
+    border: #5c5c5c 1px solid;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.noticiaContainer .paragraph {
+    color: black;
+    line-height: 1.2em;
+    overflow: visible;
+    white-space: normal;
+    max-height: none;
+}
+
+.noticiaContainer .title {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.noticiaContainer .image {
+    width: 100%;
+    background-repeat: no-repeat;
+    display: block;
+}
