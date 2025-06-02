@@ -1,0 +1,44 @@
+.characterContainer {
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    transition: transform 0.3s; /* Adicione esta linha para suavizar a transformação */
+}
+
+.characterContainer:hover {
+    transform: scale(1.15); /* Mantém o aumento do tamanho sem afetar a margem */
+}
+
+.characterContainer img {
+    width: 100%; 
+    height: auto;
+    margin-top: 15px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.200);
+    max-width: 250px; 
+}
+
+.characterName {
+    background-color: var(--preto-navbar);
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 255, 255); 
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 240px; 
+    text-align: center;
+    padding: 5px 0; 
+}
+
+.characterContainer:hover .characterName {
+    color: white; 
+    background-image: linear-gradient(var(--vermelho-escuro), var(--vermelho-escuro));
+    background-size: 100% 40px;
+    background-position: bottom; 
+    background-repeat: no-repeat;
+}

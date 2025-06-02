@@ -1,0 +1,15 @@
+button.navbarButton {
+    background-color: var(--preto-navbar);
+    color: #fff;
+    font-size: 1.4em;
+    padding: 6px 20px; 
+    border: none;   
+    cursor: pointer;
+    margin-left: 20px; 
+    transition: border-bottom 0.3s; 
+}
+
+button.navbarButton:hover {
+    border-bottom: 4px solid var(--vermelho-escuro); 
+    margin-bottom: -2px; 
+}
