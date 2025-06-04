@@ -1,0 +1,78 @@
+/* Estilo da section */
+section.politicas {
+    background-color: white; 
+    width: 99%;
+    padding: 20px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilo do texto dentro da section */
+section.politicas .titulo-3 {
+    font-size: 28px;
+    color: #333; 
+    margin-bottom: 15px; 
+}
+
+section.politicas .paragrafo {
+    text-align: justify; 
+    color: #000; 
+    line-height: 1.6; 
+    margin-bottom: 20px;
+}
+
+/* Estilo dos botões dentro da section */
+.botoesConcordar {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+.fechar {
+    padding: 10px 20px;
+    background-color: var(--vermelho-escuro); 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+}
+
+.fechar:hover {
+    background-color: rgb(255, 123, 123); 
+    color: rgb(255, 255, 255);
+}
+
+.concordo {
+    padding: 10px 20px;
+    background-color: #52b066; 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+}
+
+.concordo:hover {
+    background-color: rgb(91, 216, 52); 
+}
+
+/* Responsividade - Ajustes para telas menores */
+@media (max-width: 768px) {
+    .fechar,
+    .concordo {
+        font-size: 18px; /* Ajusta o tamanho da fonte do botão */
+    }
+}
+
+/* Responsividade - Ajustes para telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+    .fechar,
+    .concordo {
+        font-size: 16px; /* Ajuste adicional no tamanho do botão */
+        padding: 8px 15px; /* Ajuste no padding do botão */
+    }
+}

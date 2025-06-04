@@ -1,0 +1,59 @@
+/* Estilo geral do header */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100vw; 
+    padding: 10px 20px; 
+    background-color: var(--preto-navbar); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+}
+
+/* Estilo do botão */
+.voltar {
+    padding: 14px 20px;
+    background-color: var(--vermelho-escuro); 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+}
+
+.voltar:hover {
+    background-color: rgb(255, 146, 146); 
+}
+
+/* Estilo do título */
+.titulo-header {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-size: 34px; 
+    font-weight: bolder;
+    color: #fff;
+}
+
+/* Responsividade - Ajustes para telas menores */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px; /* Ajusta o padding para telas menores */
+    }
+
+    .titulo-header {
+        font-size: 20px; /* Diminui o tamanho do título em telas menores */
+    }
+}
+
+/* Responsividade - Ajustes para telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+    .header {
+        padding: 10px; /* Menor espaçamento para telas pequenas */
+    }
+
+    .titulo-header {
+        font-size: 18px; /* Reduz o tamanho do título para caber em telas pequenas */
+    }
+}
