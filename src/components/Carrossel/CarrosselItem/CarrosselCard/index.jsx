@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 
-function CardNovidade({ imageUrl, alt, text }) {
+function CarrosselCard({ imageUrl, alt, text }) {
 
     return(
         <div className={styles.containerNovidade}>
@@ -10,4 +10,4 @@ function CardNovidade({ imageUrl, alt, text }) {
     )
 }
 
-export default CardNovidade;
+export default CarrosselCard;

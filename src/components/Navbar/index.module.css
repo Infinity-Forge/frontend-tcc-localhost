@@ -1,4 +1,5 @@
 .nav {
+    width: 100%;
     background-color: var(--preto-navbar);
     height: 65px;
     display: flex;
@@ -7,6 +8,8 @@
     padding: 0 20px;
     position: relative; 
     font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    z-index: 2;
 }
 
 .hamburger {

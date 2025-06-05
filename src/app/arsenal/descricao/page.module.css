@@ -1,0 +1,47 @@
+/* Main */
+.containerArma {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.descricaoArma {
+    background-color: var(--cinza);
+    flex-basis: 60%;
+    padding: 20px;
+    border-radius: 15px;
+    margin-right: auto;
+}
+
+.imagemArma {
+    flex-basis: 35%;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin-left: auto;
+}
+
+.arma {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .containerArma {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .descricaoArma {
+        margin-top: 10px;
+    }
+
+    .imagemArma {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,75 @@
+.mainDescricao {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textoImagem {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.articlePersonagem {
+    flex: 2;
+    padding: 20px;
+    background-color: rgb(243, 242, 242);
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.paragraph {
+    font-size: 1.1em;
+    text-align: justify;
+    text-indent: 1em;
+    line-height: 1.4em;
+}
+
+.imagemPersonagemSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagemPersonagem {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.frasePersonagem {
+    background-color: var(--cinza);
+    width: 100%;
+    max-width: 1000px;
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+    .textoImagem {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .articlePersonagem {
+        padding: 10px;
+        margin: 15px 0px;
+        border-radius: 0px;
+    }
+
+    .imagemPersonagem {
+        height: 400px;
+    }
+
+    .frasePersonagem {
+        margin: 10px;
+        margin-bottom: 50px;
+    }
+}
