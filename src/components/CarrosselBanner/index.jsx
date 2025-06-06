@@ -30,8 +30,8 @@ function CarrosselBanner() {
           <div className="carousel-item">
             <div className={`${styles.carouselItemImgWrapper} position-relative`}>
               <img
-                src="/bannerCavaleiro.jpg"
-                alt="Banner Cavaleiro"
+                src="/bannerEstatua.jpg"
+                alt="Banner da Estátua"
                 className={`d-block w-100 ${styles.carouselItemImg}`}
               />
             </div>
