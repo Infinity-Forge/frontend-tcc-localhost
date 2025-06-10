@@ -42,7 +42,7 @@ function Home() {
           
           <CarrosselItem>
             <CarrosselCard
-            imageUrl="/clash.jpg"
+            imageUrl="/arcanjos.jpg"
             alt=""
             text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, itaque neque asperiores esse assumenda repellat..."/>
 

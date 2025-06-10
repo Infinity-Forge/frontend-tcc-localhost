@@ -1,3 +1,6 @@
+"use client";
+
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import styles from "./index.module.css";
 
 function Carrossel({ target, children }) {
