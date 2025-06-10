@@ -15,7 +15,7 @@ function Mapas() {
         </Link> 
       </Navbar>
       <section className={styles.sectionMapas}>
-        <Title text="Mapas" marginBottomValue="16px"/>
+        <Title text="Mapas" marginBottomValue="16px" marginTopValue="72px"/>
         <article>
           <div className={styles.nomeDescricao}>
             <h2 className={styles.nomeMapa}>Mapa Principal</h2>

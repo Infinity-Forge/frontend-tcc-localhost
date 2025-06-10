@@ -17,7 +17,7 @@ function Arsenal() {
       </Navbar>
       <main>
         <section className="armas">
-          <Title text="Pistola" marginTopValue="48px"/>
+          <Title text="Pistola" marginTopValue="86px"/>
           <ContainerPersonagens className={styles.containerPersonagem}>
             <CardArma src="/arma.png" alt="Pistola" nome="Pistola"/>
             <CardArma src="/arma.png" alt="Pistola" nome="Pistola"/>
