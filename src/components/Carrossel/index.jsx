@@ -10,11 +10,11 @@ function Carrossel({ target, children }) {
             <div className="carousel-inner">
                 {children}
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target={target} data-bs-slide="prev">
+            <button className="carousel-control-prev" type="button" data-bs-target={`#${target}`} data-bs-slide="prev">
                 <span className={`carousel-control-prev-icon ${styles.icon}`} aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
             </button>
-            <button className="carousel-control-next" type="button" data-bs-target={target} data-bs-slide="next">
+            <button className="carousel-control-next" type="button" data-bs-target={`#${target}`} data-bs-slide="next">
                 <span className={`carousel-control-next-icon ${styles.icon}`} aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
             </button>

@@ -1,3 +1,6 @@
+"use client";
+
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import styles from "./index.module.css";
 
 function CarrosselBanner() {
@@ -12,6 +15,15 @@ function CarrosselBanner() {
           <div className="carousel-item active">
             <div className={`${styles.carouselItemImgWrapper} position-relative`}>
               <img
+                src="/bannerEstatua.jpg"
+                alt="Banner da Estátua"
+                className={`d-block w-100 ${styles.carouselItemImg}`}
+              />
+            </div>
+          </div>
+          <div className="carousel-item">
+            <div className={`${styles.carouselItemImgWrapper} position-relative`}>
+              <img
                 src="/bannerCavaleiro.jpg"
                 alt="Banner Cavaleiro"
                 className={`d-block w-100 ${styles.carouselItemImg}`}
@@ -23,15 +35,6 @@ function CarrosselBanner() {
               <img
                 src="/bannerAnjoDerretendo.jpg"
                 alt="Banner dos Anjos com o Rosto Derretendo"
-                className={`d-block w-100 ${styles.carouselItemImg}`}
-              />
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className={`${styles.carouselItemImgWrapper} position-relative`}>
-              <img
-                src="/bannerEstatua.jpg"
-                alt="Banner da Estátua"
                 className={`d-block w-100 ${styles.carouselItemImg}`}
               />
             </div>
