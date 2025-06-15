@@ -1,9 +1,14 @@
 "use client";
 
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useEffect } from 'react';
 import styles from "./index.module.css";
 
 function CarrosselBanner() {
+
+  useEffect(() => {
+    require('bootstrap/dist/js/bootstrap.bundle.min.js');
+  }, []);
+
   return (
     <section id="Banner">
       <div

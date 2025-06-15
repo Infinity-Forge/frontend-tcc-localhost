@@ -1,9 +1,13 @@
 "use client";
 
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useEffect } from 'react';
 import styles from "./index.module.css";
 
 function Carrossel({ target, children }) {
+
+    useEffect(() => {
+        require('bootstrap/dist/js/bootstrap.bundle.min.js');
+    }, []);
 
     return(
         <div id={target} className={`carousel slide ${styles.carrosselDiv}`} data-bs-ride="carousel">
