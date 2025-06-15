@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import Suporte from "../Suporte";
 import styles from "./index.module.css";
 
 function Navbar({ children }) {
@@ -29,7 +30,7 @@ function Navbar({ children }) {
                 </button>
 
                 {/* Menu de hamburguer que expande ou diminui */}
-                <div className={`${styles.menu} ${toggleMenu ? styles.open : ''}`}>
+                <div className={`${styles.menu} ${toggleMenu && styles.open}`}>
                     <div className={styles.dropdown}>
                         <button className={styles.navbarButton}>
                             Informações do Jogo
@@ -73,6 +74,8 @@ function Navbar({ children }) {
                     </button>
                 </div>
             </nav>
+
+            {toggleSuporte && <Suporte ativo={toggleSuporte} />}
         </header>
     )
 }

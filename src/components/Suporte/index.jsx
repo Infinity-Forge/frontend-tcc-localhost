@@ -7,7 +7,7 @@ import styles from './index.module.css';
 const apiKey = 'sua_api_key'; // Coloque sua chave real aqui
 const systemPrompt = `Aqui vamos dar as especificações para a ia saber responder as perguntas do jogo.`
 
-function Suporte() {
+function Suporte({ ativo }) {
   const [ativa, setAtiva] = useState(false);
   const [chatExpandido, setChatExpandido] = useState(false);
   const [status, setStatus] = useState('');
@@ -18,9 +18,6 @@ function Suporte() {
 
   const historyRef = useRef(null);
 
-  function abrirSuporte() {
-    setAtiva(true);
-  }
   function fecharSuporte() {
     setAtiva(false);
     setChatExpandido(false);
@@ -90,7 +87,7 @@ function Suporte() {
   }
 
   return (
-    <div className={`${styles.suporteAba} ${ativa ? styles.ativa : ''}`} id="abaSuporte">
+    <div className={`${styles.suporteAba} ${ativo && styles.ativa}`} id="abaSuporte">
       <div className={styles.suporteHeader}>
         <button className={styles.fecharAba} onClick={fecharSuporte}>X</button>
       </div>

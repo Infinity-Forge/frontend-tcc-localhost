@@ -64,7 +64,6 @@ function Personagens() {
         </ContainerPersonagens>
       </section>
       <Footer/>
-      <Suporte/>
     </>
   )
 }
