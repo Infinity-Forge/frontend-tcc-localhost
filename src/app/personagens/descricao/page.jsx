@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 function DescricaoPersonagens() {
   return (
     <>
-      <CabecalhoPolitica tituloPagina='"Nome do Personagem"'/>
+      <CabecalhoPolitica tituloPagina='"Nome do Personagem"' rota={"/personagens"}/>
       <main className={styles.mainDescricao}>
         <section className={styles.textoImagem}>
             <article className={styles.articlePersonagem}> {/*<!-- Descrição dos Personagens -->*/}

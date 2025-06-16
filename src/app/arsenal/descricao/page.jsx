@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 function DescricaoArma() {
   return (
     <>
-      <CabecalhoPolitica tituloPagina='"Nome da Arma"'/>
+      <CabecalhoPolitica tituloPagina='"Nome da Arma"' rota={"/arsenal"}/>
       <main>
           <article className={styles.containerArma}>
             <section className={styles.descricaoArma}>
