@@ -1,6 +1,6 @@
 button.navbarButton {
-    background-color: var(--preto-navbar);
-    color: #fff;
+    background-color: transparent;
+    color: var(--important-text-color);
     font-size: 1.4em;
     padding: 6px 20px; 
     border: none;   
@@ -28,4 +28,5 @@ button.navbarButton:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 32px;
 }

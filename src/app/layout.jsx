@@ -1,16 +1,20 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Rajdhani, Inter } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/reset.css";
 import "../styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const rajdhani = Rajdhani({
   subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-rajdhani",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${rajdhani.variable} ${inter.variable}`}>
         {children}
       </body>
     </html>

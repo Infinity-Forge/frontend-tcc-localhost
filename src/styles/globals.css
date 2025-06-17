@@ -1,10 +1,17 @@
 /* variaveis */
 :root {
-    --vermelho-escuro: #B05252;
+    --background-color: #121212;
+    --overlay-1dp: rgba(255, 255, 255, 0.05);
+    --overlay-4dp: rgba(255, 255, 255, 0.09);
+    --vermelho-escuro: #a54e41;
     --preto-navbar: #181818;
     --cinza: #D9D9D9;
     --cinza-da-navbar: #8D8D8D;
     --cinza-dos-gatoides-e-mapas: #A6A6A6;
+
+    --font-title: 'Rajdhani', sans-serif;
+
+    --important-text-color: rgba(255, 255, 255, 0.87);
 }
 
 * {
@@ -19,18 +26,12 @@ html {
 }
 
 body {
-    background-color: rgb(243, 242, 242);
+    background-color: var(--background-color);
+    color: var(--important-text-color);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
     text-align: center;
     width: 100%;
-}
-
-.appContainer {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
 .armas {

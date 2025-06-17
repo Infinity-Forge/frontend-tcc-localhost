@@ -6,12 +6,21 @@
 
 .nav {
     width: 100%;
-    background-color: var(--preto-navbar);
+    background-color: var(--background-color);
     height: 65px;
     display: flex;
     align-items: center;
     padding: 0 20px;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+.nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--overlay-4dp);
+    pointer-events: none;
 }
 
 .hamburger {
@@ -19,13 +28,13 @@
     background: none;
     border: none;
     border-radius: 20px;
-    color: #fff;
     font-size: 24px;
     cursor: pointer;
     margin-left: auto; 
     height: 45px;
     width: 50px;
     transition: background-color 0.3s; 
+    color: var(--important-text-color);
 }
 
 .menu {
@@ -52,8 +61,8 @@ img#logoNavbar {
 
 /* codigo para os botoes da navbar */
 button.navbarButton {
-    background-color: var(--preto-navbar);
-    color: #fff;
+    background-color: transparent;
+    color: var(--important-text-color);
     font-size: 1.4em;
     padding: 6px 20px; 
     border: none;   
@@ -70,7 +79,7 @@ button#jogar {
     border: none;
     border-radius: 20px;
     background-color: var(--vermelho-escuro);
-    color: #fff;
+    color: var(--important-text-color);
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s; 
@@ -78,7 +87,7 @@ button#jogar {
 }
 
 button#jogar:hover {
-    background-color: #A05252; 
+    background-color: #8d4539;
 }
 
 /* codigo do dropdown container para o botao de informações da navbar*/
@@ -92,7 +101,7 @@ button#jogar:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--preto-navbar);
+    background-color: var(--background-color);
     opacity: 0.8;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -101,7 +110,7 @@ button#jogar:hover {
 }
 
 .dropdown-content a {
-    color: white;
+    color: var(--important-text-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -159,7 +168,6 @@ button#jogar:hover {
         align-items: center;
         width: 100%;
         padding: 20px;
-        background: var(--preto-navbar);
     }
 
     .menu.open {

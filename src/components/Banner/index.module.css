@@ -1,14 +1,14 @@
 div.banner {
-    margin-bottom: 50px;
+    margin: 48px 0;
 }
 
 img.banner-img {
-    height: 300px;
+    height: 500px;
     width: 100%;
 }
 
 @media (max-width: 768px) {
     img.banner-img {
-        height: 200px;
+        height: 350px;
     }
 }
