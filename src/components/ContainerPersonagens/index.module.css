@@ -1,11 +1,12 @@
 .personagensContainer {
-    width: 85vw;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     background-color: var(--cinza);
-    padding: 25px 0;
+    padding: 25px 45px;
+    margin: 0 50px;
     border-radius: 30px;
 }
 
