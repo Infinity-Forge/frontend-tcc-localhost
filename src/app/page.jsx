@@ -89,11 +89,10 @@ function Home() {
          <article className={styles.cavaleiros}>
             <Title text="Cavaleiros"/>
             <ContainerPersonagens>
-              <CardPersonagem imageSrc={"/peste.jpg"} nome={"Peste"}/>
-              <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
-              <CardPersonagem imageSrc={"/anjoMiguel.jpg"} nome={"Anjo Miguel"}/>
-              <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
-              <CardPersonagem imageSrc={"/patrick.jpg"} nome={"Patrick"}/>
+              <CardPersonagem nome="Peste" imageSrc="/peste.jpg" alt="Imagem do Cavaleiro da Peste"/>
+              <CardPersonagem nome="Morte" imageSrc="/morte.jpg" alt="Imagem do Cavaleiro da Morte"/>
+              <CardPersonagem nome="Luffy" imageSrc="/luffy.jpg" alt="Imagem de um Cavaleiro"/>
+              <CardPersonagem nome="Fome" imageSrc="/fome.jpg" alt="Imagem do Cavaleiro da Fome"/>
             </ContainerPersonagens>
          </article>
         <Banner imageSrc="/bannerCavaleiro.jpg" alt="Banner dos Cavaleiros"/>

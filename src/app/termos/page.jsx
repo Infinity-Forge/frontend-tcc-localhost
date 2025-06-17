@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 function Termos() {
   return (
     <>
-      <CabecalhoPolitica tituloPagina="Termos e condições"/>
+      <CabecalhoPolitica tituloPagina="Termos e condições" rota="/"/>
       <main style={{ padding: "40px 20px" }}>
         <section className={styles.termos}>
             <h3 className={styles["titulo-3"]}>Nossos Termos e condições</h3>

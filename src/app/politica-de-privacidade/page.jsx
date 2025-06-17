@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 function PoliticaDePrivacidade() {
   return (
     <>
-      <CabecalhoPolitica tituloPagina="Politicas de privacidade"/>
+      <CabecalhoPolitica tituloPagina="Politicas de privacidade" rota="/"/>
       <main style={{ padding: "20px 40px", marginBottom: "20px", marginTop: "20px" }}>
         <section className={styles.politicas}>
             <h3 className={styles["titulo-3"]}>Nossa politica de privacidade</h3>
