@@ -1,3 +1,5 @@
+"use client";
+
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import Carrossel from "@/components/Carrossel";
 import CarrosselItem from "@/components/Carrossel/CarrosselItem";
@@ -30,7 +32,7 @@ function DescricaoArma() {
               </section>
           </article>
 
-          <Carrossel>
+          <Carrossel target="armas">
             <CarrosselItem extraClass={"active"}>
               <CardArma nome="Pistola" 
                         alt="Imagem de uma Pistola" 

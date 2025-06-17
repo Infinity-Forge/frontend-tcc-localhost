@@ -75,7 +75,7 @@ function Navbar({ children }) {
                 </div>
             </nav>
 
-            {toggleSuporte && <Suporte ativo={toggleSuporte} />}
+            {toggleSuporte && <Suporte ativo={toggleSuporte} setAtivo={setToggleSuporte}/>}
         </header>
     )
 }

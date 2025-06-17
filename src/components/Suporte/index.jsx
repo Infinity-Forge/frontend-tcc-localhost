@@ -7,8 +7,7 @@ import styles from './index.module.css';
 const apiKey = 'sua_api_key'; // Coloque sua chave real aqui
 const systemPrompt = `Aqui vamos dar as especificações para a ia saber responder as perguntas do jogo.`
 
-function Suporte({ ativo }) {
-  const [ativa, setAtiva] = useState(false);
+function Suporte({ ativo, setAtivo }) {
   const [chatExpandido, setChatExpandido] = useState(false);
   const [status, setStatus] = useState('');
   const [inputPreview, setInputPreview] = useState('');
@@ -19,7 +18,7 @@ function Suporte({ ativo }) {
   const historyRef = useRef(null);
 
   function fecharSuporte() {
-    setAtiva(false);
+    setAtivo(false);
     setChatExpandido(false);
     setStatus('');
     setHistory([]);
