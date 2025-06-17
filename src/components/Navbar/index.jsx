@@ -22,7 +22,7 @@ function Navbar({ children }) {
     return (
         <header className={styles.siteHeader}>
             <nav className={styles.nav}>
-                <Image height={40} width={65} src="/gd.png" alt="Logo do jogo" id="logoNavbar" />
+                <Image height={65} width={75} src="/logo.png" alt="Logo do jogo" id="logoNavbar" />
                 
                 {/* Botão que controla o menu de hamburguer */}
                 <button className={styles.hamburger} onClick={handleToggleMenu}>
