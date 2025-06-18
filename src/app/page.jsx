@@ -27,16 +27,16 @@ function Home() {
             <Title text="Novidades"/>
             <Carrossel target="Novidades">
               <CarrosselItem extraClass={"active"}>
-                <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título"
+                <Noticia src="/empresaLogoTeste.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
-                <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título"
+                <Noticia src="/logo.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
               </CarrosselItem>
             
               <CarrosselItem>
-                <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título"
+                <Noticia src="/empresaLogoTeste.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
-                <Noticia src="/clash.jpg" alt="Imagem da Notícia" titulo="Título"
+                <Noticia src="/logo.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
               </CarrosselItem>
             </Carrossel>
@@ -50,22 +50,22 @@ function Home() {
            <article className={styles.guardioes}>
               <Title text="Guardiões" marginTopValue="0"/>
               <ContainerPersonagens>
-                <CardPersonagem imageSrc={"/luffy.jpg"} nome={"Luffy"}/>
-                <CardPersonagem imageSrc={"/luffy.jpg"} nome={"Zoro"}/>
-                <CardPersonagem imageSrc={"/luffy.jpg"} nome={"Sanji"}/>
-                <CardPersonagem imageSrc={"/luffy.jpg"} nome={"Nami"}/>
+                <CardPersonagem nome="Teste" imageSrc="/peste.jpg" alt="Imagem do Cavaleiro da Peste"/>
+                <CardPersonagem nome="Teste" imageSrc="/morte.jpg" alt="Imagem do Cavaleiro da Morte"/>
+                <CardPersonagem nome="Teste" imageSrc="/peste.jpg" alt="Imagem de um Cavaleiro"/>
+                <CardPersonagem nome="Teste" imageSrc="/fome.jpg" alt="Imagem do Cavaleiro da Fome"/>
               </ContainerPersonagens>
            </article>
          </Container>
       </section>
 
       {/* parte com a imagem do mapa do jogo e texto com botao do lado */}
-      <section className="jogoEBanner" style={{ marginTop: '120px' }}>
+      <section className="jogoEBanner">
         <Container>
           <InformacaoEsquerda
           text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
           btnText="Jogar"
-          imageSrc="/cat.jpg"/>
+          imageSrc="/logo.png"/>
         </Container>
         <Banner imageSrc="/bannerEstatua.jpg" alt="Banner dos Guardiões"/>
       </section>
@@ -74,12 +74,12 @@ function Home() {
       <section className="cavaleirosSection">
          <Container>
            <article className={styles.cavaleiros}>
-              <Title text="Cavaleiros"/>
+              <Title text="Cavaleiros" marginTopValue="0"/>
               <ContainerPersonagens>
                 <CardPersonagem nome="Peste" imageSrc="/peste.jpg" alt="Imagem do Cavaleiro da Peste"/>
                 <CardPersonagem nome="Morte" imageSrc="/morte.jpg" alt="Imagem do Cavaleiro da Morte"/>
-                <CardPersonagem nome="Luffy" imageSrc="/luffy.jpg" alt="Imagem de um Cavaleiro"/>
-                <CardPersonagem nome="Fome" imageSrc="/fome.jpg" alt="Imagem do Cavaleiro da Fome"/>
+                <CardPersonagem nome="Teste" imageSrc="/peste.jpg" alt="Imagem de um Cavaleiro"/>
+                <CardPersonagem nome="Fome"  imageSrc="/fome.jpg" alt="Imagem do Cavaleiro da Fome"/>
               </ContainerPersonagens>
            </article>
          </Container>
@@ -88,16 +88,16 @@ function Home() {
 
       {/* Seção dos mapas */}
       <Container>
-        <section className={styles.mapas} style={{ marginTop: "120px" }}>
-          <Title text="Mapas" marginBottomValue={0}/>
-            <InformacaoEsquerda marginValue={"70px"}
+        <section className={styles.mapas}>
+          <Title text="Mapas" marginTopValue="0" marginBottomValue="0"/>
+            <InformacaoEsquerda
             text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
             btnText="Ver mais"
-            imageSrc="/cat.jpg"/>
+            imageSrc="/cenario1.png"/>
             <InformacaoDireita
             text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
             btnText="Ver mais"
-            imageSrc="/cat.jpg"/>
+            imageSrc="/cenario1.png"/>
         </section>
       </Container>
       <Banner imageSrc="/bannerAnjoDerretendo.jpg" alt="Banner"/>
