@@ -1,26 +1,24 @@
 .cardPersonagem {
-    flex: 1 1 20%;
-    max-width: 250px; 
+    max-width: 350px; 
     min-width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: relative;
-    padding: 15px;
     transition: transform 0.3s ease;
 }
 
 /* Efeito de hover para expandir a imagem */
 .cardPersonagem:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
     cursor: pointer;
 }
 
 /* Estilo da imagem */
 .personagemImg {
-    width: 240px;;
-    height: 330px;
+    width: 250px;
+    height: 350px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     object-fit: cover;
@@ -36,7 +34,7 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%); 
-    width: 240px; 
+    width: 250px; 
     text-align: center;
     padding: 10px 0; 
 }

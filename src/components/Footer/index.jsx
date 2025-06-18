@@ -1,11 +1,10 @@
 import Link from "next/link";
-import Title from "@/components/Title"
 import styles from "./index.module.css";
 
 function Footer() {
     return (
         <footer className={styles.rodape}>
-            <Title text="Baixe o Jogo" className={styles.title}/>
+            <h1 className={styles.title}>Baixe o jogo</h1>
 
             <div className={styles.imagensETexto}>
                 <div className={styles.redesSociais}>

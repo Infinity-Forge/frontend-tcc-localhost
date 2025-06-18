@@ -5,7 +5,6 @@ button.navbarButton {
     padding: 6px 20px; 
     border: none;   
     cursor: pointer;
-    margin-left: 20px; 
     transition: border-bottom 0.3s; 
 }
 

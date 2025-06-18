@@ -3,12 +3,12 @@
     width: 100%;
     color: var(--important-text-color);
     text-align: center;
-    font-size: 7rem;
+    font-size: 6rem;
     margin: 32px 0;
 }
 
 @media (max-width: 768px) {
     .title {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 }
