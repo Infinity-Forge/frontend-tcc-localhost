@@ -22,7 +22,7 @@ function Navbar({ children }) {
     return (
         <header className={styles.siteHeader}>
             <nav className={styles.nav}>
-                <Image height={65} width={75} src="/logo.png" alt="Logo do jogo" id="logoNavbar" />
+                <Image height={65} width={75} src="/jogoLogoTransparent.png" alt="Logo do jogo" className={styles.logoNavbar} />
                 
                 {/* Botão que controla o menu de hamburguer */}
                 <button className={styles.hamburger} onClick={handleToggleMenu}>
@@ -32,9 +32,9 @@ function Navbar({ children }) {
                 {/* Menu de hamburguer que expande ou diminui */}
                 <div className={`${styles.menu} ${toggleMenu && styles.open}`}>
                     <div className={styles.dropdown}>
-                        <button className={styles.navbarButton}>
+                        <a className={styles.navbarButton}>
                             Informações do Jogo
-                        </button>
+                        </a>
                         <div className={styles["dropdown-content"]}>
                             <Link className={styles.navLink} onClick={handleToggleMenu} href="/personagens">
                                 Personagens
@@ -48,28 +48,24 @@ function Navbar({ children }) {
                         </div>
                     </div>
 
-                    <Link href="/noticias" onClick={handleToggleMenu}>
-                        <button className={styles.navbarButton}>
-                            Notícias
-                        </button>
+                    <Link href="/noticias" onClick={handleToggleMenu} className={styles.navbarButton}>
+                        Notícias
                     </Link>
 
                     <a
-                        href="#"
+                        className={styles.navbarButton}
                         onClick={(e) => {
                             e.preventDefault();
                             handleToggleSuporte();
                             handleToggleMenu();
                         }}
                     >
-                        <button className={styles.navbarButton}>
                             Suporte
-                        </button>
                     </a>
 
                     {children}
 
-                    <button id={styles.jogar}>
+                    <button className={styles.jogar}>
                         Jogar Agora
                     </button>
                 </div>

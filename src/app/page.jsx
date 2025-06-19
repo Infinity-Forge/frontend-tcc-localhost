@@ -29,14 +29,14 @@ function Home() {
               <CarrosselItem extraClass={"active"}>
                 <Noticia src="/empresaLogoTeste.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
-                <Noticia src="/logo.png" alt="Imagem da Notícia" titulo="Título"
+                <Noticia src="/jogoLogoTransparent.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
               </CarrosselItem>
             
               <CarrosselItem>
                 <Noticia src="/empresaLogoTeste.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
-                <Noticia src="/logo.png" alt="Imagem da Notícia" titulo="Título"
+                <Noticia src="/jogoLogoTransparent.png" alt="Imagem da Notícia" titulo="Título"
                       texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
               </CarrosselItem>
             </Carrossel>
@@ -65,7 +65,7 @@ function Home() {
           <InformacaoEsquerda
           text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
           btnText="Jogar"
-          imageSrc="/logo.png"/>
+          imageSrc="/jogoLogo.png"/>
         </Container>
         <Banner imageSrc="/bannerEstatua.jpg" alt="Banner dos Guardiões"/>
       </section>

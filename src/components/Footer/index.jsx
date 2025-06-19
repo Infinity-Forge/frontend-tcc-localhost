@@ -24,7 +24,7 @@ function Footer() {
 
                 <div className={styles.logos}>
                     <img className={styles.image} src="/empresaLogo.png" alt="logo da empresa" />
-                    <img className={styles.image} src="/patrick.jpg" alt="logo do jogo" />
+                    <img className={styles.image} src="/jogoLogo.png" alt="logo do jogo" />
                 </div>
 
                 <p className={styles.paragraph}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae est totam excepturi cum ut nesciunt exercitationem voluptas asperiores aspernatur atque, possimus officia cupiditate unde impedit corporis aliquam repellendus consequuntur nemo?</p>
