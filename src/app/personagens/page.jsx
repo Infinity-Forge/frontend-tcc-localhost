@@ -39,10 +39,10 @@ function Personagens() {
           <ContainerPersonagens className={styles.container}>
             <CardPersonagem nome="Anjos" imageSrc="/anjos.jpg" alt="Imagem dos Anjos"/>
             <CardPersonagem nome="Arcanjos" imageSrc="/arcanjos.jpg" alt="Imagem dos Arcanjos"/>
+            <CardPersonagem nome="Querubins" imageSrc="/querubins.jpg" alt="Imagem dos Querubins"/>
+            <CardPersonagem nome="Serafins" imageSrc="/serafins.jpg" alt="Imagem dos Serafins"/>
             <CardPersonagem nome="Anjo Miguel" imageSrc="/anjoMiguel.jpg" alt="Imagem do Anjo Miguel"/>
             <CardPersonagem nome="Anjo Gabriel" imageSrc="/anjoGabriel.jpg" alt="Imagem do Anjo Gabriel"/>
-            <CardPersonagem nome="Serafins" imageSrc="/serafins.jpg" alt="Imagem dos Serafins"/>
-            <CardPersonagem nome="Querubins" imageSrc="/luffy.jpg" alt="Imagem dos Querubins"/>
           </ContainerPersonagens>
           <Title text="Inimigos" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
