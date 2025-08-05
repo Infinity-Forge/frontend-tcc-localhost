@@ -9,7 +9,8 @@
 }
 
 .descricaoArma {
-    background-color: var(--cinza);
+    background-color: var(--overlay-1dp);
+    color: rgb(210, 210, 210);
     flex-basis: 60%;
     padding: 20px;
     border-radius: 15px;

@@ -15,7 +15,8 @@
 .articlePersonagem {
     flex: 2;
     padding: 20px;
-    background-color: rgb(243, 242, 242);
+    background-color: var(--overlay-1dp);
+    color: rgb(210, 210, 210);
     border-radius: 20px;
     margin-right: 20px;
 }
@@ -41,7 +42,8 @@
 }
 
 .frasePersonagem {
-    background-color: var(--cinza);
+    background-color: var(--overlay-1dp);
+    color: rgb(210, 210, 210);
     width: 100%;
     max-width: 1000px;
     padding: 5px;

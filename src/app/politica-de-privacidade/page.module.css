@@ -1,6 +1,7 @@
 /* Estilo da section */
 section.politicas {
-    background-color: white; 
+    background-color: var(--overlay-1dp);
+    color: rgb(210, 210, 210);
     width: 99%;
     padding: 20px; 
     border-radius: 10px;
@@ -10,13 +11,13 @@ section.politicas {
 /* Estilo do texto dentro da section */
 section.politicas .titulo-3 {
     font-size: 28px;
-    color: #333; 
+    color: rgb(190, 190, 190); 
     margin-bottom: 15px; 
+    font-weight: bold;
 }
 
 section.politicas .paragrafo {
     text-align: justify; 
-    color: #000; 
     line-height: 1.6; 
     margin-bottom: 20px;
 }
