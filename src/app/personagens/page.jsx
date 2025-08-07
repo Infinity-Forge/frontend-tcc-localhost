@@ -23,8 +23,8 @@ function Personagens() {
         <section className={styles.characters}>
           <Title text="Guardiões" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            <CardPersonagem nome="Luffy" imageSrc="/luffy.jpg" alt="Imagem de um Guardião"/>
-            <CardPersonagem nome="Luffy" imageSrc="/luffy.jpg" alt="Imagem de um Guardião"/>
+            <CardPersonagem nome="Rato" imageSrc="/Rato.jpg" alt="Imagem do Rato"/>
+            <CardPersonagem nome="Urso" imageSrc="/Urso.jpg" alt="Imagem do Urso"/>
             <CardPersonagem nome="Luffy" imageSrc="/luffy.jpg" alt="Imagem de um Guardião"/>
             <CardPersonagem nome="Luffy" imageSrc="/luffy.jpg" alt="Imagem de um Guardião"/>
           </ContainerPersonagens>
