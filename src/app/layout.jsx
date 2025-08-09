@@ -1,5 +1,6 @@
 import { Rajdhani, Inter } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import "../styles/reset.css";
 import "../styles/globals.css";
 

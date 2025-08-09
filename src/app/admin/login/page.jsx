@@ -1,4 +1,3 @@
-import Container from "@/components/Container";
 import styles from "./page.module.css";
 
 function Login() {
