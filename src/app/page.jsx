@@ -16,6 +16,7 @@ import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
 function Home() {
+
   return (
     <div className="app">
       <Navbar/>
