@@ -25,10 +25,6 @@ button.navbarButton:hover {
     margin-top: 50px;
 }
 
-.container {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
 .container:last-child {
     margin-bottom: 50px;
 }
