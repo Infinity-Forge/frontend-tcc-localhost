@@ -1,14 +1,26 @@
 .personagensContainer {
-    width: auto;
-    display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, auto));
     justify-content: center;
     gap: 25px;
     border-radius: 30px;
 }
 
+@media (max-width: 1040px) {
+    .personagensContainer {
+        grid-template-columns: repeat(3, minmax(250px, auto));
+    }
+}
+
 @media (max-width: 768px) {
     .personagensContainer {
-        flex: 1 1 40%; 
+        grid-template-columns: repeat(2, minmax(250px, auto));
+    }
+}
+
+@media (max-width: 600px) {
+    .personagensContainer {
+        grid-template-columns: repeat(1, minmax(250px, auto));
     }
 }
