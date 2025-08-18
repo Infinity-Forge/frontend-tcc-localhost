@@ -1,3 +1,4 @@
+import AdminCard from "@/components/Admin/HomeCard";
 import styles from "./page.module.css";
 
 function AdminHome() {
@@ -7,31 +8,11 @@ function AdminHome() {
             <header className={styles.header}>Administrador</header>
             <div className={styles.main}>
                 <div className={styles.container}>
-                    <div className={styles.card}>
-                        <div className={styles.iconCircle}>
-                            <i className={`fas fa-edit ${styles.icon}`}></i>
-                        </div>
-                        <div className={styles.label}>Gerenciar personagens</div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.iconCircle}>
-                            <i className={`fas fa-edit ${styles.icon}`}></i>
-                        </div>
-                        <div className={styles.label}>Gerenciar arsenal</div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.iconCircle}>
-                            <i className={`fas fa-edit ${styles.icon}`}></i>
-                        </div>
-                        <div className={styles.label}>Gerenciar mapa</div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.iconCircle}>
-                            <i className={`fas fa-edit ${styles.icon}`}></i>
-                        </div>
-                        <div className={styles.label}>Gerenciar notícias</div>
-                    </div>
-                </div>
+                    <AdminCard href="personagens" recurso="Personagens"></AdminCard>
+                    <AdminCard href="arsenal" recurso="Arsenal"></AdminCard>
+                    <AdminCard href="mapas" recurso="Mapas"></AdminCard>
+                    <AdminCard href="noticias" recurso="Notícias"></AdminCard>
+                 </div>           
             </div>
         </div>
     )
