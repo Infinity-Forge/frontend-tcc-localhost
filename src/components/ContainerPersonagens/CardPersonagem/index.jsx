@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./index.module.css";
 
-function CardPersonagem({ imageSrc, alt = "Imagem de um personagem", nome }) {
+function CardPersonagem({ imageSrc, alt = "Imagem de um personagem", nome, id }) {
 
     return(
-        <div className={styles.cardPersonagem} onClick={() => (window.location.href = 'personagens/descricao')}>
+        <Link href={`personagens/descricao/${id}`} className={styles.cardPersonagem}>
             <img className={styles.personagemImg} src={imageSrc} alt={alt} />
             <p className={styles.nomeDoGuardiao}>{nome}</p>
-        </div>
+        </Link>
     )
 }
 

@@ -1,8 +1,37 @@
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
+import InformacaoCard from "@/components/Admin/InformacaoCard";
 import styles from "./page.module.css";
 
 export default function Page() {
+
+  const mapas = [
+    {
+      id: 1,
+      imgUrl: "/mapa2.jpg",
+      nome: "Mapa Florestal",
+      descricao: "Este é o mapa de uma grande floresta cheia de árvores antigas e densas."
+    },
+    {
+      id: 2,
+      imgUrl: "/mapa3.jpg",
+      nome: "Mapa Urbano",
+      descricao: "Este é o mapa de uma cidade moderna com arranha-céus e ruas movimentadas."
+    },
+    {
+      id: 3,
+      imgUrl: "/mapa4.jpg",
+      nome: "Mapa do Deserto",
+      descricao: "Um mapa que retrata vastas dunas de areia e temperaturas escaldantes."
+    },
+    {
+      id: 4,
+      imgUrl: "/mapa5.jpg",
+      nome: "Mapa Montanhoso",
+      descricao: "Este mapa mostra uma paisagem de montanhas altas e trilhas desafiadoras."
+    }
+  ];
+
   return (
     <div className={styles.container}>
       {/* Header */}
@@ -25,18 +54,8 @@ export default function Page() {
             </div>
             <div className={styles.cardFooter}>Adicionar Mapa</div>
           </div>
-          {/* Cards de personagens */}
-          {["Personagem 1", "Personagem 2", "Personagem 3"].map((name, i) => (
-            <div key={i} className={styles.card}>
-              <div className={styles.characterBox}>
-                <div className={styles.actions}>
-                  <button className={styles.iconBtn}>✎</button>
-                  <button className={styles.iconBtn}>🗑</button>
-                </div>
-              </div>
-              <div className={styles.cardFooter}>{name}</div>
-            </div>
-          ))}
+          {/* Cards de mapas */}
+          {mapas.map(mapa => <InformacaoCard key={mapa.id} nome={mapa.nome}/>)}
         </section>
       </Container>
     </div>

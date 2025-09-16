@@ -1,8 +1,55 @@
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
+import InformacaoCard from "@/components/Admin/InformacaoCard";
 import styles from "./page.module.css";
 
 export default function Page() {
+
+  const noticias = [
+  {
+    id: 1,
+    src: "/clash.jpg",
+    alt: "Imagem da Notícia",
+    titulo: "Título",
+    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
+  },
+  {
+    id: 2,
+    src: "/clash.jpg",
+    alt: "Imagem da Notícia",
+    titulo: "Título",
+    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
+  },
+  {
+    id: 3,
+    src: "/clash.jpg",
+    alt: "Imagem da Notícia",
+    titulo: "Título",
+    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
+  },
+  {
+    id: 4,
+    src: "/clash.jpg",
+    alt: "Imagem da Notícia",
+    titulo: "Título",
+    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
+  },
+  {
+    id: 5,
+    src: "/clash.jpg",
+    alt: "Imagem da Notícia",
+    titulo: "Título",
+    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
+  },
+  {
+    id: 6,
+    src: "/clash.jpg",
+    alt: "Imagem da Notícia",
+    titulo: "Título",
+    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
+  }
+];
+
   return (
     <div className={styles.container}>
       {/* Header */}
@@ -26,18 +73,8 @@ export default function Page() {
             </div>
             <div className={styles.cardFooter}>Adicionar Notícia</div>
           </div>
-          {/* Cards de personagens */}
-          {["Personagem 1", "Personagem 2", "Personagem 3"].map((name, i) => (
-            <div key={i} className={styles.card}>
-              <div className={styles.characterBox}>
-                <div className={styles.actions}>
-                  <button className={styles.iconBtn}>✎</button>
-                  <button className={styles.iconBtn}>🗑</button>
-                </div>
-              </div>
-              <div className={styles.cardFooter}>{name}</div>
-            </div>
-          ))}
+          {/* Cards de notícias */}
+          {noticias.map(noticia => <InformacaoCard key={noticia.id} nome={noticia.titulo}/>)}
         </section>
       </Container>
     </div>

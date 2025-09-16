@@ -14,147 +14,39 @@ function Personagens() {
 
   const personagens = {
     guardioes: [
-      {
-        nome: "Rato",
-        src: "/Rato.jpg",
-        alt: "Imagem do Rato"
-      },
-      {
-        nome: "Urso",
-        src: "/Urso.jpg",
-        alt: "Imagem do Urso"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Guardião"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Guardião"
-      }
+      { id: "1", nome: "Rato", src: "/rato.jpg", alt: "Imagem do Rato" },
+      { id: "2", nome: "Urso", src: "/urso.jpg", alt: "Imagem do Urso" },
+      { id: "3", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Guardião" },
+      { id: "4", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Guardião" }
     ],
     cavaleiros: [
-      {
-        nome: "Peste",
-        src: "/peste.jpg",
-        alt: "Imagem do Cavaleiro da Peste"
-      },
-      {
-        nome: "Morte",
-        src: "/morte.jpg",
-        alt: "Imagem do Cavaleiro da Morte"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Cavaleiro"
-      },
-      {
-        nome: "Fome",
-        src: "/fome.jpg",
-        alt: "Imagem do Cavaleiro da Fome"
-      }
+      { id: "5", nome: "Peste", src: "/peste.jpg", alt: "Imagem do Cavaleiro da Peste" },
+      { id: "6", nome: "Morte", src: "/morte.jpg", alt: "Imagem do Cavaleiro da Morte" },
+      { id: "7", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Cavaleiro" },
+      { id: "8", nome: "Fome", src: "/fome.jpg", alt: "Imagem do Cavaleiro da Fome" }
     ],
     anjos: [
-      {
-        nome: "Anjos",
-        src: "/anjos.jpg",
-        alt: "Imagem dos Anjos"
-      },
-      {
-        nome: "Arcanjos",
-        src: "/arcanjos.jpg",
-        alt: "Imagem dos Arcanjos"
-      },
-      {
-        nome: "Querubins",
-        src: "/querubins.jpg",
-        alt: "Imagem dos Querubins"
-      },
-      {
-        nome: "Serafins",
-        src: "/serafins.jpg",
-        alt: "Imagem dos Serafins"
-      },
-      {
-        nome: "Anjo Miguel",
-        src: "/anjoMiguel.jpg",
-        alt: "Imagem do Anjo Miguel"
-      },
-      {
-        nome: "Anjo Gabriel",
-        src: "/anjoGabriel.jpg",
-        alt: "Imagem do Anjo Gabriel"
-      }
+      { id: "9", nome: "Anjos", src: "/anjos.jpg", alt: "Imagem dos Anjos" },
+      { id: "10", nome: "Arcanjos", src: "/arcanjos.jpg", alt: "Imagem dos Arcanjos" },
+      { id: "11", nome: "Querubins", src: "/querubins.jpg", alt: "Imagem dos Querubins" },
+      { id: "12", nome: "Serafins", src: "/serafins.jpg", alt: "Imagem dos Serafins" },
+      { id: "13", nome: "Anjo Miguel", src: "/anjoMiguel.jpg", alt: "Imagem do Anjo Miguel" },
+      { id: "14", nome: "Anjo Gabriel", src: "/anjoGabriel.jpg", alt: "Imagem do Anjo Gabriel" }
     ],
     inimigos: [
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      },
-      {
-        nome: "Luffy",
-        src: "/luffy.jpg",
-        alt: "Imagem de um Inimigo"
-      }
+      { id: "15", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "16", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "17", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "18", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "19", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "20", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "21", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "22", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "23", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "24", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "25", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "26", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" },
+      { id: "27", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo" }
     ]
   };
 
@@ -170,19 +62,19 @@ function Personagens() {
         <section className={styles.characters}>
           <Title text="Guardiões" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.guardioes.map((guardiao, index) => <CardPersonagem key={index} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}/>)}
+            {personagens.guardioes.map((guardiao, index) => <CardPersonagem key={index} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}/>)}
           </ContainerPersonagens>
           <Title text="Cavaleiros" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}/>)}
+            {personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}/>)}
           </ContainerPersonagens>
           <Title text="Anjos" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.anjos.map((anjo, index) => <CardPersonagem key={index} nome={anjo.nome} imageSrc={anjo.src} alt={anjo.alt}/>)}
+            {personagens.anjos.map((anjo, index) => <CardPersonagem key={index} id={anjo.id} nome={anjo.nome} imageSrc={anjo.src} alt={anjo.alt}/>)}
           </ContainerPersonagens>
           <Title text="Inimigos" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.inimigos.map((inimigo, index) => <CardPersonagem key={index} nome={inimigo.nome} imageSrc={inimigo.src} alt={inimigo.alt}/>)}
+            {personagens.inimigos.map((inimigo, index) => <CardPersonagem key={index} id={inimigo.id} nome={inimigo.nome} imageSrc={inimigo.src} alt={inimigo.alt}/>)}
           </ContainerPersonagens>
         </section>
       </Container>
