@@ -2,53 +2,9 @@ import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import InformacaoCard from "@/components/Admin/InformacaoCard";
 import styles from "./page.module.css";
+import { noticias } from "@/simulacaoDeDados";
 
 export default function Page() {
-
-  const noticias = [
-  {
-    id: 1,
-    src: "/clash.jpg",
-    alt: "Imagem da Notícia",
-    titulo: "Título",
-    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
-  },
-  {
-    id: 2,
-    src: "/clash.jpg",
-    alt: "Imagem da Notícia",
-    titulo: "Título",
-    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
-  },
-  {
-    id: 3,
-    src: "/clash.jpg",
-    alt: "Imagem da Notícia",
-    titulo: "Título",
-    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
-  },
-  {
-    id: 4,
-    src: "/clash.jpg",
-    alt: "Imagem da Notícia",
-    titulo: "Título",
-    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
-  },
-  {
-    id: 5,
-    src: "/clash.jpg",
-    alt: "Imagem da Notícia",
-    titulo: "Título",
-    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
-  },
-  {
-    id: 6,
-    src: "/clash.jpg",
-    alt: "Imagem da Notícia",
-    titulo: "Título",
-    texto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam!"
-  }
-];
 
   return (
     <div className={styles.container}>

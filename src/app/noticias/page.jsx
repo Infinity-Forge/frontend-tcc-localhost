@@ -8,52 +8,9 @@ import Title from "@/components/Title";
 import Noticia from "@/components/Noticia";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
+import { noticias } from "@/simulacaoDeDados";
 
 function Noticias() {
-  const noticias = [
-    {
-      src: "/clash.jpg",
-      alt: "Imagem da Notícia",
-      titulo: "Título",
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"
-    },
-    {
-      src: "/clash.jpg",
-      alt: "Imagem da Notícia",
-      titulo: "Título",
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"
-    },
-    {
-      src: "/clash.jpg",
-      alt: "Imagem da Notícia",
-      titulo: "Título",
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"
-    },
-    {
-      src: "/clash.jpg",
-      alt: "Imagem da Notícia",
-      titulo: "Título",
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"
-    },
-    {
-      src: "/clash.jpg",
-      alt: "Imagem da Notícia",
-      titulo: "Título",
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"
-    },
-    {
-      src: "/clash.jpg",
-      alt: "Imagem da Notícia",
-      titulo: "Título",
-      texto:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"
-    }
-  ];
 
   return (
     <>
