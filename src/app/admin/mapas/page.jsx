@@ -29,7 +29,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Mapa</div>
           </div>
           {/* Cards de mapas */}
-          {mapas.map(mapa => <InformacaoCard key={mapa.id} nome={mapa.nome}/>)}
+          {mapas.map(mapa => <InformacaoCard key={mapa.id} nome={mapa.nome} src={mapa.src} alt={mapa.alt}/>)}
         </section>
       </Container>
     </div>

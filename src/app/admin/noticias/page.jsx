@@ -30,7 +30,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Notícia</div>
           </div>
           {/* Cards de notícias */}
-          {noticias.map(noticia => <InformacaoCard key={noticia.id} nome={noticia.titulo}/>)}
+          {noticias.map(noticia => <InformacaoCard key={noticia.id} nome={noticia.titulo} src={noticia.src} alt={noticia.alt}/>)}
         </section>
       </Container>
     </div>

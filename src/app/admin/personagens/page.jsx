@@ -30,10 +30,10 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Personagem</div>
           </div>
           {/* Cards de personagens */}
-          {personagens.guardioes.map(personagem => <InformacaoCard key={personagem.id} nome={personagem.nome}/>)}
-          {personagens.cavaleiros.map(personagem => <InformacaoCard key={personagem.id} nome={personagem.nome}/>)}
-          {personagens.anjos.map(personagem => <InformacaoCard key={personagem.id} nome={personagem.nome}/>)}
-          {personagens.inimigos.map(personagem => <InformacaoCard key={personagem.id} nome={personagem.nome}/>)}
+          {personagens.guardioes.map(guardiao => <InformacaoCard key={guardiao.id} nome={guardiao.nome} src={guardiao.src} alt={guardiao.alt}/>)}
+          {personagens.cavaleiros.map(cavaleiro => <InformacaoCard key={cavaleiro.id} nome={cavaleiro.nome} src={cavaleiro.src} alt={cavaleiro.alt}/>)}
+          {personagens.anjos.map(anjo => <InformacaoCard key={anjo.id} nome={anjo.nome} src={anjo.src} alt={anjo.alt}/>)}
+          {personagens.inimigos.map(inimigo => <InformacaoCard key={inimigo.id} nome={inimigo.nome} src={inimigo.src} alt={inimigo.alt}/>)}
         </section>
       </Container>
     </div>

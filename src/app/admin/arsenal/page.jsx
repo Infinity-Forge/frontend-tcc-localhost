@@ -35,9 +35,9 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Arma</div>
           </div>
           {/* Cards de personagens */}
-          {armas.pistolas.map((pistola, index) => <InformacaoCard key={index} nome={pistola.nome} onClick={() => setArmaSelecionada(pistola)}/>)}
-          {armas.facas.map((faca, index) => <InformacaoCard key={index} nome={faca.nome} onClick={() => setArmaSelecionada(faca)}/>)}
-          {armas.riffles.map((riffle, index) => <InformacaoCard key={index} nome={riffle.nome} onClick={() => setArmaSelecionada(riffle)}/>)}
+          {armas.pistolas.map((pistola, index) => <InformacaoCard key={index} nome={pistola.nome} src={pistola.src} alt={pistola.alt} onClick={() => setArmaSelecionada(pistola)}/>)}
+          {armas.facas.map((faca, index) => <InformacaoCard key={index} nome={faca.nome} src={faca.src} alt={faca.alt} onClick={() => setArmaSelecionada(faca)}/>)}
+          {armas.riffles.map((riffle, index) => <InformacaoCard key={index} nome={riffle.nome} src={riffle.src} alt={riffle.alt} onClick={() => setArmaSelecionada(riffle)}/>)}
         </section>
 
         {armaSelecionada && (
