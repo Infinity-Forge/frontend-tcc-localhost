@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.titulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.imagem {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.btnSalvar {
+  width: 80%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--vermelho-escuro);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnSalvar:hover {
+  background-color: #8f473c;
+}

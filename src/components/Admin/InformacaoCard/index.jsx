@@ -1,9 +1,9 @@
 import styles from "./index.module.css";
 
-function InformacaoCard({nome}) {
+function InformacaoCard({ nome, onClick }) {
 
     return(
-        <div className={styles.card}>
+        <div className={styles.card} onClick={onClick}>
             <div className={styles.characterBox}>
                 <div className={styles.actions}>
                     <button className={styles.iconBtn}>✎</button>

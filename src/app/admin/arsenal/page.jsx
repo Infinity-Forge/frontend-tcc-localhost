@@ -1,10 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import InformacaoCard from "@/components/Admin/InformacaoCard";
+import Modal from "@/components/Admin/Modal";
+import FormularioEdicao from "@/components/Admin/FormularioEdicao";
 import styles from "./page.module.css";
 import { armas } from "@/simulacaoDeDados"
 
 export default function Page() {
+
+  const [armaSelecionada, setArmaSelecionada] = useState(null);
 
   return (
     <div className={styles.container}>
@@ -28,10 +35,16 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Arma</div>
           </div>
           {/* Cards de personagens */}
-          {armas.pistolas.map((pistola, index) => <InformacaoCard key={index} nome={pistola.nome}/>)}
-          {armas.facas.map((faca, index) => <InformacaoCard key={index} nome={faca.nome}/>)}
-          {armas.riffles.map((riffle, index) => <InformacaoCard key={index} nome={riffle.nome}/>)}
+          {armas.pistolas.map((pistola, index) => <InformacaoCard key={index} nome={pistola.nome} onClick={() => setArmaSelecionada(pistola)}/>)}
+          {armas.facas.map((faca, index) => <InformacaoCard key={index} nome={faca.nome} onClick={() => setArmaSelecionada(faca)}/>)}
+          {armas.riffles.map((riffle, index) => <InformacaoCard key={index} nome={riffle.nome} onClick={() => setArmaSelecionada(riffle)}/>)}
         </section>
+
+        {armaSelecionada && (
+          <Modal onClose={() => setArmaSelecionada(null)}>
+            <FormularioEdicao item={armaSelecionada}/>
+          </Modal>
+        )}
       </Container>
     </div>
   );
