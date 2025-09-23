@@ -2,13 +2,13 @@ export const personagens = {
   guardioes: [
     { id: "1", nome: "Rato", src: "/rato.jpg", alt: "Imagem do Rato", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre alerta!" },
     { id: "2", nome: "Urso", src: "/urso.jpg", alt: "Imagem do Urso", descricao: "Lorem ipsum dolor sit amet.", frase: "Força e coragem." },
-    { id: "3", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Guardião", descricao: "Lorem ipsum dolor sit amet.", frase: "Vamos juntos!" },
+    { id: "3", nome: "Gata", src: "/gata.jpg", alt: "Imagem de um Guardião", descricao: "Lorem ipsum dolor sit amet.", frase: "Vamos juntos!" },
     { id: "4", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Guardião", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre lutando!" }
   ],
   cavaleiros: [
     { id: "5", nome: "Peste", src: "/peste.jpg", alt: "Imagem do Cavaleiro da Peste", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado com a peste!" },
     { id: "6", nome: "Morte", src: "/morte.jpg", alt: "Imagem do Cavaleiro da Morte", descricao: "Lorem ipsum dolor sit amet.", frase: "A morte é certa." },
-    { id: "7", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Cavaleiro", descricao: "Lorem ipsum dolor sit amet.", frase: "Lutando sempre!" },
+    { id: "7", nome: "Guerra", src: "/guerra.jpg", alt: "Imagem de um Cavaleiro", descricao: "Lorem ipsum dolor sit amet.", frase: "Lutando sempre!" },
     { id: "8", nome: "Fome", src: "/fome.jpg", alt: "Imagem do Cavaleiro da Fome", descricao: "Lorem ipsum dolor sit amet.", frase: "A fome não espera." }
   ],
   anjos: [
