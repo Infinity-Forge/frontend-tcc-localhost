@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import Container from "@/components/Container";
 import Title from "@/components/Title";
 import Minimapa from "@/components/Minimapa";
 import Footer from "@/components/Footer";
@@ -41,39 +42,39 @@ function Mapas() {
           <button className={styles.navbarButton}>Home</button>
         </Link> 
       </Navbar>
-      <section className={styles.sectionMapas}>
-        <Title text="Mapas" marginBottomValue="16px" marginTopValue="72px"/>
-        <article>
-          <div className={styles.nomeDescricao}>
-            <h2 className={styles.nomeMapa}>{mapaAtual.nome}</h2>
-            <p className={styles.descricaoMapa}>{mapaAtual.descricao}</p>
-          </div>
-
-          <div className={styles.mapaContainer}>
-            <img
-              src={mapaAtual.imgUrl}
-              alt={mapaAtual.nome}
-              className={styles.mapaPrincipal}
-            />
-          </div>
-
-          <div className={styles.miniMapas}>
-            {mapasSecundarios.map((mapa) => (
-              <div 
-                key={mapa.id} 
-                onClick={() => trocarMapa(mapa)} 
-                style={{cursor: "pointer"}}
-              >
-                <Minimapa 
-                  nome={mapa.nome} 
-                  imgUrl={mapa.imgUrl} 
-                  descricao={mapa.descricao}
-                />
-              </div>
-            ))}
-          </div>
-        </article>
-      </section>
+      <Container>
+        <section className={styles.sectionMapas}>
+          <Title text="Mapas" marginBottomValue="16px" marginTopValue="72px"/>
+          <article>
+            <div className={styles.nomeDescricao}>
+              <h2 className={styles.nomeMapa}>{mapaAtual.nome}</h2>
+              <p className={styles.descricaoMapa}>{mapaAtual.descricao}</p>
+            </div>
+            <div className={styles.mapaContainer}>
+              <img
+                src={mapaAtual.imgUrl}
+                alt={mapaAtual.nome}
+                className={styles.mapaPrincipal}
+              />
+            </div>
+            <div className={styles.miniMapas}>
+              {mapasSecundarios.map((mapa) => (
+                <div
+                  key={mapa.id}
+                  onClick={() => trocarMapa(mapa)}
+                  style={{cursor: "pointer"}}
+                >
+                  <Minimapa
+                    nome={mapa.nome}
+                    imgUrl={mapa.imgUrl}
+                    descricao={mapa.descricao}
+                  />
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+      </Container>
       <Footer/>
       <Suporte/>
     </>
