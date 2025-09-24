@@ -8,43 +8,69 @@ import Minimapa from "@/components/Minimapa";
 import Footer from "@/components/Footer";
 import Suporte from "@/components/Suporte";
 import styles from "./page.module.css";
+import { mapasSemPrincipal } from "@/simulacaoDeDados";
 
 function Mapas() {
+  // Mapa inicial
+  const mapaInicial = {
+    id: "1",
+    imgUrl: "/mapa1.png",
+    nome: "Mapa Principal",
+    descricao: "Descrição do mapa principal."
+  };
 
-  const [mapaAtual, setMapaAtual] = useState();
+  const [mapaAtual, setMapaAtual] = useState(mapaInicial);
+  const [mapasSecundarios, setMapasSecundarios] = useState(mapasSemPrincipal);
+
+  // Função para trocar o mapa principal com secundário clicado
+  const trocarMapa = (mapaClicado) => {
+    setMapasSecundarios((anteriores) => {
+      // coloca o mapa atual no lugar do clicado
+      const novos = anteriores.map((m) => 
+        m.id === mapaClicado.id ? mapaAtual : m
+      );
+      return novos;
+    });
+    setMapaAtual(mapaClicado);
+  };
 
   return (
     <>
       <Navbar>
         <Link href="/">
-            <button className={styles.navbarButton}>Home</button>
+          <button className={styles.navbarButton}>Home</button>
         </Link> 
       </Navbar>
       <section className={styles.sectionMapas}>
         <Title text="Mapas" marginBottomValue="16px" marginTopValue="72px"/>
         <article>
           <div className={styles.nomeDescricao}>
-            <h2 className={styles.nomeMapa}>Mapa Principal</h2>
-            <p className={styles.descricaoMapa}>Descrição do mapa principal.</p>
+            <h2 className={styles.nomeMapa}>{mapaAtual.nome}</h2>
+            <p className={styles.descricaoMapa}>{mapaAtual.descricao}</p>
           </div>
 
           <div className={styles.mapaContainer}>
             <img
-              src="/mapa1.png"
-              alt="Mapa Principal"
+              src={mapaAtual.imgUrl}
+              alt={mapaAtual.nome}
               className={styles.mapaPrincipal}
             />
           </div>
 
           <div className={styles.miniMapas}>
-            <Minimapa imgUrl="/mapa2.png" nome="Mapa Florestal" 
-                      descricao={"Este é o mapa de uma grande floresta cheia de árvores antigas e densas."}/>
-            <Minimapa imgUrl="/mapa3.png" nome="Mapa Urbano" 
-                      descricao={"Este é o mapa de uma cidade moderna com arranha-céus e ruas movimentadas."}/>
-            <Minimapa imgUrl="/mapa4.png" nome="Mapa do Deserto" 
-                      descricao={"Um mapa que retrata vastas dunas de areia e temperaturas escaldantes."}/>
-            <Minimapa imgUrl="/mapa5.png" nome="Mapa Montanhoso" 
-                      descricao={"Este mapa mostra uma paisagem de montanhas altas e trilhas desafiadoras."}/>
+            {mapasSecundarios.map((mapa) => (
+              <div 
+                key={mapa.id} 
+                onClick={() => trocarMapa(mapa)} 
+                style={{cursor: "pointer"}}
+              >
+                <Minimapa 
+                  nome={mapa.nome} 
+                  imgUrl={mapa.imgUrl} 
+                  descricao={mapa.descricao}
+                />
+              </div>
+            ))}
           </div>
         </article>
       </section>

@@ -165,3 +165,30 @@ export const mapas = [
     descricao: "Este mapa mostra uma paisagem de montanhas altas e trilhas desafiadoras."
   }
 ];
+
+export const mapasSemPrincipal = [
+  {
+    id: "2",
+    imgUrl: "/mapa2.png",
+    nome: "Mapa Florestal",
+    descricao: "Este é o mapa de uma grande floresta cheia de árvores antigas e densas."
+  },
+  {
+    id: "3",
+    imgUrl: "/mapa3.png",
+    nome: "Mapa Urbano",
+    descricao: "Este é o mapa de uma cidade moderna com arranha-céus e ruas movimentadas."
+  },
+  {
+    id: "4",
+    imgUrl: "/mapa4.png",
+    nome: "Mapa do Deserto",
+    descricao: "Um mapa que retrata vastas dunas de areia e temperaturas escaldantes."
+  },
+  {
+    id: "5",
+    imgUrl: "/mapa5.png",
+    nome: "Mapa Montanhoso",
+    descricao: "Este mapa mostra uma paisagem de montanhas altas e trilhas desafiadoras."
+  }
+]

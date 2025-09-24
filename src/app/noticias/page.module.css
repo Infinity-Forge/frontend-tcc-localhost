@@ -1,6 +1,7 @@
+/* codigo para os botoes da navbar */
 button.navbarButton {
     background-color: transparent;
-    color: var(--important-text-color);
+    color: #fff;
     font-size: 1.4em;
     padding: 6px 20px; 
     border: none;   

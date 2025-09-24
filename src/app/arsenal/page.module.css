@@ -1,11 +1,11 @@
+/* codigo para os botoes da navbar */
 button.navbarButton {
-    background-color: var(--preto-navbar);
+    background-color: transparent;
     color: #fff;
     font-size: 1.4em;
     padding: 6px 20px; 
     border: none;   
     cursor: pointer;
-    margin-left: 20px; 
     transition: border-bottom 0.3s; 
 }
 
