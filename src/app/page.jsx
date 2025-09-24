@@ -14,6 +14,7 @@ import InformacaoEsquerda from "@/components/InformacaoEsquerda";
 import InformacaoDireita from "@/components/InformacaoDireita";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
+import {personagens} from "@/simulacaoDeDados";
 
 function Home() {
 
@@ -51,10 +52,7 @@ function Home() {
            <article className={styles.guardioes}>
               <Title text="Guardiões" marginTopValue="0"/>
               <ContainerPersonagens>
-                <CardPersonagem nome="Teste" imageSrc="/peste.jpg" alt="Imagem do Cavaleiro da Peste"/>
-                <CardPersonagem nome="Teste" imageSrc="/morte.jpg" alt="Imagem do Cavaleiro da Morte"/>
-                <CardPersonagem nome="Teste" imageSrc="/peste.jpg" alt="Imagem de um Cavaleiro"/>
-                <CardPersonagem nome="Teste" imageSrc="/fome.jpg" alt="Imagem do Cavaleiro da Fome"/>
+                {personagens.guardioes.map((guardiao, index) => <CardPersonagem key={index} rota={"home"} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}></CardPersonagem>)}
               </ContainerPersonagens>
            </article>
          </Container>
@@ -77,10 +75,7 @@ function Home() {
            <article className={styles.cavaleiros}>
               <Title text="Cavaleiros" marginTopValue="0"/>
               <ContainerPersonagens>
-                <CardPersonagem nome="Peste" imageSrc="/peste.jpg" alt="Imagem do Cavaleiro da Peste"/>
-                <CardPersonagem nome="Morte" imageSrc="/morte.jpg" alt="Imagem do Cavaleiro da Morte"/>
-                <CardPersonagem nome="Teste" imageSrc="/peste.jpg" alt="Imagem de um Cavaleiro"/>
-                <CardPersonagem nome="Fome"  imageSrc="/fome.jpg" alt="Imagem do Cavaleiro da Fome"/>
+                {personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} rota={"home"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}></CardPersonagem>)}
               </ContainerPersonagens>
            </article>
          </Container>
