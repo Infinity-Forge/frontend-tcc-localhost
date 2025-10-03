@@ -1,25 +1,23 @@
+import { use } from "react";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import Carrossel from "@/components/Carrossel";
 import CarrosselItem from "@/components/Carrossel/CarrosselItem";
 import CardArma from "@/components/ContainerPersonagens/CardArma";
 import styles from "./page.module.css";
-import { todasArmas } from "@/simulacaoDeDados"
+import { armasArray } from "@/simulacaoDeDados"
 
-async function DescricaoArma({ params }) {
+function DescricaoArma({ params }) {
 
-  async function getArma(id) {
-      await new Promise(resolve => setTimeout(resolve, 50)); // simula delay
-      return todasArmas.find(a => a.id === id);
-    }
+    const awaitedParams = use(Promise.resolve(params));
+    const { id } = awaitedParams;
   
-    const { id } = params;
-    const arma = await getArma(id);
+    const arma = armasArray.find(arma => arma.id === id);
   
     if (!arma) return <p>Arma não encontrada.</p>;
 
   return (
     <>
-      <CabecalhoPolitica tituloPagina={`${arma.nome}`} rota={"/arsenal"}/>
+      <CabecalhoPolitica tituloPagina={`${arma.nome}`} route={"/arsenal"}/>
       <main>
           <article className={styles.containerArma}>
             <section className={styles.descricaoArma}>

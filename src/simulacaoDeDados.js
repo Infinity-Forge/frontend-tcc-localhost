@@ -157,6 +157,33 @@ export const armas = {
   ]
 };
 
+export const armasArray = [
+    { id: "1", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 18, raridade: "Comum", municao: "9mm", alcance: 50, taxaDisparo: 450, taxaAcerto: 48 },
+    { id: "2", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 20, raridade: "Comum", municao: "9mm", alcance: 55, taxaDisparo: 420, taxaAcerto: 50 },
+    { id: "3", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 24, raridade: "Incomum", municao: "9mm", alcance: 60, taxaDisparo: 500, taxaAcerto: 56 },
+    { id: "4", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 26, raridade: "Raro", municao: "9mm", alcance: 65, taxaDisparo: 520, taxaAcerto: 62 },
+    { id: "5", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 22, raridade: "Incomum", municao: "9mm", alcance: 58, taxaDisparo: 470, taxaAcerto: 54 },
+    { id: "6", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 28, raridade: "Raro", municao: "9mm", alcance: 68, taxaDisparo: 540, taxaAcerto: 64 },
+    { id: "7", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 30, raridade: "Épico", municao: "9mm", alcance: 70, taxaDisparo: 560, taxaAcerto: 68 },
+    { id: "8", nome: "Pistola", src: "/arma.png", alt: "Pistola", dano: 16, raridade: "Comum", municao: "9mm", alcance: 45, taxaDisparo: 400, taxaAcerto: 45 },
+    { id: "9", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 48, raridade: "Comum", municao: "Corpo a corpo", alcance: 1.5, taxaDisparo: 90, taxaAcerto: 85 },
+    { id: "10", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 55, raridade: "Incomum", municao: "Corpo a corpo", alcance: 1.5, taxaDisparo: 80, taxaAcerto: 88 },
+    { id: "11", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 40, raridade: "Comum", municao: "Corpo a corpo", alcance: 1.2, taxaDisparo: 100, taxaAcerto: 82 },
+    { id: "12", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 60, raridade: "Raro", municao: "Corpo a corpo", alcance: 1.8, taxaDisparo: 75, taxaAcerto: 90 },
+    { id: "13", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 46, raridade: "Comum", municao: "Corpo a corpo", alcance: 1.3, taxaDisparo: 95, taxaAcerto: 83 },
+    { id: "14", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 52, raridade: "Incomum", municao: "Corpo a corpo", alcance: 1.6, taxaDisparo: 85, taxaAcerto: 86 },
+    { id: "15", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 58, raridade: "Raro", municao: "Corpo a corpo", alcance: 1.7, taxaDisparo: 78, taxaAcerto: 89 },
+    { id: "16", nome: "Faca", src: "/arma.png", alt: "Faca", dano: 42, raridade: "Comum", municao: "Corpo a corpo", alcance: 1.4, taxaDisparo: 98, taxaAcerto: 81 },
+    { id: "17", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 62, raridade: "Comum", municao: "5.56mm", alcance: 600, taxaDisparo: 600, taxaAcerto: 54 },
+    { id: "18", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 74, raridade: "Incomum", municao: "5.56mm", alcance: 650, taxaDisparo: 650, taxaAcerto: 58 },
+    { id: "19", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 88, raridade: "Raro", municao: "7.62mm", alcance: 800, taxaDisparo: 520, taxaAcerto: 66 },
+    { id: "20", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 70, raridade: "Incomum", municao: "5.56mm", alcance: 700, taxaDisparo: 620, taxaAcerto: 60 },
+    { id: "21", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 95, raridade: "Épico", municao: "7.62mm", alcance: 850, taxaDisparo: 480, taxaAcerto: 72 },
+    { id: "22", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 66, raridade: "Comum", municao: "5.56mm", alcance: 620, taxaDisparo: 610, taxaAcerto: 55 },
+    { id: "23", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 82, raridade: "Raro", municao: "7.62mm", alcance: 780, taxaDisparo: 540, taxaAcerto: 64 },
+    { id: "24", nome: "Riffle", src: "/arma.png", alt: "Riffle", dano: 58, raridade: "Comum", municao: "5.56mm", alcance: 590, taxaDisparo: 630, taxaAcerto: 52 }
+]
+
 export const todasArmas = [
   ...armas.pistolas,
   ...armas.facas,
