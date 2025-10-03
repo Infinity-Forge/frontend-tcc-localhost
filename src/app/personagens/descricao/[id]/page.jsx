@@ -1,25 +1,22 @@
+import { use } from "react";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import styles from "./page.module.css";
-import { todosPersonagens } from "@/simulacaoDeDados";
+import { personagensArray } from "@/simulacaoDeDados";
 
-async function DescricaoPersonagens({ params, searchParams }) {
+function DescricaoPersonagens({ params, searchParams }) {
 
-  async function getPersonagem(id) {
-    await new Promise(resolve => setTimeout(resolve, 50)); // simula delay
-    return todosPersonagens.find(p => p.id === id);
-  }
+  const awaitedParams = use(Promise.resolve(params));
+  const awaitedSearchParams = use(Promise.resolve(searchParams));
+  const { from } = awaitedSearchParams;
+  const { id } = awaitedParams;
 
-  const origem = searchParams?.from || "personagens";
-  const rotaVoltar = origem === "home" ? "/" : "/personagens";
-
-  const { id } = await params;
-  const personagem = await getPersonagem(id);
+  const personagem = personagensArray.find(personagem => personagem.id === id);
 
   if (!personagem) return <p>Personagem não encontrado.</p>;
 
   return (
     <>
-      <CabecalhoPolitica tituloPagina={`"${personagem.nome}"`} rota={rotaVoltar}/>
+      <CabecalhoPolitica tituloPagina={`"${personagem.nome}"`} route={`../../${from}`}/>
       <main className={styles.mainDescricao}>
         <section className={styles.textoImagem}>
           <article className={styles.articlePersonagem}>

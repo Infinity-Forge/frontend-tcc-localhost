@@ -52,7 +52,7 @@ function Home() {
            <article className={styles.guardioes}>
               <Title text="Guardiões" marginTopValue="0"/>
               <ContainerPersonagens>
-                {personagens.guardioes.map((guardiao, index) => <CardPersonagem key={index} rota={"home"} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}></CardPersonagem>)}
+                {personagens.guardioes.map((guardiao, index) => <CardPersonagem key={index} rota={"/"} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}></CardPersonagem>)}
               </ContainerPersonagens>
            </article>
          </Container>
@@ -75,7 +75,7 @@ function Home() {
            <article className={styles.cavaleiros}>
               <Title text="Cavaleiros" marginTopValue="0"/>
               <ContainerPersonagens>
-                {personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} rota={"home"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}></CardPersonagem>)}
+                {personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} rota={"/"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}></CardPersonagem>)}
               </ContainerPersonagens>
            </article>
          </Container>
