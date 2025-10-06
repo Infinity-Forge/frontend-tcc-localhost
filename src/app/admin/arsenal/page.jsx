@@ -17,7 +17,7 @@ export default function Page() {
     <div className={styles.container}>
       {/* Header */}
       <header className={styles.header}>
-        <CabecalhoPolitica tituloPagina="Arsenal" rota="../admin/home"/>
+        <CabecalhoPolitica tituloPagina="Arsenal" route="../admin/home"/>
         <div className={styles.searchBox}>
           <input type="text" placeholder="Buscar..." />
           <span>🔍</span>
