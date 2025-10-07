@@ -1,77 +1,32 @@
-export const personagens = {
-  guardioes: [
-    { id: "1", nome: "Rato", src: "/rato.jpg", alt: "Imagem do Rato", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre alerta!" },
-    { id: "2", nome: "Urso", src: "/urso.jpg", alt: "Imagem do Urso", descricao: "Lorem ipsum dolor sit amet.", frase: "Força e coragem." },
-    { id: "3", nome: "Gata", src: "/gata.jpg", alt: "Imagem da Gata", descricao: "Lorem ipsum dolor sit amet.", frase: "Vamos juntos!" },
-    { id: "4", nome: "Peixe Boi", src: "/peixeBoi.jpg", alt: "Imagem do Peixe Boi", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre lutando!" }
-  ],
-  cavaleiros: [
-    { id: "5", nome: "Peste", src: "/peste.jpg", alt: "Imagem do Cavaleiro da Peste", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado com a peste!" },
-    { id: "6", nome: "Morte", src: "/morte.jpg", alt: "Imagem do Cavaleiro da Morte", descricao: "Lorem ipsum dolor sit amet.", frase: "A morte é certa." },
-    { id: "7", nome: "Guerra", src: "/guerra.jpg", alt: "Imagem de um Cavaleiro", descricao: "Lorem ipsum dolor sit amet.", frase: "Lutando sempre!" },
-    { id: "8", nome: "Fome", src: "/fome.jpg", alt: "Imagem do Cavaleiro da Fome", descricao: "Lorem ipsum dolor sit amet.", frase: "A fome não espera." }
-  ],
-  anjos: [
-    { id: "9", nome: "Anjos", src: "/anjos.jpg", alt: "Imagem dos Anjos", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre protegendo." },
-    { id: "10", nome: "Arcanjos", src: "/arcanjos.jpg", alt: "Imagem dos Arcanjos", descricao: "Lorem ipsum dolor sit amet.", frase: "Mensageiros divinos." },
-    { id: "11", nome: "Querubins", src: "/querubins.jpg", alt: "Imagem dos Querubins", descricao: "Lorem ipsum dolor sit amet.", frase: "Pequenos protetores." },
-    { id: "12", nome: "Serafins", src: "/serafins.jpg", alt: "Imagem dos Serafins", descricao: "Lorem ipsum dolor sit amet.", frase: "Chama sagrada." },
-    { id: "13", nome: "Anjo Miguel", src: "/anjoMiguel.jpg", alt: "Imagem do Anjo Miguel", descricao: "Lorem ipsum dolor sit amet.", frase: "O guerreiro divino." },
-    { id: "14", nome: "Anjo Gabriel", src: "/anjoGabriel.jpg", alt: "Imagem do Anjo Gabriel", descricao: "Lorem ipsum dolor sit amet.", frase: "O mensageiro sagrado." }
-  ],
-  inimigos: [
-    { id: "15", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Inimigo!" },
-    { id: "16", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo à frente!" },
-    { id: "17", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado!" },
-    { id: "18", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Atenção!" },
-    { id: "19", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Ação rápida!" },
-    { id: "20", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo!" },
-    { id: "21", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Fique atento!" },
-    { id: "22", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Alerta!" },
-    { id: "23", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo eminente!" },
-    { id: "24", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Atenção máxima!" },
-    { id: "25", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo!" },
-    { id: "26", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado!" },
-    { id: "27", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Fique alerta!" }
-  ]
-};
-
 export const personagensArray = [
-    { id: "1", nome: "Rato", src: "/rato.jpg", alt: "Imagem do Rato", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre alerta!" },
-    { id: "2", nome: "Urso", src: "/urso.jpg", alt: "Imagem do Urso", descricao: "Lorem ipsum dolor sit amet.", frase: "Força e coragem." },
-    { id: "3", nome: "Gata", src: "/gata.jpg", alt: "Imagem da Gata", descricao: "Lorem ipsum dolor sit amet.", frase: "Vamos juntos!" },
-    { id: "4", nome: "Peixe Boi", src: "/peixeBoi.jpg", alt: "Imagem do Peixe Boi", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre lutando!" },
-    { id: "5", nome: "Peste", src: "/peste.jpg", alt: "Imagem do Cavaleiro da Peste", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado com a peste!" },
-    { id: "6", nome: "Morte", src: "/morte.jpg", alt: "Imagem do Cavaleiro da Morte", descricao: "Lorem ipsum dolor sit amet.", frase: "A morte é certa." },
-    { id: "7", nome: "Guerra", src: "/guerra.jpg", alt: "Imagem de um Cavaleiro", descricao: "Lorem ipsum dolor sit amet.", frase: "Lutando sempre!" },
-    { id: "8", nome: "Fome", src: "/fome.jpg", alt: "Imagem do Cavaleiro da Fome", descricao: "Lorem ipsum dolor sit amet.", frase: "A fome não espera." },
-    { id: "9", nome: "Anjos", src: "/anjos.jpg", alt: "Imagem dos Anjos", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre protegendo." },
-    { id: "10", nome: "Arcanjos", src: "/arcanjos.jpg", alt: "Imagem dos Arcanjos", descricao: "Lorem ipsum dolor sit amet.", frase: "Mensageiros divinos." },
-    { id: "11", nome: "Querubins", src: "/querubins.jpg", alt: "Imagem dos Querubins", descricao: "Lorem ipsum dolor sit amet.", frase: "Pequenos protetores." },
-    { id: "12", nome: "Serafins", src: "/serafins.jpg", alt: "Imagem dos Serafins", descricao: "Lorem ipsum dolor sit amet.", frase: "Chama sagrada." },
-    { id: "13", nome: "Anjo Miguel", src: "/anjoMiguel.jpg", alt: "Imagem do Anjo Miguel", descricao: "Lorem ipsum dolor sit amet.", frase: "O guerreiro divino." },
-    { id: "14", nome: "Anjo Gabriel", src: "/anjoGabriel.jpg", alt: "Imagem do Anjo Gabriel", descricao: "Lorem ipsum dolor sit amet.", frase: "O mensageiro sagrado." },
-    { id: "15", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Inimigo!" },
-    { id: "16", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo à frente!" },
-    { id: "17", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado!" },
-    { id: "18", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Atenção!" },
-    { id: "19", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Ação rápida!" },
-    { id: "20", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo!" },
-    { id: "21", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Fique atento!" },
-    { id: "22", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Alerta!" },
-    { id: "23", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo eminente!" },
-    { id: "24", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Atenção máxima!" },
-    { id: "25", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo!" },
-    { id: "26", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado!" },
-    { id: "27", nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Fique alerta!" }
+    { id: "1", tipo: 0, nome: "Rato", src: "/rato.jpg", alt: "Imagem do Rato", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre alerta!" },
+    { id: "2", tipo: 0, nome: "Urso", src: "/urso.jpg", alt: "Imagem do Urso", descricao: "Lorem ipsum dolor sit amet.", frase: "Força e coragem." },
+    { id: "3", tipo: 0, nome: "Gata", src: "/gata.jpg", alt: "Imagem da Gata", descricao: "Lorem ipsum dolor sit amet.", frase: "Vamos juntos!" },
+    { id: "4", tipo: 0, nome: "Peixe Boi", src: "/peixeBoi.jpg", alt: "Imagem do Peixe Boi", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre lutando!" },
+    { id: "5", tipo: 1, nome: "Peste", src: "/peste.jpg", alt: "Imagem do Cavaleiro da Peste", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado com a peste!" },
+    { id: "6", tipo: 1, nome: "Morte", src: "/morte.jpg", alt: "Imagem do Cavaleiro da Morte", descricao: "Lorem ipsum dolor sit amet.", frase: "A morte é certa." },
+    { id: "7", tipo: 1, nome: "Guerra", src: "/guerra.jpg", alt: "Imagem de um Cavaleiro", descricao: "Lorem ipsum dolor sit amet.", frase: "Lutando sempre!" },
+    { id: "8", tipo: 1, nome: "Fome", src: "/fome.jpg", alt: "Imagem do Cavaleiro da Fome", descricao: "Lorem ipsum dolor sit amet.", frase: "A fome não espera." },
+    { id: "9", tipo: 1, nome: "Anjos", src: "/anjos.jpg", alt: "Imagem dos Anjos", descricao: "Lorem ipsum dolor sit amet.", frase: "Sempre protegendo." },
+    { id: "10", tipo: 2, nome: "Arcanjos", src: "/arcanjos.jpg", alt: "Imagem dos Arcanjos", descricao: "Lorem ipsum dolor sit amet.", frase: "Mensageiros divinos." },
+    { id: "11", tipo: 2, nome: "Querubins", src: "/querubins.jpg", alt: "Imagem dos Querubins", descricao: "Lorem ipsum dolor sit amet.", frase: "Pequenos protetores." },
+    { id: "12", tipo: 2, nome: "Serafins", src: "/serafins.jpg", alt: "Imagem dos Serafins", descricao: "Lorem ipsum dolor sit amet.", frase: "Chama sagrada." },
+    { id: "13", tipo: 2, nome: "Anjo Miguel", src: "/anjoMiguel.jpg", alt: "Imagem do Anjo Miguel", descricao: "Lorem ipsum dolor sit amet.", frase: "O guerreiro divino." },
+    { id: "14", tipo: 2, nome: "Anjo Gabriel", src: "/anjoGabriel.jpg", alt: "Imagem do Anjo Gabriel", descricao: "Lorem ipsum dolor sit amet.", frase: "O mensageiro sagrado." },
+    { id: "15", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Inimigo!" },
+    { id: "16", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo à frente!" },
+    { id: "17", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado!" },
+    { id: "18", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Atenção!" },
+    { id: "19", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Ação rápida!" },
+    { id: "20", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo!" },
+    { id: "21", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Fique atento!" },
+    { id: "22", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Alerta!" },
+    { id: "23", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo eminente!" },
+    { id: "24", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Atenção máxima!" },
+    { id: "25", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Perigo!" },
+    { id: "26", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Cuidado!" },
+    { id: "27", tipo: 3, nome: "Luffy", src: "/luffy.jpg", alt: "Imagem de um Inimigo", descricao: "Lorem ipsum dolor sit amet.", frase: "Fique alerta!" }
 ]
-
-export const todosPersonagens = [
-    ...personagens.guardioes,
-    ...personagens.cavaleiros,
-    ...personagens.anjos,
-    ...personagens.inimigos
-  ];
 
 export const noticias = [
   {

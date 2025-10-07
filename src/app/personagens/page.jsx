@@ -46,6 +46,11 @@ function Personagens() {
     }
   }
 
+  const guardioes = personagens.filter(personagem => personagem.tipo === 0);
+  const cavaleiros = personagens.filter(personagem => personagem.tipo === 0);
+  const anjos = personagens.filter(personagem => personagem.tipo === 0);
+  const inimigos = personagens.filter(personagem => personagem.tipo === 0);
+
   return (
     <>
       <Navbar>
@@ -60,9 +65,9 @@ function Personagens() {
           <ContainerPersonagens className={styles.container}>
             {loading ? (
                 <div>Carregando...</div>
-            ) : personagens.length > 0 ? (
-              personagens.map((personagem) => (
-                  <CardPersonagem key={personagem.id} rota={"personagens"} id={personagem.id} nome={personagem.nome} imageSrc={personagem.src} alt={personagem.alt}/>
+            ) : guardioes.length > 0 ? (
+              guardioes.map((guardiao) => (
+                  <CardPersonagem key={guardiao.id} rota={"personagens"} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}/>
               ))
             ) : (
                 <h1>Não foi possível carregar os personagens</h1>
@@ -70,15 +75,39 @@ function Personagens() {
           </ContainerPersonagens>
           <Title text="Cavaleiros" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} rota={"personagens"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}/>)}
+            {loading ? (
+                <div>Carregando...</div>
+            ) : cavaleiros.length > 0 ? (
+              cavaleiros.map((cavaleiro) => (
+                  <CardPersonagem key={cavaleiro.id} rota={"personagens"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}/>
+              ))
+            ) : (
+                <h1>Não foi possível carregar os personagens</h1>
+            )}
           </ContainerPersonagens>
           <Title text="Anjos" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.anjos.map((anjo, index) => <CardPersonagem key={index} rota={"personagens"} id={anjo.id} nome={anjo.nome} imageSrc={anjo.src} alt={anjo.alt}/>)}
+            {loading ? (
+                <div>Carregando...</div>
+            ) : anjos.length > 0 ? (
+              anjos.map((anjo) => (
+                  <CardPersonagem key={anjo.id} rota={"personagens"} id={anjo.id} nome={anjo.nome} imageSrc={anjo.src} alt={anjo.alt}/>
+              ))
+            ) : (
+                <h1>Não foi possível carregar os personagens</h1>
+            )}
           </ContainerPersonagens>
           <Title text="Inimigos" className={styles.title}/>
           <ContainerPersonagens className={styles.container}>
-            {personagens.inimigos.map((inimigo, index) => <CardPersonagem key={index} rota={"personagens"} id={inimigo.id} nome={inimigo.nome} imageSrc={inimigo.src} alt={inimigo.alt}/>)}
+            {loading ? (
+                <div>Carregando...</div>
+            ) : inimigos.length > 0 ? (
+              inimigos.map((inimigo) => (
+                  <CardPersonagem key={inimigo.id} rota={"personagens"} id={inimigo.id} nome={inimigo.nome} imageSrc={inimigo.src} alt={inimigo.alt}/>
+              ))
+            ) : (
+                <h1>Não foi possível carregar os personagens</h1>
+            )}
           </ContainerPersonagens>
         </section>
       </Container>
