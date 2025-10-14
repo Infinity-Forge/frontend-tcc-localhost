@@ -2,31 +2,38 @@ import { useState } from "react";
 import Input from "./Input";
 import styles from "./index.module.css";
 
-function FormularioEdicao({ item, onSave }) {
-  const [nome, setNome] = useState(item.nome);
-  const [dano, setDano] = useState(item.dano);
-  const [raridade, setRaridade] = useState(item.raridade);
-  const [municao, setMunicao] = useState(item.municao);
-  const [alcance, setAlcance] = useState(item.alcance);
-  const [taxaDisparo, setTaxaDisparo] = useState(item.taxaDisparo);
-  const [taxaAcerto, setTaxaAcerto] = useState(item.taxaAcerto);
-  const [imagem, setImagem] = useState(item.src);
+function FormularioEdicao({ item, titulo, onSave }) {
+  const [dados, setDados] = useState(item);
+
+  const handleChange = (campo, valor) => {
+    setDados((prev) => ({ ...prev, [campo]: valor }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSave(dados);
+  }
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.titulo}>Editar Arma</h1>
+      <h1 className={styles.titulo}>Editar {titulo}</h1>
       <div className={styles.divFormEImagem}>
-        <form className={styles.form}>
-          <Input label="Nome:" value={nome} onChange={setNome} />
-          <Input label="Dano:" value={dano} onChange={setDano} />
-          <Input label="Raridade:" value={raridade} onChange={setRaridade} />
-          <Input label="Munição:" value={municao} onChange={setMunicao} />
-          <Input label="Alcance:" value={alcance} onChange={setAlcance} />
-          <Input label="Taxa de Disparo:" value={taxaDisparo} onChange={setTaxaDisparo} />
-          <Input label="Taxa de Acerto:" value={taxaAcerto} onChange={setTaxaAcerto} />
-          <button type="submit" className={styles.btnSalvar}>Salvar</button>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          {Object.entries(dados).map(([campo, valor]) => {
+            if (campo === "src" || campo === "id") return null;
+
+            return (
+              <Input
+                key={campo}
+                label={`${campo[0].toUpperCase()}${campo.slice(1)}:`}
+                value={valor}
+                onChange={(val) => handleChange(campo, val)}
+              />
+            );
+          })}
+          <img src={dados.src} className={styles.imagem}/>
+          <button type="submit" className={styles.btnSalvar}>Salvar</button>  
         </form>
-        <img src={imagem} className={styles.imagem}/>
       </div>
     </div>
   );

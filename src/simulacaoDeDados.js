@@ -76,7 +76,7 @@ export const todosPersonagens = [
 export const noticias = [
   {
     id: "1",
-    src: "/clash.jpg",
+    src: "/mapa1.png",
     alt: "Imagem da Notícia",
     titulo: "Título",
     texto:
@@ -84,7 +84,7 @@ export const noticias = [
   },
   {
     id: "2",
-    src: "/clash.jpg",
+    src: "/mapa2.png",
     alt: "Imagem da Notícia",
     titulo: "Título",
     texto:
@@ -92,7 +92,7 @@ export const noticias = [
   },
   {
     id: "3",
-    src: "/clash.jpg",
+    src: "/mapa3.png",
     alt: "Imagem da Notícia",
     titulo: "Título",
     texto:
@@ -100,7 +100,7 @@ export const noticias = [
   },
   {
     id: "4",
-    src: "/clash.jpg",
+    src: "/mapa4.png",
     alt: "Imagem da Notícia",
     titulo: "Título",
     texto:
@@ -108,7 +108,7 @@ export const noticias = [
   },
   {
     id: "5",
-    src: "/clash.jpg",
+    src: "/mapa5.png",
     alt: "Imagem da Notícia",
     titulo: "Título",
     texto:
@@ -116,7 +116,7 @@ export const noticias = [
   },
   {
     id: "6",
-    src: "/clash.jpg",
+    src: "/mapa5.png",
     alt: "Imagem da Notícia",
     titulo: "Título",
     texto:
@@ -193,31 +193,31 @@ export const todasArmas = [
 export const mapas = [
   {
     id: "1",
-    imgUrl: "/mapa1.png",
+    src: "/mapa1.png",
     nome: "Mapa Principal",
     descricao: "Este é o mapa principal do jogo"
   },
   {
     id: "2",
-    imgUrl: "/mapa2.png",
+    src: "/mapa2.png",
     nome: "Mapa Florestal",
     descricao: "Este é o mapa de uma grande floresta cheia de árvores antigas e densas."
   },
   {
     id: "3",
-    imgUrl: "/mapa3.png",
+    src: "/mapa3.png",
     nome: "Mapa Urbano",
     descricao: "Este é o mapa de uma cidade moderna com arranha-céus e ruas movimentadas."
   },
   {
     id: "4",
-    imgUrl: "/mapa4.png",
+    src: "/mapa4.png",
     nome: "Mapa do Deserto",
     descricao: "Um mapa que retrata vastas dunas de areia e temperaturas escaldantes."
   },
   {
     id: "5",
-    imgUrl: "/mapa5.png",
+    src: "/mapa5.png",
     nome: "Mapa Montanhoso",
     descricao: "Este mapa mostra uma paisagem de montanhas altas e trilhas desafiadoras."
   }

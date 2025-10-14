@@ -13,6 +13,11 @@ export default function Page() {
 
   const [armaSelecionada, setArmaSelecionada] = useState(null);
 
+  const handleSalvar = (dadosAtualizados) => {
+    console.log("Dados atualizados: ", dadosAtualizados);
+    setArmaSelecionada(null);
+  }
+
   return (
     <div className={styles.container}>
       {/* Header */}
@@ -42,7 +47,7 @@ export default function Page() {
 
         {armaSelecionada && (
           <Modal onClose={() => setArmaSelecionada(null)}>
-            <FormularioEdicao item={armaSelecionada}/>
+            <FormularioEdicao item={armaSelecionada} titulo="arma" onSave={handleSalvar}/>
           </Modal>
         )}
       </Container>
