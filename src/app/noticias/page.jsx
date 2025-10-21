@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
@@ -8,9 +9,39 @@ import Title from "@/components/Title";
 import Noticia from "@/components/Noticia";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
-import { noticias } from "@/simulacaoDeDados";
+import api from "../../services/api";
 
 function Noticias() {
+
+  const [noticias, setNoticias] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    listarNoticias();
+  }, [])
+
+  async function listarNoticias() {
+    try {
+        setLoading(true);
+        const response = await api.get('/noticias');
+
+        if (response.data.sucesso) {
+          const noticiaApi = response.data.dados;
+          setProdutos(noticiaApi);
+        } else {
+          alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
+        }
+
+    } catch (error) {
+        if(error.response) {
+            alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+        } else {
+            alert('Erro no front-end' + '\n' + error);
+        }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
@@ -24,7 +55,15 @@ function Noticias() {
           <Container>
             <Title text="Notícias" marginBottomValue="16px"/>
             <section className={styles.noticiasSection}>
-              {noticias.map((noticia, index) => <Noticia key={index} src={noticia.src} alt={noticia.alt} titulo={noticia.titulo} texto={noticia.texto}/>)}
+              {loading ? (
+                <div>Carregando...</div>
+            ) : noticias.length > 0 ? (
+              noticias.map((noticia) => (
+                  <Noticia key={noticia.id} rota={"personagens"} id={noticia.id} titulo={noticia.titulo} texto={noticia.texto} src={noticia.src} alt={noticia.alt}/>
+              ))
+            ) : (
+                <h1>Não foi possível carregar os personagens</h1>
+            )}
             </section>
           </Container>
         </main>
