@@ -1,10 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import InformacaoCard from "@/components/Admin/InformacaoCard";
+import FormularioEdicao from "@/components/Admin/FormularioEdicao";
+import Modal from "@/components/Admin/Modal";
 import styles from "./page.module.css";
 import { mapas } from "@/simulacaoDeDados";
 
 export default function Page() {
+
+  const [mapaSelecionado, setMapaSelecionado] = useState(null);
+
+  const handleSalvar = (dadosAtualizados) => {
+    console.log("Dados atualizados: ", dadosAtualizados);
+    setMapaSelecionado(null);
+  }
 
   return (
     <div className={styles.container}>
@@ -29,8 +41,14 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Mapa</div>
           </div>
           {/* Cards de mapas */}
-          {mapas.map(mapa => <InformacaoCard key={mapa.id} nome={mapa.nome} src={mapa.src} alt={mapa.alt}/>)}
+          {mapas.map(mapa => <InformacaoCard key={mapa.id} nome={mapa.nome} src={mapa.src} alt={mapa.alt} onClick={() => setMapaSelecionado(mapa)}/>)}
         </section>
+
+        {mapaSelecionado && (
+          <Modal onClose={() => setMapaSelecionado(null)}>
+            <FormularioEdicao item={mapaSelecionado} titulo="mapa" onSave={handleSalvar}/>
+          </Modal>
+        )}
       </Container>
     </div>
   );
