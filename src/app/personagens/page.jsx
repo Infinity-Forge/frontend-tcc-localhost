@@ -10,7 +10,7 @@ import ContainerPersonagens from "@/components/ContainerPersonagens";
 import CardPersonagem from "@/components/ContainerPersonagens/CardPersonagem";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css"
-import api from "../../services/api";
+import api from "@/services/api";
 
 function Personagens() {
 
@@ -24,13 +24,14 @@ function Personagens() {
   async function listarPersonagens() {
     try {
       setLoading(true);
-      const response = await api.get('/personagens/');
+      const response = await api.get('/personagens');
+      console.log(response);
 
       if (response.data.sucesso == true) {
           const personagemApi = response.data.dados;
           setPersonagens(personagemApi);
       } else {
-          alert(`Erro ${error.responde.data.message} \n ${error.response.data.dados}`);
+          alert(`Erro ${response.data.message} \n ${response.data.dados}`);
       }
       
     } catch (error) {
@@ -46,10 +47,10 @@ function Personagens() {
     }
   }
 
-  const guardioes = personagens.filter(personagem => personagem.tipo === 0);
-  const cavaleiros = personagens.filter(personagem => personagem.tipo === 0);
-  const anjos = personagens.filter(personagem => personagem.tipo === 0);
-  const inimigos = personagens.filter(personagem => personagem.tipo === 0);
+  const guardioes = personagens.filter(personagem => personagem.pers_tipo === 0);
+  const cavaleiros = personagens.filter(personagem => personagem.pers_tipo === 1);
+  const anjos = personagens.filter(personagem => personagem.pers_tipo === 2);
+  const inimigos = personagens.filter(personagem => personagem.pers_tipo === 3);
 
   return (
     <>
@@ -67,7 +68,7 @@ function Personagens() {
                 <div>Carregando...</div>
             ) : guardioes.length > 0 ? (
               guardioes.map((guardiao) => (
-                  <CardPersonagem key={guardiao.id} rota={"personagens"} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}/>
+                  <CardPersonagem key={guardiao.pers_id} rota={"personagens"} id={guardiao.pers_id} nome={guardiao.pers_nome} imageSrc={guardiao.pers_src} alt={guardiao.pers_alt}/>
               ))
             ) : (
                 <h1>Não foi possível carregar os personagens</h1>
@@ -79,7 +80,7 @@ function Personagens() {
                 <div>Carregando...</div>
             ) : cavaleiros.length > 0 ? (
               cavaleiros.map((cavaleiro) => (
-                  <CardPersonagem key={cavaleiro.id} rota={"personagens"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}/>
+                  <CardPersonagem key={cavaleiro.pers_id} rota={"personagens"} id={cavaleiro.pers_id} nome={cavaleiro.pers_nome} imageSrc={cavaleiro.pers_src} alt={cavaleiro.pers_alt}/>
               ))
             ) : (
                 <h1>Não foi possível carregar os personagens</h1>
@@ -91,7 +92,7 @@ function Personagens() {
                 <div>Carregando...</div>
             ) : anjos.length > 0 ? (
               anjos.map((anjo) => (
-                  <CardPersonagem key={anjo.id} rota={"personagens"} id={anjo.id} nome={anjo.nome} imageSrc={anjo.src} alt={anjo.alt}/>
+                  <CardPersonagem key={anjo.pers_id} rota={"personagens"} id={anjo.pers_id} nome={anjo.pers_nome} imageSrc={anjo.pers_src} alt={anjo.pers_alt}/>
               ))
             ) : (
                 <h1>Não foi possível carregar os personagens</h1>
@@ -103,7 +104,7 @@ function Personagens() {
                 <div>Carregando...</div>
             ) : inimigos.length > 0 ? (
               inimigos.map((inimigo) => (
-                  <CardPersonagem key={inimigo.id} rota={"personagens"} id={inimigo.id} nome={inimigo.nome} imageSrc={inimigo.src} alt={inimigo.alt}/>
+                  <CardPersonagem key={inimigo.pers_id} rota={"personagens"} id={inimigo.pers_id} nome={inimigo.pers_nome} imageSrc={inimigo.pers_src} alt={inimigo.pers_alt}/>
               ))
             ) : (
                 <h1>Não foi possível carregar os personagens</h1>
