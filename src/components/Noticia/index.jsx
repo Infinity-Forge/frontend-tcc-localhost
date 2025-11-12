@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 
-function Noticia({ src, alt, titulo, texto }) {
+function Noticia({ id, src, alt, titulo, texto }) {
 
     return(
         <article className={styles.noticiaContainer}>
