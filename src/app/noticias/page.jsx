@@ -28,7 +28,6 @@ function Noticias() {
         if (response.data.sucesso) {
           const noticiaApi = response.data.dados;
           setNoticias(noticiaApi);
-          console.log(noticiaApi);
         } else {
           alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
         }
@@ -57,14 +56,14 @@ function Noticias() {
             <Title text="Notícias" marginBottomValue="16px"/>
             <section className={styles.noticiasSection}>
               {loading ? (
-                <div>Carregando...</div>
-            ) : noticias.length > 0 ? (
-              noticias.map((noticia) => (
-                  <Noticia key={noticia.not_id} id={noticia.not_id} titulo={noticia.not_titulo} texto={noticia.not_conteudo} src={noticia.not_imagem}/>
-              ))
-            ) : (
-                <h1>Não foi possível carregar as notícias</h1>
-            )}
+                  <div>Carregando...</div>
+              ) : noticias.length > 0 ? (
+                noticias.map((noticia) => (
+                    <Noticia key={noticia.not_id} id={noticia.not_id} titulo={noticia.not_titulo} texto={noticia.not_conteudo} src={noticia.not_imagem}/>
+                ))
+              ) : (
+                  <h1>Não foi possível carregar as notícias</h1>
+              )}
             </section>
           </Container>
         </main>

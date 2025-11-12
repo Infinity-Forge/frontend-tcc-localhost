@@ -10,7 +10,10 @@ export default function DescricaoPersonagens({ id, from }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function listarPersonagem() {
+    listarPersonagem();
+  }, [id]);
+
+  async function listarPersonagem() {
       try {
         setLoading(true);
         const response = await api.get(`/personagens/${id}`);
@@ -21,11 +24,7 @@ export default function DescricaoPersonagens({ id, from }) {
         }
       } catch (error) {
         if (error.response) {
-          console.error(
-            "Erro da API:",
-            error.response.data.mensagem,
-            error.response.data.dados
-          );
+          console.error("Erro da API:", error.response.data.mensagem, error.response.data.dados);
         } else {
           console.error("Erro no front-end:", error);
         }
@@ -34,11 +33,8 @@ export default function DescricaoPersonagens({ id, from }) {
       }
     }
 
-    listarPersonagem();
-  }, [id]);
-
-  if (loading) return <p className={styles.loading}>Carregando...</p>;
-  if (!personagem) return <p className={styles.notFound}>Personagem não encontrado.</p>;
+  if (loading) return <p>Carregando...</p>;
+  if (!personagem) return <p>Personagem não encontrado.</p>;
 
   return (
     <>

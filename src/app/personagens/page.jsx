@@ -71,7 +71,7 @@ function Personagens() {
                   <CardPersonagem key={guardiao.pers_id} rota={"personagens"} id={guardiao.pers_id} nome={guardiao.pers_nome} imageSrc={guardiao.pers_src} alt={guardiao.pers_alt}/>
               ))
             ) : (
-                <h1>Não foi possível carregar os personagens</h1>
+                <h1>Não foi possível carregar os guardiões</h1>
             )}
           </ContainerPersonagens>
           <Title text="Cavaleiros" className={styles.title}/>
@@ -83,7 +83,7 @@ function Personagens() {
                   <CardPersonagem key={cavaleiro.pers_id} rota={"personagens"} id={cavaleiro.pers_id} nome={cavaleiro.pers_nome} imageSrc={cavaleiro.pers_src} alt={cavaleiro.pers_alt}/>
               ))
             ) : (
-                <h1>Não foi possível carregar os personagens</h1>
+                <h1>Não foi possível carregar os cavaleiros</h1>
             )}
           </ContainerPersonagens>
           <Title text="Anjos" className={styles.title}/>
@@ -95,7 +95,7 @@ function Personagens() {
                   <CardPersonagem key={anjo.pers_id} rota={"personagens"} id={anjo.pers_id} nome={anjo.pers_nome} imageSrc={anjo.pers_src} alt={anjo.pers_alt}/>
               ))
             ) : (
-                <h1>Não foi possível carregar os personagens</h1>
+                <h1>Não foi possível carregar os anjos</h1>
             )}
           </ContainerPersonagens>
           <Title text="Inimigos" className={styles.title}/>
@@ -107,7 +107,7 @@ function Personagens() {
                   <CardPersonagem key={inimigo.pers_id} rota={"personagens"} id={inimigo.pers_id} nome={inimigo.pers_nome} imageSrc={inimigo.pers_src} alt={inimigo.pers_alt}/>
               ))
             ) : (
-                <h1>Não foi possível carregar os personagens</h1>
+                <h1>Não foi possível carregar os inimigos</h1>
             )}
           </ContainerPersonagens>
         </section>
