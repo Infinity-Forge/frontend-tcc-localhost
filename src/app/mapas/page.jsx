@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
@@ -9,26 +9,50 @@ import Minimapa from "@/components/Minimapa";
 import Footer from "@/components/Footer";
 import Suporte from "@/components/Suporte";
 import styles from "./page.module.css";
-import { mapasSemPrincipal } from "@/simulacaoDeDados";
+import api from "@/services/api";
 
 function Mapas() {
-  // Mapa inicial
-  const mapaInicial = {
-    id: "1",
-    imgUrl: "/mapa1.png",
-    nome: "Mapa Principal",
-    descricao: "Descrição do mapa principal."
-  };
 
-  const [mapaAtual, setMapaAtual] = useState(mapaInicial);
-  const [mapasSecundarios, setMapasSecundarios] = useState(mapasSemPrincipal);
+    const [mapas, setMapas] = useState([]);
+    const [mapaAtual, setMapaAtual] = useState(null);
+    const [mapasSecundarios, setMapasSecundarios] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      listarMapas();
+    }, [])
+
+    async function listarMapas() {
+      try {
+          setLoading(true);
+          const response = await api.get('/mapas');
+
+          if (response.data.sucesso) {
+            const mapasApi = response.data.dados;
+            setMapas(mapasApi);
+            setMapaAtual(mapasApi[0]);
+            setMapasSecundarios(mapasApi.slice(1));
+          } else {
+            alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
+          }
+
+      } catch (error) {
+          if(error.response) {
+              alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+          } else {
+              alert('Erro no front-end' + '\n' + error);
+          }
+      } finally {
+        setLoading(false);
+      }
+    }
 
   // Função para trocar o mapa principal com secundário clicado
   const trocarMapa = (mapaClicado) => {
     setMapasSecundarios((anteriores) => {
       // coloca o mapa atual no lugar do clicado
       const novos = anteriores.map((m) => 
-        m.id === mapaClicado.id ? mapaAtual : m
+        m.id === mapaClicado.mapa_id ? mapaAtual : m
       );
       return novos;
     });
@@ -47,27 +71,27 @@ function Mapas() {
           <Title text="Mapas" marginBottomValue="16px" marginTopValue="72px"/>
           <article>
             <div className={styles.nomeDescricao}>
-              <h2 className={styles.nomeMapa}>{mapaAtual.nome}</h2>
-              <p className={styles.descricaoMapa}>{mapaAtual.descricao}</p>
+              <h2 className={styles.nomeMapa}>{mapaAtual?.mapa_nome}</h2>
+              <p className={styles.descricaoMapa}>{mapaAtual?.mapa_descricao}</p>
             </div>
             <div className={styles.mapaContainer}>
               <img
-                src={mapaAtual.imgUrl}
-                alt={mapaAtual.nome}
+                src={mapaAtual?.mapa_src}
+                alt={mapaAtual?.mapa_nome}
                 className={styles.mapaPrincipal}
               />
             </div>
             <div className={styles.miniMapas}>
               {mapasSecundarios.map((mapa) => (
                 <div
-                  key={mapa.id}
+                  key={mapa.mapa_id}
                   onClick={() => trocarMapa(mapa)}
                   style={{cursor: "pointer"}}
                 >
                   <Minimapa
-                    nome={mapa.nome}
-                    imgUrl={mapa.imgUrl}
-                    descricao={mapa.descricao}
+                    nome={mapa.mapa_nome}
+                    imgUrl={mapa.mapa_src}
+                    descricao={mapa.mapa_descricao}
                   />
                 </div>
               ))}

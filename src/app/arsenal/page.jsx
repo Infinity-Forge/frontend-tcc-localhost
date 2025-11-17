@@ -28,7 +28,6 @@ function Arsenal() {
         if (response.data.sucesso) {
           const arsenalApi = response.data.dados;
           setArsenal(arsenalApi);
-          console.log(arsenalApi);
         } else {
           alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
         }
