@@ -77,7 +77,7 @@ export default function Page() {
 
         {noticiaSelecionada && (
           <Modal onClose={() => setNoticiaSelecionada(null)}>
-            <FormularioEdicao item={noticiaSelecionada} titulo="notícia" onSave={handleSalvar}/>
+            <FormularioEdicao item={noticiaSelecionada} titulo="Editar Notícia" onSave={handleSalvar}/>
           </Modal>
         )}
       </Container>

@@ -78,7 +78,7 @@ export default function Page() {
 
         {personagemSelecionado && (
           <Modal onClose={() => setPersonagemSelecionado(null)}>
-            <FormularioEdicao item={personagemSelecionado} titulo="personagem" onSave={handleSalvar}/>
+            <FormularioEdicao item={personagemSelecionado} titulo="Editar Personagem" onSave={handleSalvar}/>
           </Modal>
         )}
       </Container>

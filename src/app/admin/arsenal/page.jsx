@@ -41,6 +41,38 @@ export default function Page() {
     }
   }
 
+  async function criarArma(novaArma) {
+    try {
+      setLoading(true);
+
+      const response = await api.post("/arsenal", novaArma);
+
+      if (response.data.sucesso) {
+        alert("Arma criada com sucesso!");
+
+        setArsenal(prev => [...prev, response.data.dados]);
+
+        setArmaSelecionada(null);
+      } else {
+        alert(
+          "Erro:\n" +
+          response.data.mensagem +
+          "\n" +
+          response.data.dados
+        );
+      }
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+        alert("Erro no front-end\n" + error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function atualizarArma(dadosAtualizados) {
     try {
       setLoading(true);
@@ -110,6 +142,21 @@ export default function Page() {
 
   const [armaSelecionada, setArmaSelecionada] = useState(null);
 
+  const armaModelo = {
+    ars_id: null,
+    usu_id: 1,
+    ars_src: "/arma.png",
+    ars_tipo: "",
+    ars_nome: "",
+    ars_alt: "",
+    ars_dano: "",
+    ars_raridade: "",
+    ars_municao: "",
+    ars_alcance: "",
+    ars_taxa_disparo: "",
+    ars_taxa_acerto: "",
+  };
+
   return (
     <div className={styles.container}>
       {/* Header */}
@@ -125,7 +172,7 @@ export default function Page() {
         {/* Grid de personagens */}
         <section className={styles.grid}>
           {/* Card adicionar */}
-          <div className={styles.card}>
+          <div className={styles.card} onClick={() => setArmaSelecionada({ ...armaModelo })}>
             <div className={styles.addCharacter}>
               <span className={styles.bigSymbol}>+</span>
             </div>
@@ -137,7 +184,11 @@ export default function Page() {
 
         {armaSelecionada && (
           <Modal onClose={() => setArmaSelecionada(null)}>
-            <FormularioEdicao item={armaSelecionada} titulo="arma" onSave={atualizarArma}/>
+            <FormularioEdicao
+              item={armaSelecionada}
+              titulo={armaSelecionada.ars_id ? "Editar Arma" : "Criar Arma"}
+              onSave={armaSelecionada.ars_id ? atualizarArma : criarArma}
+            />
           </Modal>
         )}
       </Container>

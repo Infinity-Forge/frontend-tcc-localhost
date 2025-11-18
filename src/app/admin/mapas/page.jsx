@@ -76,7 +76,7 @@ export default function Page() {
 
         {mapaSelecionado && (
           <Modal onClose={() => setMapaSelecionado(null)}>
-            <FormularioEdicao item={mapaSelecionado} titulo="mapa" onSave={handleSalvar}/>
+            <FormularioEdicao item={mapaSelecionado} titulo="Editar Mapa" onSave={handleSalvar}/>
           </Modal>
         )}
       </Container>
