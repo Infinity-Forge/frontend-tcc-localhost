@@ -12,6 +12,7 @@ import api from "@/services/api";
 export default function Page() {
 
   const [arsenal, setArsenal] = useState([]);
+  const [busca, setBusca] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -157,13 +158,29 @@ export default function Page() {
     ars_taxa_acerto: "",
   };
 
+  const termo = busca.trim().toLowerCase();
+
+  const arsenalFiltrado = arsenal.filter((item) => {
+    if (!termo) return true;
+
+    const nome = item?.ars_nome ? String(item.ars_nome).toLowerCase() : "";
+    const tipo = item?.ars_tipo ? String(item.ars_tipo).toLowerCase() : "";
+    const id = item?.ars_id ? String(item.ars_id) : "";
+
+    return (
+      nome.includes(termo) ||
+      tipo.includes(termo) ||
+      id.includes(termo)
+    );
+  });
+
   return (
     <div className={styles.container}>
       {/* Header */}
       <header className={styles.header}>
         <CabecalhoPolitica tituloPagina="Arsenal" route="../admin/home"/>
         <div className={styles.searchBox}>
-          <input type="text" placeholder="Buscar..." />
+          <input type="text" placeholder="Buscar..." value={busca} onChange={(e) => setBusca(e.target.value)}/>
           <span>🔍</span>
         </div>
       </header>
@@ -179,7 +196,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Arma</div>
           </div>
           {/* Cards de personagens */}
-          {arsenal.map((arsenal) => <InformacaoCard key={arsenal.ars_id} tipo={arsenal.ars_tipo} nome={arsenal.ars_nome} src={arsenal.ars_src} alt={arsenal.ars_alt} handleDeletar={() => deletarArma(arsenal.ars_id)} onClick={() => setArmaSelecionada(arsenal)}/>)}
+          {arsenalFiltrado.map((arsenal) => <InformacaoCard key={arsenal.ars_id} tipo={arsenal.ars_tipo} nome={arsenal.ars_nome} src={arsenal.ars_src} alt={arsenal.ars_alt} handleDeletar={() => deletarArma(arsenal.ars_id)} onClick={() => setArmaSelecionada(arsenal)}/>)}
         </section>
 
         {armaSelecionada && (
