@@ -28,7 +28,6 @@ function Mapas() {
 
           if (response.data.sucesso) {
             const mapasApi = response.data.dados;
-            setMapas(mapasApi);
             setMapaAtual(mapasApi[0]);
             setMapasSecundarios(mapasApi.slice(1));
           } else {

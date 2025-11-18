@@ -41,12 +41,74 @@ export default function Page() {
     }
   }
 
-  const [armaSelecionada, setArmaSelecionada] = useState(null);
+  async function atualizarArma(dadosAtualizados) {
+    try {
+      setLoading(true);
 
-  const handleSalvar = (dadosAtualizados) => {
-    console.log("Dados atualizados: ", dadosAtualizados);
-    setArmaSelecionada(null);
+      const response = await api.put(`/arsenal/${dadosAtualizados.ars_id}`, dadosAtualizados);
+
+      if (response.data.sucesso) {
+        alert("Arma atualizada com sucesso!");
+
+        // Atualiza o estado local também
+        setArsenal(prev =>
+          prev.map(item =>
+            item.ars_id === dadosAtualizados.ars_id ? dadosAtualizados : item
+          )
+        );
+
+        setArmaSelecionada(null); // Fecha o modal
+      } else {
+        alert(
+          "Erro: " +
+          response.data.mensagem +
+          "\n" +
+          response.data.dados
+        );
+      }
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+        alert("Erro no front-end\n" + error);
+      }
+    } finally {
+      setLoading(false);
+    }
   }
+
+  async function deletarArma(id) {
+    try {
+      setLoading(true);
+
+      const response = await api.delete(`/arsenal/${id}`);
+
+      if (response.data.sucesso) {
+        alert("Arma deletada com sucesso!");
+        setArsenal(prev => prev.filter(item => item.ars_id !== id));
+
+      } else {
+        alert(
+          "Erro: " +
+          response.data.mensagem +
+          "\n" +
+          response.data.dados
+        );
+      }
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+        alert("Erro no front-end\n" + error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const [armaSelecionada, setArmaSelecionada] = useState(null);
 
   return (
     <div className={styles.container}>
@@ -70,12 +132,12 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Arma</div>
           </div>
           {/* Cards de personagens */}
-          {arsenal.map((arsenal) => <InformacaoCard key={arsenal.ars_id} tipo={arsenal.ars_tipo} nome={arsenal.ars_nome} src={arsenal.ars_src} alt={arsenal.ars_alt} onClick={() => setArmaSelecionada(arsenal)}/>)}
+          {arsenal.map((arsenal) => <InformacaoCard key={arsenal.ars_id} tipo={arsenal.ars_tipo} nome={arsenal.ars_nome} src={arsenal.ars_src} alt={arsenal.ars_alt} handleDeletar={() => deletarArma(arsenal.ars_id)} onClick={() => setArmaSelecionada(arsenal)}/>)}
         </section>
 
         {armaSelecionada && (
           <Modal onClose={() => setArmaSelecionada(null)}>
-            <FormularioEdicao item={armaSelecionada} titulo="arma" onSave={handleSalvar}/>
+            <FormularioEdicao item={armaSelecionada} titulo="arma" onSave={atualizarArma}/>
           </Modal>
         )}
       </Container>
