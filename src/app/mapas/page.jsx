@@ -13,7 +13,6 @@ import api from "@/services/api";
 
 function Mapas() {
 
-    const [mapas, setMapas] = useState([]);
     const [mapaAtual, setMapaAtual] = useState(null);
     const [mapasSecundarios, setMapasSecundarios] = useState([]);
     const [loading, setLoading] = useState(true);

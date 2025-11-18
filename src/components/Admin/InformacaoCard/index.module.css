@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.card:last-child {
+  margin-bottom: 16px;
+}
+
 .card:hover {
   transform: scale(1.02);
 }

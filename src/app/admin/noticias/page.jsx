@@ -1,15 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import InformacaoCard from "@/components/Admin/InformacaoCard";
 import Modal from "@/components/Admin/Modal";
 import FormularioEdicao from "@/components/Admin/FormularioEdicao";
 import styles from "./page.module.css";
-import { noticias } from "@/simulacaoDeDados";
+import api from "@/services/api";
 
 export default function Page() {
+
+  const [noticias, setNoticias] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    listarNoticias();
+  }, [])
+
+  async function listarNoticias() {
+    try {
+        setLoading(true);
+        const response = await api.get('/noticias');
+
+        if (response.data.sucesso) {
+          const noticiaApi = response.data.dados;
+          setNoticias(noticiaApi);
+        } else {
+          alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
+        }
+
+    } catch (error) {
+        if(error.response) {
+            alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+        } else {
+            alert('Erro no front-end' + '\n' + error);
+        }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const [noticiaSelecionada, setNoticiaSelecionada] = useState(null);
 
@@ -42,7 +72,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Notícia</div>
           </div>
           {/* Cards de notícias */}
-          {noticias.map(noticia => <InformacaoCard key={noticia.id} nome={noticia.titulo} src={noticia.src} alt={noticia.alt} onClick={() => setNoticiaSelecionada(noticia)}/>)}
+          {noticias.map(noticia => <InformacaoCard key={noticia.not_id} nome={noticia.not_titulo} src={noticia.not_src} alt={noticia.not_alt} onClick={() => setNoticiaSelecionada(noticia)}/>)}
         </section>
 
         {noticiaSelecionada && (

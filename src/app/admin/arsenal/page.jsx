@@ -1,15 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import InformacaoCard from "@/components/Admin/InformacaoCard";
 import Modal from "@/components/Admin/Modal";
 import FormularioEdicao from "@/components/Admin/FormularioEdicao";
 import styles from "./page.module.css";
-import { armas } from "@/simulacaoDeDados"
+import api from "@/services/api";
 
 export default function Page() {
+
+  const [arsenal, setArsenal] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    listarArsenal();
+  }, [])
+
+  async function listarArsenal() {
+    try {
+        setLoading(true);
+        const response = await api.get('/arsenal');
+
+        if (response.data.sucesso) {
+          const arsenalApi = response.data.dados;
+          setArsenal(arsenalApi);
+        } else {
+          alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
+        }
+
+    } catch (error) {
+        if(error.response) {
+            alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+        } else {
+            alert('Erro no front-end' + '\n' + error);
+        }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const [armaSelecionada, setArmaSelecionada] = useState(null);
 
@@ -40,9 +70,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Arma</div>
           </div>
           {/* Cards de personagens */}
-          {armas.pistolas.map((pistola, index) => <InformacaoCard key={index} nome={pistola.nome} src={pistola.src} alt={pistola.alt} onClick={() => setArmaSelecionada(pistola)}/>)}
-          {armas.facas.map((faca, index) => <InformacaoCard key={index} nome={faca.nome} src={faca.src} alt={faca.alt} onClick={() => setArmaSelecionada(faca)}/>)}
-          {armas.riffles.map((riffle, index) => <InformacaoCard key={index} nome={riffle.nome} src={riffle.src} alt={riffle.alt} onClick={() => setArmaSelecionada(riffle)}/>)}
+          {arsenal.map((arsenal) => <InformacaoCard key={arsenal.ars_id} tipo={arsenal.ars_tipo} nome={arsenal.ars_nome} src={arsenal.ars_src} alt={arsenal.ars_alt} onClick={() => setArmaSelecionada(arsenal)}/>)}
         </section>
 
         {armaSelecionada && (

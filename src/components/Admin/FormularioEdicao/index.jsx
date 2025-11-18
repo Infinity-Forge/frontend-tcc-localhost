@@ -20,7 +20,7 @@ function FormularioEdicao({ item, titulo, onSave }) {
       <div className={styles.divFormEImagem}>
         <form className={styles.form} onSubmit={handleSubmit}>
           {Object.entries(dados).map(([campo, valor]) => {
-            if (campo === "src" || campo === "id") return null;
+            if (campo.includes("src") || campo.includes("data_criacao") || campo.includes("id") || campo === "pers_data_criacao") return null;
 
             return (
               <Input

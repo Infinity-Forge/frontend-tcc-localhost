@@ -1,15 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
 import Container from "@/components/Container";
 import InformacaoCard from "@/components/Admin/InformacaoCard";
 import Modal from "@/components/Admin/Modal";
 import FormularioEdicao from "@/components/Admin/FormularioEdicao";
 import styles from "./page.module.css";
-import { personagens } from "@/simulacaoDeDados";
+import api from "@/services/api";
 
 export default function Page() {
+
+  const [personagens, setPersonagens] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    listarPersonagens();
+  }, []);
+
+  async function listarPersonagens() {
+    try {
+      setLoading(true);
+      const response = await api.get('/personagens');
+      console.log(response);
+
+      if (response.data.sucesso == true) {
+          const personagemApi = response.data.dados;
+          setPersonagens(personagemApi);
+      } else {
+          alert(`Erro ${response.data.message} \n ${response.data.dados}`);
+      }
+      
+    } catch (error) {
+
+      if (error.response) {
+          alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+          alert("Erro no front-end" + "\n" + error);
+      }
+
+    } finally {
+        setLoading(false);
+    }
+  }
 
   const [personagemSelecionado, setPersonagemSelecionado] = useState(null);
 
@@ -40,10 +73,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Personagem</div>
           </div>
           {/* Cards de personagens */}
-          {personagens.guardioes.map(guardiao => <InformacaoCard key={guardiao.id} nome={guardiao.nome} src={guardiao.src} alt={guardiao.alt} onClick={() => setPersonagemSelecionado(guardiao)}/>)}
-          {personagens.cavaleiros.map(cavaleiro => <InformacaoCard key={cavaleiro.id} nome={cavaleiro.nome} src={cavaleiro.src} alt={cavaleiro.alt} onClick={() => setPersonagemSelecionado(cavaleiro)}/>)}
-          {personagens.anjos.map(anjo => <InformacaoCard key={anjo.id} nome={anjo.nome} src={anjo.src} alt={anjo.alt} onClick={() => setPersonagemSelecionado(anjo)}/>)}
-          {personagens.inimigos.map(inimigo => <InformacaoCard key={inimigo.id} nome={inimigo.nome} src={inimigo.src} alt={inimigo.alt} onClick={() => setPersonagemSelecionado(inimigo)}/>)}
+          {personagens.map(personagem => <InformacaoCard key={personagem.pers_id} tipo={personagem.pers_tipo} nome={personagem.pers_nome} src={personagem.pers_src} alt={personagem.pers_alt} onClick={() => setPersonagemSelecionado(personagem)}/>)}
         </section>
 
         {personagemSelecionado && (
