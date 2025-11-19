@@ -72,7 +72,7 @@ export default function Page() {
             <div className={styles.cardFooter}>Adicionar Notícia</div>
           </div>
           {/* Cards de notícias */}
-          {noticias.map(noticia => <InformacaoCard key={noticia.not_id} nome={noticia.not_titulo} src={noticia.not_src} alt={noticia.not_alt} onClick={() => setNoticiaSelecionada(noticia)}/>)}
+          {noticias.map(noticia => <InformacaoCard key={noticia.not_id} nome={noticia.not_titulo} src={noticia.not_imagem} alt={noticia.not_alt} onClick={() => setNoticiaSelecionada(noticia)}/>)}
         </section>
 
         {noticiaSelecionada && (

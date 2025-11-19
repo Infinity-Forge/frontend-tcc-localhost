@@ -49,7 +49,6 @@
 .card {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
   width: 100%;
@@ -72,7 +71,7 @@
 }
 
 .addCharacter {
-  background: #eee;
+  background: #202020;
 }
 
 .bigSymbol {
