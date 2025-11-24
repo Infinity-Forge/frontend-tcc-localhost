@@ -28,7 +28,7 @@ export default function Page() {
             const mapasApi = response.data.dados;
             setMapas(mapasApi);
           } else {
-            alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
+            alert('Erro:' + response.data.mensagem + '\n' + response.data.dados);
           }
 
       } catch (error) {
@@ -43,38 +43,38 @@ export default function Page() {
     }
 
     async function criarMapa(novoMapa) {
-    try {
-      setLoading(true);
+      try {
+        setLoading(true);
 
-      const response = await api.post("/mapas", novoMapa);
+        const response = await api.post("/mapas", novoMapa);
 
-      if (response.data.sucesso) {
-        alert("Mapa criado com sucesso!");
+        if (response.data.sucesso) {
+          alert("Mapa criado com sucesso!");
 
-        setMapas(prev => [...prev, response.data.dados]);
+          setMapas(prev => [...prev, response.data.dados]);
 
-        setMapaSelecionado(null);
-      } else {
-        alert(
-          "Erro:\n" +
-          response.data.mensagem +
-          "\n" +
-          response.data.dados
-        );
+          setMapaSelecionado(null);
+        } else {
+          alert(
+            "Erro:\n" +
+            response.data.mensagem +
+            "\n" +
+            response.data.dados
+          );
+        }
+
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        } else {
+          alert("Erro no front-end\n" + error);
+        }
+      } finally {
+        setLoading(false);
       }
-
-    } catch (error) {
-      if (error.response) {
-        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
-      } else {
-        alert("Erro no front-end\n" + error);
-      }
-    } finally {
-      setLoading(false);
     }
-  }
 
-  async function atualizarMapa(dadosAtualizados) {
+    async function atualizarMapa(dadosAtualizados) {
       try {
         setLoading(true);
 
@@ -118,7 +118,7 @@ export default function Page() {
         const response = await api.delete(`/mapas/${id}`);
 
         if (response.data.sucesso) {
-          alert("Arma deletada com sucesso!");
+          alert("Mapa deletado com sucesso!");
           setMapas(prev => prev.filter(item => item.mapa_id !== id));
 
         } else {
@@ -141,75 +141,87 @@ export default function Page() {
       }
     }
 
-  const [mapaSelecionado, setMapaSelecionado] = useState(null);
+    const [mapaSelecionado, setMapaSelecionado] = useState(null);
 
+    // Modelo baseado na tabela MAPAS
     const mapaModelo = {
-    ars_id: null,
-    usu_id: 1,
-    ars_src: "/arma.png",
-    ars_tipo: "",
-    ars_nome: "",
-    ars_alt: "",
-    ars_dano: "",
-    ars_raridade: "",
-    ars_municao: "",
-    ars_alcance: "",
-    ars_taxa_disparo: "",
-    ars_taxa_acerto: "",
-  };
+      mapa_id: null,
+      usu_id: 1,
+      mapa_src: "/mapa.png",
+      mapa_alt: "",
+      mapa_nome: "",
+      mapa_descricao: "",
+      mapa_data_criacao: new Date().toISOString().slice(0, 19).replace('T', ' ')
+    };
 
-  const termo = busca.trim().toLowerCase();
+    const termo = busca.trim().toLowerCase();
 
-  const mapasFiltrado = mapas.filter((item) => {
-    if (!termo) return true;
+    const mapasFiltrado = mapas.filter((item) => {
+      if (!termo) return true;
 
-    const nome = item?.mapa_nome ? String(item.mapa_nome).toLowerCase() : "";
-    const tipo = item?.mapa_tipo ? String(item.mapa_tipo).toLowerCase() : "";
-    const id = item?.mapa_id ? String(item.mapa_id) : "";
+      const nome = item?.mapa_nome ? String(item.mapa_nome).toLowerCase() : "";
+      const descricao = item?.mapa_descricao ? String(item.mapa_descricao).toLowerCase() : "";
+      const id = item?.mapa_id ? String(item.mapa_id) : "";
+
+      return (
+        nome.includes(termo) ||
+        descricao.includes(termo) ||
+        id.includes(termo)
+      );
+    });
 
     return (
-      nome.includes(termo) ||
-      tipo.includes(termo) ||
-      id.includes(termo)
-    );
-  });
-
-  return (
-    <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
-        <CabecalhoPolitica tituloPagina="Mapas" route="../admin/home"/>
-
-        <div className={styles.searchBox}>
-          <input type="text" placeholder="Buscar..." />
-          <span>🔍</span>
-        </div>
-      </header>
-
-      <Container>
-        {/* Grid de personagens */}
-        <section className={styles.grid}>
-          {/* Card adicionar */}
-          <div className={styles.card}>
-            <div className={styles.addCharacter} onClick={() => setMapaSelecionado({ ...mapaModelo })}>
-              <span className={styles.bigSymbol}>+</span>
-            </div>
-            <div className={styles.cardFooter}>Adicionar Mapa</div>
-          </div>
-          {/* Cards de mapas */}
-          {mapas.map(mapa => <InformacaoCard key={mapa.mapa_id} nome={mapa.mapa_nome} src={mapa.mapa_src} alt={mapa.mapa_alt} onClick={() => setMapaSelecionado(mapa)}/>)}
-        </section>
-
-        {mapaSelecionado && (
-          <Modal onClose={() => setMapaSelecionado(null)}>
-            <FormularioEdicao
-              item={mapaSelecionado}
-              titulo={mapaSelecionado.mapa_id ? "Editar Mapa" : "Criar Mapa"}
-              onSave={mapaSelecionado.mapa_id ? atualizarMapa : criarMapa}
+      <div className={styles.container}>
+        {/* Header */}
+        <header className={styles.header}>
+          <CabecalhoPolitica tituloPagina="Mapas" route="../admin/home"/>
+          
+          <div className={styles.searchBox}>
+            <input 
+              type="text" 
+              placeholder="Buscar..." 
+              value={busca} 
+              onChange={(e) => setBusca(e.target.value)}
             />
-          </Modal>
-        )}
-      </Container>
-    </div>
-  );
+            <span>🔍</span>
+          </div>
+        </header>
+
+        <Container>
+          {/* Grid de mapas */}
+          <section className={styles.grid}>
+            {/* Card adicionar */}
+            <div className={styles.card} onClick={() => setMapaSelecionado({ ...mapaModelo })}>
+              <div className={styles.addCharacter}>
+                <span className={styles.bigSymbol}>+</span>
+              </div>
+              <div className={styles.cardFooter}>Adicionar Mapa</div>
+            </div>
+            
+            {/* Cards de mapas */}
+            {mapasFiltrado.map((mapa) => (
+              <InformacaoCard 
+                key={mapa.mapa_id} 
+                nome={mapa.mapa_nome} // Usando nome como "tipo" para exibição
+                descricao={mapa.mapa_descricao ? mapa.mapa_descricao.substring(0, 50) + "..." : "Sem descrição"} // Descrição resumida
+                src={mapa.mapa_src} 
+                alt={mapa.mapa_alt} 
+                handleDeletar={() => deletarMapa(mapa.mapa_id)}
+                onClick={() => setMapaSelecionado(mapa)}
+              />
+            ))}
+          </section>
+
+          {mapaSelecionado && (
+            <Modal onClose={() => setMapaSelecionado(null)}>
+              <FormularioEdicao
+                item={mapaSelecionado}
+                titulo={mapaSelecionado.mapa_id ? "Editar Mapa" : "Criar Mapa"}
+                onSave={mapaSelecionado.mapa_id ? atualizarMapa : criarMapa}
+              />
+            </Modal>
+          )}
+        </Container>
+      </div>
+    );
 }
