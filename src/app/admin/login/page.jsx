@@ -11,9 +11,17 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [loading, setLoading] = useState(false);
 
     async function handleLogin(e) {
         e.preventDefault();
+
+        if (!email || !senha) {
+            alert("Por favor, preencha email e senha.");
+            return;
+        }
+
+        setLoading(true);
 
         try {
             const response = await api.post("/login", {
@@ -24,11 +32,13 @@ function Login() {
             if (response.data.sucesso) {
                 alert("Login realizado!");
 
-                // salva o token no localStorage
+                // CORREÇÃO: Garantir que o token é salvo antes do redirecionamento
                 localStorage.setItem("token", response.data.dados.token);
-
-                // redireciona para admin
-                router.push("/admin/home");
+                
+                // Pequeno delay para garantir que o token foi salvo
+                setTimeout(() => {
+                    router.push("/admin/home");
+                }, 100);
 
             } else {
                 alert(response.data.mensagem);
@@ -36,10 +46,13 @@ function Login() {
 
         } catch (error) {
             if(error.response){
-                alert(error.response.data.mensagem);
+                alert("Erro: " + error.response.data.mensagem);
             } else {
-                alert("Erro no front-end");
+                alert("Erro de conexão com o servidor");
+                console.error("Erro no login:", error);
             }
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -58,6 +71,7 @@ function Login() {
                             className={styles["input-field"]}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={loading}
                         />
 
                         <input 
@@ -66,10 +80,15 @@ function Login() {
                             className={styles["input-field"]}
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
+                            disabled={loading}
                         />
 
-                        <button type="submit" className={styles.btn}>
-                            Entrar
+                        <button 
+                            type="submit" 
+                            className={styles.btn}
+                            disabled={loading}
+                        >
+                            {loading ? "Carregando..." : "Entrar"}
                         </button>
                     </form>
 
