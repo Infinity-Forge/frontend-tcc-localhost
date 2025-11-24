@@ -20,103 +20,118 @@ function FormularioEdicao({ item, titulo, onSave }) {
       return;
     }
 
-    onSave(dados);
+    onSave({ ...dados, id: obterId(dados) });
+  };
+
+  /**
+   * Identifica ID correto para qualquer item
+   */
+  function obterId(dados) {
+    const ids = ["id", "_id", "mapa_id", "ars_id", "pers_id", "not_id"];
+    for (const id of ids) {
+      if (dados[id] !== undefined && dados[id] !== null) {
+        return dados[id];
+      }
+    }
+    return null;
   }
 
+  /**
+   * Validações de todos os tipos
+   */
   const validacoes = {
-    // Validações para Arsenal
-    ars_tipo:         { required: true,  type: "number",  allowed: [0, 1, 2], mensagem: "Tipo deve ser 0 (pistola), 1 (faca) ou 2 (rifle)." },
-    ars_nome:         { required: true,  type: "string",  min: 1, max: 100, mensagem: "Nome é obrigatório e deve ter até 100 caracteres." },
-    ars_src:          { required: true,  type: "string",  min: 1, max: 255, mensagem: "O caminho da imagem é obrigatório." },
-    ars_alt:          { required: false, type: "string",  max: 100, mensagem: "Alt deve ter no máximo 100 caracteres." },
-    ars_dano:         { required: false, type: "number",  min: 0, max: 999, mensagem: "Dano deve ser um número entre 0 e 999." },
-    ars_raridade:     { required: false, type: "string",  max: 50, mensagem: "Raridade deve ter no máximo 50 caracteres." },
-    ars_municao:      { required: false, type: "number",  min: 0, max: 999, mensagem: "Munição deve ser um número entre 0 e 999." },
-    ars_alcance:      { required: false, type: "number",  min: 0, max: 999, mensagem: "Alcance deve ser um número entre 0 e 999." },
-    ars_taxa_disparo: { required: false, type: "decimal", min: 0, max: 999, mensagem: "Taxa de disparo deve ser um número decimal entre 0 e 999." },
-    ars_taxa_acerto:  { required: false, type: "decimal", min: 0, max: 999, mensagem: "Taxa de acerto deve ser um número decimal entre 0 e 999." },
-    
-    // Validações para Mapas
-    mapa_nome:        { required: true,  type: "string",  min: 1, max: 100, mensagem: "Nome do mapa é obrigatório e deve ter até 100 caracteres." },
-    mapa_src:         { required: true,  type: "string",  min: 1, max: 255, mensagem: "O caminho da imagem do mapa é obrigatório." },
-    mapa_alt:         { required: false, type: "string",  max: 100, mensagem: "Alt deve ter no máximo 100 caracteres." },
-    mapa_descricao:   { required: false, type: "string",  max: 1000, mensagem: "Descrição deve ter no máximo 1000 caracteres." }
-  }
+    // Arsenal
+    ars_tipo:         { required: true, type: "number", allowed: [0, 1, 2], mensagem: "Tipo deve ser 0 (pistola), 1 (faca) ou 2 (rifle)." },
+    ars_nome:         { required: true, type: "string", min: 1, max: 100 },
+    ars_src:          { required: true, type: "string", min: 1, max: 255 },
+    ars_alt:          { required: false, type: "string", max: 100 },
+    ars_dano:         { required: false, type: "number", min: 0, max: 999 },
+    ars_raridade:     { required: false, type: "string", max: 50 },
+    ars_municao:      { required: false, type: "number", min: 0, max: 999 },
+    ars_alcance:      { required: false, type: "number", min: 0, max: 999 },
+    ars_taxa_disparo: { required: false, type: "decimal", min: 0, max: 999 },
+    ars_taxa_acerto:  { required: false, type: "decimal", min: 0, max: 999 },
 
+    // Mapas
+    mapa_nome:        { required: true, type: "string", min: 1, max: 100 },
+    mapa_src:         { required: true, type: "string", min: 1, max: 255 },
+    mapa_alt:         { required: false, type: "string", max: 100 },
+    mapa_descricao:   { required: false, type: "string", max: 1000 },
+
+    // Notícia
+    not_titulo:       { required: true, type: "string", min: 1, max: 150 },
+    not_conteudo:     { required: true, type: "string", min: 10, max: 5000 },
+    not_imagem:       { required: true, type: "string", min: 1, max: 255 },
+    not_alt:          { required: false, type: "string", max: 100 },
+
+    // Personagens
+    pers_tipo:        { required: true, type: "number", allowed: [0,1,2,3], mensagem: "Tipo deve ser 0 (guardião), 1 (cavaleiro), 2 (anjo), 3 (inimigo)." },
+    pers_nome:        { required: true, type: "string", min: 1, max: 100 },
+    pers_src:         { required: true, type: "string", min: 1, max: 255 },
+    pers_alt:         { required: false, type: "string", max: 100 },
+    pers_descricao:   { required: false, type: "string", max: 5000 },
+    pers_frase:       { required: false, type: "string", max: 255 },
+  };
+
+  /**
+   * Validador genérico
+   */
   function validarDados(dados) {
     const erros = [];
+    const campos = Object.keys(dados);
 
-    // Determina qual conjunto de validações usar baseado nos campos presentes
-    const camposPresentes = Object.keys(dados);
-    let usarValidacoesMapa = false;
-    let usarValidacoesArsenal = false;
-
-    if (camposPresentes.some(campo => campo.startsWith('mapa_'))) {
-      usarValidacoesMapa = true;
-    }
-    if (camposPresentes.some(campo => campo.startsWith('ars_'))) {
-      usarValidacoesArsenal = true;
-    }
+    const usarArsenal = campos.some(c => c.startsWith("ars_"));
+    const usarMapa = campos.some(c => c.startsWith("mapa_"));
+    const usarNoticia = campos.some(c => c.startsWith("not_"));
+    const usarPersonagem = campos.some(c => c.startsWith("pers_"));
 
     for (const campo in validacoes) {
-      // Aplica apenas validações relevantes para o tipo de item
-      if ((usarValidacoesMapa && campo.startsWith('mapa_')) || 
-          (usarValidacoesArsenal && campo.startsWith('ars_'))) {
-        
-        const regras = validacoes[campo];
-        const valor = dados[campo];
+      const regras = validacoes[campo];
+      const valor = dados[campo];
 
-        // required
-        if (regras.required && (valor === "" || valor === null || valor === undefined)) {
-          erros.push(`${formatarCampo(campo)} é obrigatório.`);
+      if (
+        (usarArsenal && campo.startsWith("ars_")) ||
+        (usarMapa && campo.startsWith("mapa_")) ||
+        (usarNoticia && campo.startsWith("not_")) ||
+        (usarPersonagem && campo.startsWith("pers_"))
+      ) {
+
+        if (regras.required && !valor) {
+          erros.push(`${formatar(campo)} é obrigatório.`);
           continue;
         }
 
-        if (valor === "" || valor === null || valor === undefined) continue;
+        if (!valor) continue;
 
-        // tipo number
-        if (regras.type === "number") {
-          if (isNaN(Number(valor))) {
-            erros.push(`${formatarCampo(campo)} deve ser um número.`);
-            continue;
-          }
+        if (regras.type === "number" && isNaN(Number(valor))) {
+          erros.push(`${formatar(campo)} deve ser número.`);
+          continue;
         }
 
-        // tipo decimal
-        if (regras.type === "decimal") {
-          if (isNaN(parseFloat(valor))) {
-            erros.push(`${formatarCampo(campo)} deve ser um número decimal.`);
-            continue;
-          }
+        if (regras.type === "decimal" && isNaN(parseFloat(valor))) {
+          erros.push(`${formatar(campo)} deve ser decimal.`);
+          continue;
         }
 
-        // tipo string
-        if (regras.type === "string") {
-          if (typeof valor !== "string") {
-            erros.push(`${formatarCampo(campo)} deve ser texto.`);
-            continue;
-          }
+        if (regras.type === "string" && typeof valor !== "string") {
+          erros.push(`${formatar(campo)} deve ser texto.`);
+          continue;
         }
 
-        // min/max
         if (regras.min !== undefined && Number(valor) < regras.min) {
-          erros.push(`${formatarCampo(campo)} deve ser no mínimo ${regras.min}.`);
+          erros.push(`${formatar(campo)} deve ser no mínimo ${regras.min}.`);
         }
 
         if (regras.max !== undefined && Number(valor) > regras.max) {
-          erros.push(`${formatarCampo(campo)} deve ser no máximo ${regras.max}.`);
+          erros.push(`${formatar(campo)} deve ser no máximo ${regras.max}.`);
         }
 
-        // tamanho string
-        if (typeof valor === "string") {
-          if (regras.max && valor.length > regras.max) {
-            erros.push(`${formatarCampo(campo)} deve ter no máximo ${regras.max} caracteres.`);
-          }
+        if (typeof valor === "string" && regras.max && valor.length > regras.max) {
+          erros.push(`${formatar(campo)} deve ter no máximo ${regras.max} caracteres.`);
         }
 
-        // valores permitidos
         if (regras.allowed && !regras.allowed.includes(Number(valor))) {
-          erros.push(regras.mensagem || `${formatarCampo(campo)} possui valor inválido.`);
+          erros.push(regras.mensagem || `${formatar(campo)} inválido.`);
         }
       }
     }
@@ -124,44 +139,47 @@ function FormularioEdicao({ item, titulo, onSave }) {
     return erros;
   }
 
-  const formatarCampo = (campo) => {
-    if (campo.startsWith("ars_")) {
-      return campo.replace("ars_", "");
-    }
-    if (campo.startsWith("mapa_")) {
-      return campo.replace("mapa_", "");
-    }
-    if (campo.startsWith("not_")) {
-      return campo.replace("not_", "");
-    }
-    if (campo.startsWith("pers_")) {
-      return campo.replace("pers_", "");
-    }
-
-    return campo;
-  };
-
-  console.log(dados);
+  const formatar = (campo) =>
+    campo
+      .replace("ars_", "")
+      .replace("mapa_", "")
+      .replace("not_", "")
+      .replace("pers_", "");
 
   return (
     <div className={styles.container}>
       <h1 className={styles.titulo}>{titulo}</h1>
+
       <div className={styles.divFormEImagem}>
         <form className={styles.form} onSubmit={handleSubmit}>
+
           {Object.entries(dados).map(([campo, valor]) => {
-            if (campo.includes("src") || campo.includes("data_criacao") || campo.includes("data_publicacao") || campo.includes("imagem") || campo === "usu_id" || campo.includes("_id") || valor === null) return null;
+            if (
+              campo.includes("src") ||
+              campo.includes("imagem") ||
+              campo.includes("data_criacao") ||
+              campo.includes("data_publicacao") ||
+              campo === "usu_id" ||
+              campo.endsWith("_id") ||
+              valor === null
+            ) return null;
 
             return (
               <Input
                 key={campo}
-                label={`${formatarCampo(campo)[0].toUpperCase()}${formatarCampo(campo).slice(1)}:`}
+                label={`${formatar(campo)[0].toUpperCase()}${formatar(campo).slice(1)}:`}
                 value={valor}
                 onChange={(val) => handleChange(campo, val)}
               />
             );
           })}
-          <img src={dados.mapa_src || dados.ars_src || dados.src} className={styles.imagem}/>
-          <button type="submit" className={styles.btnSalvar}>Salvar</button>  
+
+          <img
+            src={dados.not_imagem || dados.mapa_src || dados.ars_src || dados.pers_src || dados.src}
+            className={styles.imagem}
+          />
+
+          <button type="submit" className={styles.btnSalvar}>Salvar</button>
         </form>
       </div>
     </div>
