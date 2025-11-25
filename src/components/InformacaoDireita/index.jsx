@@ -1,6 +1,7 @@
+import Link from "next/link";
 import styles from "./index.module.css";
 
-function InformacaoDireita({ text, btnText, imageSrc, alt }) {
+function InformacaoDireita({ text, btnText, imageSrc, alt, rota = "" }) {
 
     return(
         <div className={styles.textoEMapa}>
@@ -9,7 +10,12 @@ function InformacaoDireita({ text, btnText, imageSrc, alt }) {
             </div>
             <div className={styles.textinhoJogo}>
                 <p className={styles.paragraph}>{text}</p>
-                <button className={styles.jogarDeBaixoDoTexto}>{btnText}</button>
+                {rota !== "" ?
+                <Link href={rota}>
+                    <button className={styles.jogarDeBaixoDoTexto}>{btnText}</button>
+                </Link>
+                :
+                <button className={styles.jogarDeBaixoDoTexto}>{btnText}</button>}
             </div>
         </div>
     )

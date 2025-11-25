@@ -10,26 +10,29 @@
     flex: 1;
     max-width: 40%;
     padding: 10px;
-    text-align: right;
 }
 
 .paragraph {
     margin-bottom: 16px;
-    line-height: 1.5rem;
-    text-align: left;
+    font-size: 1.25rem;
+    text-align: justify;
+    margin-left: 32px;
+    line-height: 1.75rem;
 }
 
 button.jogarDeBaixoDoTexto {
-    width: 170px;
+    width: 200px;
+    font-size: 1.25rem;
     border: none;
     border-radius: 20px;
     background-color: var(--vermelho-escuro);
     color: #fff;
     padding: 10px 20px;
     cursor: pointer;
-    margin-left: auto; 
+    margin-left: 32px;
+    margin-right: auto; 
     transition: background-color 0.3s;
-    margin-left: auto;
+    text-decoration: none;
 }
 
 button.jogarDeBaixoDoTexto:hover {
@@ -54,7 +57,8 @@ button.jogarDeBaixoDoTexto:hover {
 @media (max-width: 768px) {
     .textoEMapa {
         flex-direction: column; 
-        align-items: center;     
+        align-items: center;
+        justify-content: center;
     }
 
     .textinhoJogo {
@@ -64,6 +68,8 @@ button.jogarDeBaixoDoTexto:hover {
 
     .paragraph {
         text-align: center;
+        font-size: 1rem;
+        margin-left: 0;
     }
 
     .imagemDoLado {

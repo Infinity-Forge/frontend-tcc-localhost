@@ -107,7 +107,9 @@ function Home() {
       <section className="jogoEBanner">
         <Container>
           <InformacaoEsquerda
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
+          text="Um RPG de ação em um mundo arruinado por anjos vingativos. Explore cidades devastadas, enfrente criaturas do Condato e domine o poder das Máscaras para sobreviver ao fim da humanidade.
+          Em combates intensos no estilo beat’em up, avance por cenários destruídos, libere habilidades únicas de cada Máscara e encare hordas de inimigos divinos enquanto desbrava as ruínas de grandes civilizações tomadas pelo caos.
+          Lute, evolua e descubra até onde você irá para impedir que o céu apague o último resquício da humanidade."
           btnText="Jogar"
           imageSrc="/jogoLogo.png"/>
         </Container>
@@ -140,13 +142,17 @@ function Home() {
         <section className={styles.mapas}>
           <Title text="Mapas" marginTopValue="0" marginBottomValue="0"/>
             <InformacaoEsquerda
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
+            text="O antigo teatro de Kalensky, antes palco de histórias e aplausos, torna-se o cenário do primeiro contato com o terror do Condato. Entre bastidores escuros, corredores apertados e salas abandonadas, você descobrira o poder das Máscaras enquanto tenta sobreviver ao ataque que marca o início do fim.
+            Este é o começo da sua jornada — o instante em que o mundo ruirá diante dos seus olhos."
             btnText="Ver mais"
-            imageSrc="/cenario1.png"/>
+            rota={"/mapas"}
+            imageSrc="/cenarioexemplo1.png"/>
             <InformacaoDireita
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, itaque provident ut asperiores praesentium quasi ipsum excepturi aspernatur mollitia officia ea doloribus? Quidem doloribus hic officia facere, repellendus fugit adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum molestiae optio esse quaerat, qui vitae culpa impedit! Atque in quasi, nisi necessitatibus amet suscipit dicta maiores consectetur quos corporis dolorum!"
+            text="Após escapar do caos, você chega a uma Berlim fria, silenciosa e dominada pelo medo. Ruas vazias, sirenes distantes e prédios que parecem observar cada movimento criam o clima perfeito para as primeiras batalhas reais contra as forças do Condato.
+            Aqui, não há palco: apenas combate. É onde sua luta de verdade começa — e onde você entende que nada em Kalensky será como antes."
             btnText="Ver mais"
-            imageSrc="/cenario1.png"/>
+            rota={"/mapas"}
+            imageSrc="/cenarioexemplo2.png"/>
         </section>
       </Container>
       <Banner imageSrc="/bannerAnjoDerretendo.jpg" alt="Banner"/>
