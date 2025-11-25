@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Container from "@/components/Container";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
@@ -15,9 +16,19 @@ export default function Page() {
     const [busca, setBusca] = useState("");
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      listarMapas();
-    }, [])
+      const router = useRouter();
+    
+      useEffect(() => {
+      const token = localStorage.getItem("token");
+      
+      if (!token) {
+          alert("Você precisa estar logado.");
+          return router.push("/admin/login");
+      } else {
+        listarMapas();
+      }
+    
+      }, []);
 
     async function listarMapas() {
       try {

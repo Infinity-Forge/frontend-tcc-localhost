@@ -1,17 +1,20 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import AdminCard from "@/components/Admin/HomeCard";
 import styles from "./page.module.css";
 
 function AdminHome() {
 
+    const router = useRouter();
+
     useEffect(() => {
     const token = localStorage.getItem("token");
     
     if (!token) {
         alert("Você precisa estar logado.");
-        return router.push("/login");
+        return router.push("/admin/login");
     }
     }, []);
 
