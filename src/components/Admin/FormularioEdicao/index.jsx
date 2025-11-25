@@ -46,11 +46,11 @@ function FormularioEdicao({ item, titulo, onSave }) {
   function obterId(dados) {
     const ids = ["id", "_id", "mapa_id", "ars_id", "pers_id", "not_id"];
     for (const id of ids) {
-      if (dados[id] !== undefined && dados[id] !== null) {
+      if (dados[id] !== undefined && dados[id] !== null && dados[id] !== "") {
         return dados[id];
       }
     }
-    return null;
+    return undefined;
   }
 
   const validacoes = {
@@ -76,7 +76,6 @@ function FormularioEdicao({ item, titulo, onSave }) {
     not_titulo:       { required: true, type: "string", min: 1, max: 150 },
     not_conteudo:     { required: true, type: "string", min: 10, max: 5000 },
     not_imagem:       { required: false, type: "string", max: 255 },
-    not_alt:          { required: false, type: "string", max: 100 },
 
     // Personagens
     pers_tipo:        { required: true, type: "number", allowed: [0,1,2,3], mensagem: "Tipo deve ser 0 (guardião), 1 (cavaleiro), 2 (anjo), 3 (inimigo)." },

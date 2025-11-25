@@ -113,7 +113,7 @@ export default function Page() {
         formData.append('imagem', dadosAtualizados.imagem);
       }
 
-      const response = await api.put(`/noticias/${dadosAtualizados.not_id}`, formData, {
+      const response = await api.patch(`/noticias/${dadosAtualizados.not_id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -176,7 +176,7 @@ export default function Page() {
     usu_id: 1,
     not_titulo: "",
     not_conteudo: "",
-    not_imagem: "/noticia.png"
+    not_imagem: ""
   };
 
   const termo = busca.trim().toLowerCase();
@@ -228,7 +228,6 @@ export default function Page() {
               key={noticia.not_id}
               nome={noticia.not_titulo}
               src={noticia.not_imagem}
-              alt={noticia.not_titulo}
               handleDeletar={() => deletarNoticia(noticia.not_id)}
               onClick={() => setNoticiaSelecionada(noticia)}
             />
