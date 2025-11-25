@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
 import CarrosselBanner from "@/components/CarrosselBanner";
@@ -14,8 +15,45 @@ import InformacaoEsquerda from "@/components/InformacaoEsquerda";
 import InformacaoDireita from "@/components/InformacaoDireita";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
+import api from "@/services/api";
 
 function Home() {
+
+  const [personagens, setPersonagens] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    listarPersonagens();
+  }, []);
+
+  async function listarPersonagens() {
+    try {
+      setLoading(true);
+      const response = await api.get('/personagens');
+      console.log(response);
+
+      if (response.data.sucesso == true) {
+          const personagemApi = response.data.dados;
+          setPersonagens(personagemApi);
+      } else {
+          alert(`Erro ${response.data.message} \n ${response.data.dados}`);
+      }
+      
+    } catch (error) {
+
+      if (error.response) {
+          alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+          alert("Erro no front-end" + "\n" + error);
+      }
+
+    } finally {
+        setLoading(false);
+    }
+  }
+
+  const guardioes = personagens.filter(personagem => personagem.pers_tipo === 0);
+  const cavaleiros = personagens.filter(personagem => personagem.pers_tipo === 1);
 
   return (
     <div className="app">
@@ -51,7 +89,15 @@ function Home() {
            <article className={styles.guardioes}>
               <Title text="Guardiões" marginTopValue="0"/>
               <ContainerPersonagens>
-                {/*personagens.guardioes.map((guardiao, index) => <CardPersonagem key={index} rota={"/"} id={guardiao.id} nome={guardiao.nome} imageSrc={guardiao.src} alt={guardiao.alt}></CardPersonagem>)*/}
+                {loading ? (
+                    <div>Carregando...</div>
+                ) : guardioes.length > 0 ? (
+                  guardioes.map((guardiao) => (
+                      <CardPersonagem key={guardiao.pers_id} rota={"personagens"} id={guardiao.pers_id} nome={guardiao.pers_nome} imageSrc={guardiao.pers_src} alt={guardiao.pers_alt}/>
+                  ))
+                ) : (
+                    <h1>Não foi possível carregar os guardiões</h1>
+                )}
               </ContainerPersonagens>
            </article>
          </Container>
@@ -74,7 +120,15 @@ function Home() {
            <article className={styles.cavaleiros}>
               <Title text="Cavaleiros" marginTopValue="0"/>
               <ContainerPersonagens>
-                {/*personagens.cavaleiros.map((cavaleiro, index) => <CardPersonagem key={index} rota={"/"} id={cavaleiro.id} nome={cavaleiro.nome} imageSrc={cavaleiro.src} alt={cavaleiro.alt}></CardPersonagem>)*/}
+                {loading ? (
+                    <div>Carregando...</div>
+                ) : cavaleiros.length > 0 ? (
+                  cavaleiros.map((cavaleiro) => (
+                      <CardPersonagem key={cavaleiro.pers_id} rota={"personagens"} id={cavaleiro.pers_id} nome={cavaleiro.pers_nome} imageSrc={cavaleiro.pers_src} alt={cavaleiro.pers_alt}/>
+                  ))
+                ) : (
+                    <h1>Não foi possível carregar os cavaleiros</h1>
+                )}
               </ContainerPersonagens>
            </article>
          </Container>
