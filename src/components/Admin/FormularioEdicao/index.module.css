@@ -41,3 +41,47 @@
 .btnSalvar:hover {
   background-color: #8f473c;
 }
+
+/* Estilos para o upload de imagem */
+.uploadContainer {
+  margin: 15px 0;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.uploadLabel {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.uploadInput {
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.arquivoSelecionado {
+  color: #28a745;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.imagemContainer {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.legendaImagem {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+  font-style: italic;
+}

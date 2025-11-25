@@ -39,7 +39,7 @@ export default function Page() {
           const arsenalApi = response.data.dados;
           setArsenal(arsenalApi);
         } else {
-          alert('Erro:' + error.response.data.mensagem + '\n' + error.response.data.dados);
+          alert('Erro:' + response.data.mensagem + '\n' + response.data.dados);
         }
 
     } catch (error) {
@@ -57,12 +57,29 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const response = await api.post("/arsenal", novaArma);
+      const formData = new FormData();
+      
+      Object.keys(novaArma).forEach(key => {
+        if (key !== 'imagem' && key !== 'id' && novaArma[key] !== null) {
+          formData.append(key, novaArma[key]);
+        }
+      });
+
+      if (novaArma.imagem && novaArma.imagem instanceof File) {
+        formData.append('imagem', novaArma.imagem);
+      }
+
+      const response = await api.post("/arsenal", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       if (response.data.sucesso) {
         alert("Arma criada com sucesso!");
 
-        setArsenal(prev => [...prev, response.data.dados]);
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarArsenal();
 
         setArmaSelecionada(null);
       } else {
@@ -89,19 +106,31 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const response = await api.put(`/arsenal/${dadosAtualizados.ars_id}`, dadosAtualizados);
+      const formData = new FormData();
+      
+      Object.keys(dadosAtualizados).forEach(key => {
+        if (key !== 'imagem' && key !== 'id' && dadosAtualizados[key] !== null) {
+          formData.append(key, dadosAtualizados[key]);
+        }
+      });
+      
+      if (dadosAtualizados.imagem && dadosAtualizados.imagem instanceof File) {
+        formData.append('imagem', dadosAtualizados.imagem);
+      }
+
+      const response = await api.put(`/arsenal/${dadosAtualizados.ars_id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       if (response.data.sucesso) {
         alert("Arma atualizada com sucesso!");
 
-        // Atualiza o estado local também
-        setArsenal(prev =>
-          prev.map(item =>
-            item.ars_id === dadosAtualizados.ars_id ? dadosAtualizados : item
-          )
-        );
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarArsenal();
 
-        setArmaSelecionada(null); // Fecha o modal
+        setArmaSelecionada(null);
       } else {
         alert(
           "Erro: " +
@@ -130,7 +159,9 @@ export default function Page() {
 
       if (response.data.sucesso) {
         alert("Arma deletada com sucesso!");
-        setArsenal(prev => prev.filter(item => item.ars_id !== id));
+        
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarArsenal();
 
       } else {
         alert(
@@ -197,7 +228,7 @@ export default function Page() {
       </header>
 
       <Container>
-        {/* Grid de personagens */}
+        {/* Grid de arsenal */}
         <section className={styles.grid}>
           {/* Card adicionar */}
           <div className={styles.card} onClick={() => setArmaSelecionada({ ...armaModelo })}>
@@ -206,8 +237,18 @@ export default function Page() {
             </div>
             <div className={styles.cardFooter}>Adicionar Arma</div>
           </div>
-          {/* Cards de personagens */}
-          {arsenalFiltrado.map((arsenal) => <InformacaoCard key={arsenal.ars_id} tipo={arsenal.ars_tipo} nome={arsenal.ars_nome} src={arsenal.ars_src} alt={arsenal.ars_alt} handleDeletar={() => deletarArma(arsenal.ars_id)} onClick={() => setArmaSelecionada(arsenal)}/>)}
+          {/* Cards de arsenal */}
+          {arsenalFiltrado.map((arsenal) => (
+            <InformacaoCard 
+              key={arsenal.ars_id} 
+              tipo={arsenal.ars_tipo} 
+              nome={arsenal.ars_nome} 
+              src={arsenal.ars_src} 
+              alt={arsenal.ars_alt} 
+              handleDeletar={() => deletarArma(arsenal.ars_id)}
+              onClick={() => setArmaSelecionada(arsenal)}
+            />
+          ))}
         </section>
 
         {armaSelecionada && (

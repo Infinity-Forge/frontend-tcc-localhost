@@ -57,11 +57,29 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const response = await api.post("/noticias", novaNoticia);
+      const formData = new FormData();
+      
+      Object.keys(novaNoticia).forEach(key => {
+        if (key !== 'imagem' && key !== 'id' && novaNoticia[key] !== null) {
+          formData.append(key, novaNoticia[key]);
+        }
+      });
+
+      if (novaNoticia.imagem && novaNoticia.imagem instanceof File) {
+        formData.append('imagem', novaNoticia.imagem);
+      }
+
+      const response = await api.post("/noticias", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       if (response.data.sucesso) {
         alert("Notícia criada com sucesso!");
-        setNoticias(prev => [...prev, response.data.dados]);
+        
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarNoticias();
 
         setNoticiaSelecionada(null);
       } else {
@@ -83,16 +101,29 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const response = await api.put(`/noticias/${dadosAtualizados.not_id}`, dadosAtualizados);
+      const formData = new FormData();
+      
+      Object.keys(dadosAtualizados).forEach(key => {
+        if (key !== 'imagem' && key !== 'id' && dadosAtualizados[key] !== null) {
+          formData.append(key, dadosAtualizados[key]);
+        }
+      });
+      
+      if (dadosAtualizados.imagem && dadosAtualizados.imagem instanceof File) {
+        formData.append('imagem', dadosAtualizados.imagem);
+      }
+
+      const response = await api.put(`/noticias/${dadosAtualizados.not_id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       if (response.data.sucesso) {
         alert("Notícia atualizada com sucesso!");
 
-        setNoticias(prev =>
-          prev.map(item =>
-            item.not_id === dadosAtualizados.not_id ? dadosAtualizados : item
-          )
-        );
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarNoticias();
 
         setNoticiaSelecionada(null);
 
@@ -119,7 +150,9 @@ export default function Page() {
 
       if (response.data.sucesso) {
         alert("Notícia deletada com sucesso!");
-        setNoticias(prev => prev.filter(item => item.not_id !== id));
+        
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarNoticias();
 
       } else {
         alert("Erro:\n" + response.data.mensagem + "\n" + response.data.dados);

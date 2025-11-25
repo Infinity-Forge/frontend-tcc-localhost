@@ -16,9 +16,9 @@ export default function Page() {
   const [busca, setBusca] = useState("");
   const [loading, setLoading] = useState(true);
 
-    const router = useRouter();
+  const router = useRouter();
   
-    useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     
     if (!token) {
@@ -28,7 +28,7 @@ export default function Page() {
       listarPersonagens();
     }
   
-    }, []);
+  }, []);
 
   async function listarPersonagens() {
     try {
@@ -57,12 +57,29 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const response = await api.post("/personagens", novoPersonagem);
+      const formData = new FormData();
+      
+      Object.keys(novoPersonagem).forEach(key => {
+        if (key !== 'imagem' && key !== 'id' && novoPersonagem[key] !== null) {
+          formData.append(key, novoPersonagem[key]);
+        }
+      });
+
+      if (novoPersonagem.imagem && novoPersonagem.imagem instanceof File) {
+        formData.append('imagem', novoPersonagem.imagem);
+      }
+
+      const response = await api.post("/personagens", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       if (response.data.sucesso) {
         alert("Personagem criado com sucesso!");
 
-        setPersonagens(prev => [...prev, response.data.dados]);
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarPersonagens();
 
         setPersonagemSelecionado(null);
       } else {
@@ -89,19 +106,31 @@ export default function Page() {
     try {
       setLoading(true);
 
-      const response = await api.put(`/personagens/${dadosAtualizados.pers_id}`, dadosAtualizados);
+      const formData = new FormData();
+      
+      Object.keys(dadosAtualizados).forEach(key => {
+        if (key !== 'imagem' && key !== 'id' && dadosAtualizados[key] !== null) {
+          formData.append(key, dadosAtualizados[key]);
+        }
+      });
+      
+      if (dadosAtualizados.imagem && dadosAtualizados.imagem instanceof File) {
+        formData.append('imagem', dadosAtualizados.imagem);
+      }
+
+      const response = await api.put(`/personagens/${dadosAtualizados.pers_id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       if (response.data.sucesso) {
         alert("Personagem atualizado com sucesso!");
 
-        // Atualiza o estado local também
-        setPersonagens(prev =>
-          prev.map(item =>
-            item.pers_id === dadosAtualizados.pers_id ? dadosAtualizados : item
-          )
-        );
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarPersonagens();
 
-        setPersonagemSelecionado(null); // Fecha o modal
+        setPersonagemSelecionado(null);
       } else {
         alert(
           "Erro: " +
@@ -130,7 +159,9 @@ export default function Page() {
 
       if (response.data.sucesso) {
         alert("Personagem deletado com sucesso!");
-        setPersonagens(prev => prev.filter(item => item.pers_id !== id));
+        
+        // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+        await listarPersonagens();
 
       } else {
         alert(
@@ -159,7 +190,7 @@ export default function Page() {
     usu_id: 1,
     pers_tipo: "",
     pers_nome: "",
-    pers_src: "/personagem.png",
+    pers_src: "",
     pers_alt: "",
     pers_descricao: "",
     pers_frase: ""

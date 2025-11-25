@@ -5,9 +5,27 @@ import styles from "./index.module.css";
 function FormularioEdicao({ item, titulo, onSave }) {
 
   const [dados, setDados] = useState(item);
+  const [imagem, setImagem] = useState(null); // Estado para a nova imagem
+  const [imagemPreview, setImagemPreview] = useState(null); // Preview da imagem
 
   const handleChange = (campo, valor) => {
     setDados((prev) => ({ ...prev, [campo]: valor }));
+  };
+
+  // ⬇️ NOVA FUNÇÃO PARA MANIPULAR UPLOAD DE IMAGEM ⬇️
+  const handleImagemChange = (e) => {
+    const arquivo = e.target.files[0];
+    
+    if (arquivo) {
+      setImagem(arquivo);
+      
+      // Criar preview da imagem
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagemPreview(e.target.result);
+      };
+      reader.readAsDataURL(arquivo);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -20,7 +38,12 @@ function FormularioEdicao({ item, titulo, onSave }) {
       return;
     }
 
-    onSave({ ...dados, id: obterId(dados) });
+    // ⬇️ ENVIAR DADOS COM IMAGEM ⬇️
+    onSave({ 
+      ...dados, 
+      id: obterId(dados),
+      imagem: imagem // Inclui o arquivo de imagem
+    });
   };
 
   /**
@@ -37,13 +60,13 @@ function FormularioEdicao({ item, titulo, onSave }) {
   }
 
   /**
-   * Validações de todos os tipos
+   * Validações de todos os tipos (ATUALIZADO)
    */
   const validacoes = {
     // Arsenal
     ars_tipo:         { required: true, type: "number", allowed: [0, 1, 2], mensagem: "Tipo deve ser 0 (pistola), 1 (faca) ou 2 (rifle)." },
     ars_nome:         { required: true, type: "string", min: 1, max: 100 },
-    ars_src:          { required: true, type: "string", min: 1, max: 255 },
+    ars_src:          { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
     ars_alt:          { required: false, type: "string", max: 100 },
     ars_dano:         { required: false, type: "number", min: 0, max: 999 },
     ars_raridade:     { required: false, type: "string", max: 50 },
@@ -54,27 +77,27 @@ function FormularioEdicao({ item, titulo, onSave }) {
 
     // Mapas
     mapa_nome:        { required: true, type: "string", min: 1, max: 100 },
-    mapa_src:         { required: true, type: "string", min: 1, max: 255 },
+    mapa_src:         { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
     mapa_alt:         { required: false, type: "string", max: 100 },
     mapa_descricao:   { required: false, type: "string", max: 1000 },
 
     // Notícia
     not_titulo:       { required: true, type: "string", min: 1, max: 150 },
     not_conteudo:     { required: true, type: "string", min: 10, max: 5000 },
-    not_imagem:       { required: true, type: "string", min: 1, max: 255 },
+    not_imagem:       { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
     not_alt:          { required: false, type: "string", max: 100 },
 
     // Personagens
     pers_tipo:        { required: true, type: "number", allowed: [0,1,2,3], mensagem: "Tipo deve ser 0 (guardião), 1 (cavaleiro), 2 (anjo), 3 (inimigo)." },
     pers_nome:        { required: true, type: "string", min: 1, max: 100 },
-    pers_src:         { required: true, type: "string", min: 1, max: 255 },
+    pers_src:         { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
     pers_alt:         { required: false, type: "string", max: 100 },
     pers_descricao:   { required: false, type: "string", max: 5000 },
     pers_frase:       { required: false, type: "string", max: 255 },
   };
 
   /**
-   * Validador genérico
+   * Validador genérico (ATUALIZADO)
    */
   function validarDados(dados) {
     const erros = [];
@@ -95,6 +118,11 @@ function FormularioEdicao({ item, titulo, onSave }) {
         (usarNoticia && campo.startsWith("not_")) ||
         (usarPersonagem && campo.startsWith("pers_"))
       ) {
+
+        // Campos de imagem NÃO SÃO mais obrigatórios no frontend
+        if (campo.includes("_src") || campo.includes("_imagem")) {
+          continue; // Pula validação de campos de imagem
+        }
 
         if (regras.required && !valor) {
           erros.push(`${formatar(campo)} é obrigatório.`);
@@ -146,6 +174,11 @@ function FormularioEdicao({ item, titulo, onSave }) {
       .replace("not_", "")
       .replace("pers_", "");
 
+  // ⬇️ FUNÇÃO PARA OBTER URL DA IMAGEM ATUAL ⬇️
+  const obterImagemAtual = () => {
+    return dados.not_imagem || dados.mapa_src || dados.ars_src || dados.pers_src || dados.src;
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.titulo}>{titulo}</h1>
@@ -174,10 +207,38 @@ function FormularioEdicao({ item, titulo, onSave }) {
             );
           })}
 
-          <img
-            src={dados.not_imagem || dados.mapa_src || dados.ars_src || dados.pers_src || dados.src}
-            className={styles.imagem}
-          />
+          {/* ⬇️ INPUT DE UPLOAD DE IMAGEM ⬇️ */}
+          <div className={styles.uploadContainer}>
+            <label className={styles.uploadLabel}>
+              Nova Imagem:
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImagemChange}
+                className={styles.uploadInput}
+              />
+            </label>
+            {imagem && (
+              <p className={styles.arquivoSelecionado}>
+                Arquivo selecionado: {imagem.name}
+              </p>
+            )}
+          </div>
+
+          {/* ⬇️ PREVIEW DA IMAGEM ⬇️ */}
+          <div className={styles.imagemContainer}>
+            <img
+              src={imagemPreview || obterImagemAtual()}
+              className={styles.imagem}
+              alt="Preview"
+              onError={(e) => {
+                e.target.src = '/sem.jpg'; // Fallback para imagem padrão
+              }}
+            />
+            <p className={styles.legendaImagem}>
+              {imagemPreview ? "Nova imagem" : "Imagem atual"}
+            </p>
+          </div>
 
           <button type="submit" className={styles.btnSalvar}>Salvar</button>
         </form>

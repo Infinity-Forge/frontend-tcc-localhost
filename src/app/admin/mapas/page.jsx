@@ -57,12 +57,29 @@ export default function Page() {
       try {
         setLoading(true);
 
-        const response = await api.post("/mapas", novoMapa);
+        const formData = new FormData();
+        
+        Object.keys(novoMapa).forEach(key => {
+          if (key !== 'imagem' && key !== 'id' && novoMapa[key] !== null) {
+            formData.append(key, novoMapa[key]);
+          }
+        });
+
+        if (novoMapa.imagem && novoMapa.imagem instanceof File) {
+          formData.append('imagem', novoMapa.imagem);
+        }
+
+        const response = await api.post("/mapas", formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
 
         if (response.data.sucesso) {
           alert("Mapa criado com sucesso!");
 
-          setMapas(prev => [...prev, response.data.dados]);
+          // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+          await listarMapas();
 
           setMapaSelecionado(null);
         } else {
@@ -89,19 +106,31 @@ export default function Page() {
       try {
         setLoading(true);
 
-        const response = await api.put(`/mapas/${dadosAtualizados.mapa_id}`, dadosAtualizados);
+        const formData = new FormData();
+        
+        Object.keys(dadosAtualizados).forEach(key => {
+          if (key !== 'imagem' && key !== 'id' && dadosAtualizados[key] !== null) {
+            formData.append(key, dadosAtualizados[key]);
+          }
+        });
+        
+        if (dadosAtualizados.imagem && dadosAtualizados.imagem instanceof File) {
+          formData.append('imagem', dadosAtualizados.imagem);
+        }
+
+        const response = await api.put(`/mapas/${dadosAtualizados.mapa_id}`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
 
         if (response.data.sucesso) {
           alert("Mapa atualizado com sucesso!");
 
-          // Atualiza o estado local também
-          setMapas(prev =>
-            prev.map(item =>
-              item.mapa_id === dadosAtualizados.mapa_id ? dadosAtualizados : item
-            )
-          );
+          // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+          await listarMapas();
 
-          setMapaSelecionado(null); // Fecha o modal
+          setMapaSelecionado(null);
         } else {
           alert(
             "Erro: " +
@@ -130,7 +159,9 @@ export default function Page() {
 
         if (response.data.sucesso) {
           alert("Mapa deletado com sucesso!");
-          setMapas(prev => prev.filter(item => item.mapa_id !== id));
+          
+          // ⬇️ ATUALIZA A LISTA COMPLETA (COMO UM F5) ⬇️
+          await listarMapas();
 
         } else {
           alert(
