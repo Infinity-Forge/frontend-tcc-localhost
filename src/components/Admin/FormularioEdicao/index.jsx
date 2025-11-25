@@ -5,21 +5,19 @@ import styles from "./index.module.css";
 function FormularioEdicao({ item, titulo, onSave }) {
 
   const [dados, setDados] = useState(item);
-  const [imagem, setImagem] = useState(null); // Estado para a nova imagem
-  const [imagemPreview, setImagemPreview] = useState(null); // Preview da imagem
+  const [imagem, setImagem] = useState(null);
+  const [imagemPreview, setImagemPreview] = useState(null);
 
   const handleChange = (campo, valor) => {
     setDados((prev) => ({ ...prev, [campo]: valor }));
   };
 
-  // ⬇️ NOVA FUNÇÃO PARA MANIPULAR UPLOAD DE IMAGEM ⬇️
   const handleImagemChange = (e) => {
     const arquivo = e.target.files[0];
     
     if (arquivo) {
       setImagem(arquivo);
       
-      // Criar preview da imagem
       const reader = new FileReader();
       reader.onload = (e) => {
         setImagemPreview(e.target.result);
@@ -38,17 +36,13 @@ function FormularioEdicao({ item, titulo, onSave }) {
       return;
     }
 
-    // ⬇️ ENVIAR DADOS COM IMAGEM ⬇️
     onSave({ 
       ...dados, 
       id: obterId(dados),
-      imagem: imagem // Inclui o arquivo de imagem
+      imagem: imagem
     });
   };
 
-  /**
-   * Identifica ID correto para qualquer item
-   */
   function obterId(dados) {
     const ids = ["id", "_id", "mapa_id", "ars_id", "pers_id", "not_id"];
     for (const id of ids) {
@@ -59,14 +53,11 @@ function FormularioEdicao({ item, titulo, onSave }) {
     return null;
   }
 
-  /**
-   * Validações de todos os tipos (ATUALIZADO)
-   */
   const validacoes = {
     // Arsenal
     ars_tipo:         { required: true, type: "number", allowed: [0, 1, 2], mensagem: "Tipo deve ser 0 (pistola), 1 (faca) ou 2 (rifle)." },
     ars_nome:         { required: true, type: "string", min: 1, max: 100 },
-    ars_src:          { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
+    ars_src:          { required: false, type: "string", max: 255 }, 
     ars_alt:          { required: false, type: "string", max: 100 },
     ars_dano:         { required: false, type: "number", min: 0, max: 999 },
     ars_raridade:     { required: false, type: "string", max: 50 },
@@ -77,28 +68,25 @@ function FormularioEdicao({ item, titulo, onSave }) {
 
     // Mapas
     mapa_nome:        { required: true, type: "string", min: 1, max: 100 },
-    mapa_src:         { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
+    mapa_src:         { required: false, type: "string", max: 255 },
     mapa_alt:         { required: false, type: "string", max: 100 },
     mapa_descricao:   { required: false, type: "string", max: 1000 },
 
     // Notícia
     not_titulo:       { required: true, type: "string", min: 1, max: 150 },
     not_conteudo:     { required: true, type: "string", min: 10, max: 5000 },
-    not_imagem:       { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
+    not_imagem:       { required: false, type: "string", max: 255 },
     not_alt:          { required: false, type: "string", max: 100 },
 
     // Personagens
     pers_tipo:        { required: true, type: "number", allowed: [0,1,2,3], mensagem: "Tipo deve ser 0 (guardião), 1 (cavaleiro), 2 (anjo), 3 (inimigo)." },
     pers_nome:        { required: true, type: "string", min: 1, max: 100 },
-    pers_src:         { required: false, type: "string", max: 255 }, // ⬅️ NÃO É MAIS OBRIGATÓRIO
+    pers_src:         { required: false, type: "string", max: 255 }, 
     pers_alt:         { required: false, type: "string", max: 100 },
     pers_descricao:   { required: false, type: "string", max: 5000 },
     pers_frase:       { required: false, type: "string", max: 255 },
   };
 
-  /**
-   * Validador genérico (ATUALIZADO)
-   */
   function validarDados(dados) {
     const erros = [];
     const campos = Object.keys(dados);
@@ -119,9 +107,8 @@ function FormularioEdicao({ item, titulo, onSave }) {
         (usarPersonagem && campo.startsWith("pers_"))
       ) {
 
-        // Campos de imagem NÃO SÃO mais obrigatórios no frontend
         if (campo.includes("_src") || campo.includes("_imagem")) {
-          continue; // Pula validação de campos de imagem
+          continue;
         }
 
         if (regras.required && !valor) {
@@ -174,10 +161,32 @@ function FormularioEdicao({ item, titulo, onSave }) {
       .replace("not_", "")
       .replace("pers_", "");
 
-  // ⬇️ FUNÇÃO PARA OBTER URL DA IMAGEM ATUAL ⬇️
   const obterImagemAtual = () => {
     return dados.not_imagem || dados.mapa_src || dados.ars_src || dados.pers_src || dados.src;
   };
+
+  // Separar campos que ocupam linha inteira
+  const camposNormais = [];
+  const camposLinhaInteira = [];
+
+  Object.entries(dados).forEach(([campo, valor]) => {
+    if (
+      campo.includes("src") ||
+      campo.includes("imagem") ||
+      campo.includes("data_criacao") ||
+      campo.includes("data_publicacao") ||
+      campo === "usu_id" ||
+      campo.endsWith("_id") ||
+      valor === null
+    ) return;
+
+    // Campos que devem ocupar linha inteira (descrição, conteúdo, etc)
+    if (campo.includes('descricao') || campo.includes('conteudo') || campo.includes('frase')) {
+      camposLinhaInteira.push([campo, valor]);
+    } else {
+      camposNormais.push([campo, valor]);
+    }
+  });
 
   return (
     <div className={styles.container}>
@@ -185,62 +194,73 @@ function FormularioEdicao({ item, titulo, onSave }) {
 
       <div className={styles.divFormEImagem}>
         <form className={styles.form} onSubmit={handleSubmit}>
-
-          {Object.entries(dados).map(([campo, valor]) => {
-            if (
-              campo.includes("src") ||
-              campo.includes("imagem") ||
-              campo.includes("data_criacao") ||
-              campo.includes("data_publicacao") ||
-              campo === "usu_id" ||
-              campo.endsWith("_id") ||
-              valor === null
-            ) return null;
-
-            return (
+          
+          {/* Inputs em grid 2 colunas */}
+          <div className={styles.inputsGrid}>
+            {camposNormais.map(([campo, valor]) => (
               <Input
                 key={campo}
                 label={`${formatar(campo)[0].toUpperCase()}${formatar(campo).slice(1)}:`}
                 value={valor}
                 onChange={(val) => handleChange(campo, val)}
               />
-            );
-          })}
+            ))}
+          </div>
 
-          {/* ⬇️ INPUT DE UPLOAD DE IMAGEM ⬇️ */}
-          <div className={styles.uploadContainer}>
-            <label className={styles.uploadLabel}>
-              Nova Imagem:
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImagemChange}
-                className={styles.uploadInput}
+          {/* Campos que ocupam linha inteira */}
+          <div className={styles.camposLinhaInteira}>
+            {camposLinhaInteira.map(([campo, valor]) => (
+              <Input
+                key={campo}
+                label={`${formatar(campo)[0].toUpperCase()}${formatar(campo).slice(1)}:`}
+                value={valor}
+                onChange={(val) => handleChange(campo, val)}
+                type={campo.includes('conteudo') || campo.includes('descricao') ? "textarea" : "text"}
               />
-            </label>
-            {imagem && (
-              <p className={styles.arquivoSelecionado}>
-                Arquivo selecionado: {imagem.name}
+            ))}
+          </div>
+
+          {/* Seção de Imagem */}
+          <div className={styles.imagemSection}>
+            <div className={styles.imagemContainer}>
+              <h3 className={styles.imagemTitulo}>Imagem Atual</h3>
+              <img
+                src={imagemPreview || obterImagemAtual()}
+                className={styles.imagem}
+                alt="Preview"
+                onError={(e) => {
+                  e.target.src = '/sem.jpg';
+                }}
+              />
+              <p className={styles.legendaImagem}>
+                {imagemPreview ? "Prévia da nova imagem" : "Imagem atual"}
               </p>
-            )}
+            </div>
+
+            <div className={styles.uploadContainer}>
+              <label className={styles.uploadLabel}>
+                <span className={styles.uploadText}>Selecionar Nova Imagem</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImagemChange}
+                  className={styles.uploadInput}
+                />
+                <span className={styles.uploadHelper}>
+                  Clique para escolher um arquivo de imagem
+                </span>
+              </label>
+              {imagem && (
+                <p className={styles.arquivoSelecionado}>
+                  ✅ Arquivo selecionado: {imagem.name}
+                </p>
+              )}
+            </div>
           </div>
 
-          {/* ⬇️ PREVIEW DA IMAGEM ⬇️ */}
-          <div className={styles.imagemContainer}>
-            <img
-              src={imagemPreview || obterImagemAtual()}
-              className={styles.imagem}
-              alt="Preview"
-              onError={(e) => {
-                e.target.src = '/sem.jpg'; // Fallback para imagem padrão
-              }}
-            />
-            <p className={styles.legendaImagem}>
-              {imagemPreview ? "Nova imagem" : "Imagem atual"}
-            </p>
+          <div className={styles.botaoContainer}>
+            <button type="submit" className={styles.btnSalvar}>Salvar Alterações</button>
           </div>
-
-          <button type="submit" className={styles.btnSalvar}>Salvar</button>
         </form>
       </div>
     </div>
