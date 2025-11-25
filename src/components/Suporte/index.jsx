@@ -95,27 +95,6 @@ function Suporte({ ativo, setAtivo }) {
         <>
           <p className={styles.paragraph} style={{ lineHeight: "1.5" }}>Bem-vindo, no que podemos ajudar?</p>
           <div id="suporte">
-            <div className={styles.chatbotPreview} onClick={expandirChatBot} role="button" tabIndex={0} onKeyDown={e => { if(e.key==='Enter') expandirChatBot(); }}>
-              <div className={styles.headerPreview}>
-                <p className={styles.paragraph2}>CHAT DE DUVIDAS</p>
-              </div>
-              <div className={styles.footerPreview}>
-                <input 
-                  type="text"
-                  placeholder="Pergunte aqui..."
-                  className={styles.input}
-                  value={inputPreview}
-                  onChange={e => setInputPreview(e.target.value)}
-                />
-                <button
-                  className={styles["btn-submit-preview"]}
-                  onClick={sendPreviewMessage}
-                  disabled={loading}
-                >
-                  Enviar
-                </button>
-              </div>
-            </div>
           </div>
         </>
       )}
