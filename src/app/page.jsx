@@ -167,7 +167,7 @@ function Home() {
               </ContainerPersonagens>
            </article>
          </Container>
-        <Banner imageSrc="/bannerCachorro.jpg" alt="Banner dos Mapas"/>
+        <Banner imageSrc="/bannerMapa.jpg" alt="Banner dos Mapas"/>
       </section>
 
       {/* Seção dos mapas */}
@@ -188,7 +188,7 @@ function Home() {
             imageSrc="/cenarioexemplo2.png"/>
         </section>
       </Container>
-      <Banner imageSrc="/bannerAnjoDerretendo.jpg" alt="Banner"/>
+      <Banner imageSrc="/bannerCachorro.jpg" alt="Banner"/>
       </main>
       <Footer/>
     </div>
