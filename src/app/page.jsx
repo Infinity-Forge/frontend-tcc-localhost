@@ -117,7 +117,7 @@ function Home() {
 
       {/*Seção dos guardiões com o banner*/}
       <section className="guardioesSection">
-        <Banner imageSrc="/bannerAnjoDerretendo.jpg" alt="Banner dos Guardiões"/>
+        <Banner imageSrc="/bannerGuardioes.jpg" alt="Banner dos Guardiões"/>
          <Container>
            <article className={styles.guardioes}>
               <Title text="Guardiões" marginTopValue="0"/>
@@ -167,7 +167,7 @@ function Home() {
               </ContainerPersonagens>
            </article>
          </Container>
-        <Banner imageSrc="/bannerCavaleiro.jpg" alt="Banner dos Cavaleiros"/>
+        <Banner imageSrc="/bannerCachorro.jpg" alt="Banner dos Mapas"/>
       </section>
 
       {/* Seção dos mapas */}
