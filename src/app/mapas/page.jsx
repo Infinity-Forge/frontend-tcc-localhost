@@ -45,15 +45,14 @@ function Mapas() {
       }
     }
 
-  // Função para trocar o mapa principal com secundário clicado
   const trocarMapa = (mapaClicado) => {
     setMapasSecundarios((anteriores) => {
-      // coloca o mapa atual no lugar do clicado
-      const novos = anteriores.map((m) => 
-        m.id === mapaClicado.mapa_id ? mapaAtual : m
+      const novos = anteriores.filter(
+        (m) => m.mapa_id !== mapaClicado.mapa_id
       );
-      return novos;
+      return [...novos, mapaAtual];
     });
+
     setMapaAtual(mapaClicado);
   };
 

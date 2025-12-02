@@ -2,9 +2,6 @@
 
 import { useState, useEffect } from "react";
 import CabecalhoPolitica from "@/components/CabecalhoPolitica";
-import Carrossel from "@/components/Carrossel";
-import CarrosselItem from "@/components/Carrossel/CarrosselItem";
-import CardArma from "@/components/ContainerPersonagens/CardArma";
 import styles from "@/app/arsenal/descricao/[id]/page.module.css";
 import api from "@/services/api";
 
@@ -64,44 +61,6 @@ function DescricaoArma({ id }) {
                     <img src="/arma.png" alt="Arma" className={styles.arma}/>
                 </section>
             </article>
-
-            <Carrossel target="armas">
-                <CarrosselItem extraClass={"active"}>
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-                </CarrosselItem>
-                
-                <CarrosselItem>
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-
-                <CardArma nome="Pistola" 
-                            alt="Imagem de uma Pistola" 
-                            src="/arma.png"/>
-                </CarrosselItem>
-            </Carrossel>
         </main>
         </>
     )

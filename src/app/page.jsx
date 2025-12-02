@@ -19,12 +19,37 @@ import api from "@/services/api";
 
 function Home() {
 
+  const [novidades, setNovidades] = useState([]);
   const [personagens, setPersonagens] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    listarNoticias();
     listarPersonagens();
   }, []);
+
+    async function listarNoticias() {
+    try {
+      setLoading(true);
+
+      const response = await api.get("/noticiasPaginado");
+
+      if (response.data.sucesso) {
+        setNovidades(response.data.dados);
+      } else {
+        alert("Erro:\n" + response.data.mensagem + "\n" + response.data.dados);
+      }
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+        alert("Erro no front-end\n" + error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function listarPersonagens() {
     try {
@@ -66,17 +91,25 @@ function Home() {
             <Title text="Novidades"/>
             <Carrossel target="Novidades">
               <CarrosselItem extraClass={"active"}>
-                <Noticia src="/empresaLogoTeste.png" alt="Imagem da Notícia" titulo="Título"
-                      texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
-                <Noticia src="/jogoLogoTransparent.png" alt="Imagem da Notícia" titulo="Título"
-                      texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+                {novidades.slice(0, 2).map((novidade) => (
+                  <Noticia
+                    key={novidade.not_id}
+                    src={novidade.not_imagem}
+                    titulo={novidade.not_titulo}
+                    texto={novidade.not_conteudo}
+                  />
+                ))}
               </CarrosselItem>
             
               <CarrosselItem>
-                <Noticia src="/empresaLogoTeste.png" alt="Imagem da Notícia" titulo="Título"
-                      texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
-                <Noticia src="/jogoLogoTransparent.png" alt="Imagem da Notícia" titulo="Título"
-                      texto="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ut qui odio nostrum? Laudantium in natus error ipsa, ducimus optio aperiam! Magnam nostrum dolorem ipsum facilis exercitationem reiciendis laudantium? Eligendi!"/>
+                {novidades.slice(2, 4).map((novidade) => (
+                  <Noticia
+                    key={novidade.not_id}
+                    src={novidade.not_imagem}
+                    titulo={novidade.not_titulo}
+                    texto={novidade.not_conteudo}
+                  />
+                ))}
               </CarrosselItem>
             </Carrossel>
           </Container>
@@ -113,7 +146,7 @@ function Home() {
           btnText="Jogar"
           imageSrc="/jogoLogo.png"/>
         </Container>
-        <Banner imageSrc="/bannerEstatua.jpg" alt="Banner dos Guardiões"/>
+        <Banner imageSrc="/bannerReuniao.jpg" alt="Banner dos Guardiões"/>
       </section>
 
       {/* Seção dos cavaleiros com o banner */}

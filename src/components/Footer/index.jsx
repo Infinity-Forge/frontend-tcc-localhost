@@ -27,7 +27,7 @@ function Footer() {
                     <img className={styles.image} src="/jogoLogo.png" alt="logo do jogo" />
                 </div>
 
-                <p className={styles.paragraph}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae est totam excepturi cum ut nesciunt exercitationem voluptas asperiores aspernatur atque, possimus officia cupiditate unde impedit corporis aliquam repellendus consequuntur nemo?</p>
+                <p className={styles.paragraph}>© Infinity Forge — Projeto acadêmico de desenvolvimento de jogo — RPG de ação ambientado em um mundo pós-ruína dominado por forças divinas.</p>
             </div>
 
             <div className={styles.politicas}>
